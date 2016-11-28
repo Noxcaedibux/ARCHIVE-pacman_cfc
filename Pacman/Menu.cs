@@ -20,15 +20,36 @@ namespace Pacman
             this.MinimumSize = this.Size;
             lblRegles.Visible = false;
         }
+        
+        private void cmdRegles_MouseEnter(object sender, EventArgs e)
+        {
+            this.lblRegles.Visible = true;
+        }
 
-        private void cmdRegles_MouseHover(object sender, EventArgs e)
+        private void cmdRegles_MouseLeave(object sender, EventArgs e)
+        {
+            this.lblRegles.Visible = false;
+        }
+
+        private void cmdNouvellePartie_MouseEnter(object sender, EventArgs e)
         {
 
         }
 
-        private void cmdNouvellePartie_MouseHover(object sender, EventArgs e)
+        private void cmdNouvellePartie_MouseLeave(object sender, EventArgs e)
         {
 
         }
+
+        private void cmdScores_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void cmdScores_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

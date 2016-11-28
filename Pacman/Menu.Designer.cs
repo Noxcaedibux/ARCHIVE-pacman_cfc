@@ -45,7 +45,8 @@
             this.cmdRegles.TabIndex = 0;
             this.cmdRegles.Text = "Règles";
             this.cmdRegles.UseVisualStyleBackColor = true;
-            this.cmdRegles.MouseHover += new System.EventHandler(this.cmdRegles_MouseHover);
+            this.cmdRegles.MouseEnter += new System.EventHandler(this.cmdRegles_MouseEnter);
+            this.cmdRegles.MouseLeave += new System.EventHandler(this.cmdRegles_MouseLeave);
             // 
             // cmdNouvellePartie
             // 
@@ -57,7 +58,8 @@
             this.cmdNouvellePartie.TabIndex = 1;
             this.cmdNouvellePartie.Text = "Nouvelle Partie";
             this.cmdNouvellePartie.UseVisualStyleBackColor = true;
-            this.cmdNouvellePartie.MouseHover += new System.EventHandler(this.cmdNouvellePartie_MouseHover);
+            this.cmdNouvellePartie.MouseEnter += new System.EventHandler(this.cmdNouvellePartie_MouseEnter);
+            this.cmdNouvellePartie.MouseLeave += new System.EventHandler(this.cmdNouvellePartie_MouseLeave);
             // 
             // cmdScores
             // 
@@ -69,11 +71,13 @@
             this.cmdScores.TabIndex = 2;
             this.cmdScores.Text = "Scores";
             this.cmdScores.UseVisualStyleBackColor = true;
+            this.cmdScores.MouseEnter += new System.EventHandler(this.cmdScores_MouseEnter);
+            this.cmdScores.MouseLeave += new System.EventHandler(this.cmdScores_MouseLeave);
             // 
             // lblRegles
             // 
             this.lblRegles.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegles.Location = new System.Drawing.Point(176, 24);
+            this.lblRegles.Location = new System.Drawing.Point(176, 28);
             this.lblRegles.Name = "lblRegles";
             this.lblRegles.Size = new System.Drawing.Size(405, 375);
             this.lblRegles.TabIndex = 3;
