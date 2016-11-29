@@ -18,9 +18,10 @@ namespace Pacman
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximumSize = new Size(609, 464);
             this.MinimumSize = new Size(609, 464);
-            lblRegles.Visible = false;
-            cmdNouvellePartie.TabIndex = 0;
+            this.lblRegles.Visible = false;
+            this.cmdNouvellePartie.TabIndex = 0;
             this.MaximizeBox = false;
+            this.pbPacman.Visible = false;
         }
         
         private void cmdRegles_MouseEnter(object sender, EventArgs e)
@@ -35,12 +36,12 @@ namespace Pacman
 
         private void cmdNouvellePartie_MouseEnter(object sender, EventArgs e)
         {
-
+            this.pbPacman.Visible = true;
         }
 
         private void cmdNouvellePartie_MouseLeave(object sender, EventArgs e)
         {
-
+            this.pbPacman.Visible = false;
         }
 
         private void cmdScores_MouseEnter(object sender, EventArgs e)
