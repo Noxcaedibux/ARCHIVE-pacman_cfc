@@ -31,6 +31,34 @@ namespace Pacman
         #endregion constructors
 
         #region accessors and mutators
+        public int positionX
+        {
+            get
+            {
+                return this._positionX;
+            }
+        }
+        public int positionY
+        {
+            get
+            {
+                return this._positionY;
+            }
+        }
+        public int positionXGraph
+        {
+            get
+            {
+                return this._positionX * 20 + 2;
+            }
+        }
+        public int positionYGraph
+        {
+            get
+            {
+                return this._positionY * 20;
+            }
+        }
         #endregion accessors and mutators
 
         #region public methods
