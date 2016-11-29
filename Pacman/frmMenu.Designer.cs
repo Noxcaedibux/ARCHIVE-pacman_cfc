@@ -60,6 +60,7 @@
             this.cmdNouvellePartie.TabIndex = 1;
             this.cmdNouvellePartie.Text = "Nouvelle Partie";
             this.cmdNouvellePartie.UseVisualStyleBackColor = true;
+            this.cmdNouvellePartie.Click += new System.EventHandler(this.cmdNouvellePartie_Click);
             this.cmdNouvellePartie.MouseEnter += new System.EventHandler(this.cmdNouvellePartie_MouseEnter);
             this.cmdNouvellePartie.MouseLeave += new System.EventHandler(this.cmdNouvellePartie_MouseLeave);
             // 
