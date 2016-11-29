@@ -16,9 +16,11 @@ namespace Pacman
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            this.MaximumSize = new Size(609, 464);
+            this.MinimumSize = new Size(609, 464);
             lblRegles.Visible = false;
+            cmdNouvellePartie.TabIndex = 0;
+            this.MaximizeBox = false;
         }
         
         private void cmdRegles_MouseEnter(object sender, EventArgs e)
