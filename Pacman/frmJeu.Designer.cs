@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJeu));
+            this.timerDeplacement = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timerDeplacement
+            // 
+            this.timerDeplacement.Interval = 10;
+            this.timerDeplacement.Tick += new System.EventHandler(this.timerDeplacement_Tick);
             // 
             // frmJeu
             // 
@@ -45,5 +52,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerDeplacement;
     }
 }

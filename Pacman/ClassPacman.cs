@@ -16,6 +16,7 @@ namespace Pacman
         private int _ghostEaten;
         private int _life;
         private int _totalScore;
+        private string _orientationPacman = "Ouest";
         #endregion private attributes
 
         #region constructors
@@ -62,6 +63,14 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        public void DeplacementPacman(string orientationPacman)
+        {
+            if (_orientationPacman == "Est") _positionX++;
+            if (_orientationPacman == "Ouest") _positionX--;
+            if (_orientationPacman == "Nord") _positionY--;
+            if (_orientationPacman == "Sud") _positionY++;
+            _orientationPacman = orientationPacman;
+        }
         #endregion public methods
 
         #region private methods
