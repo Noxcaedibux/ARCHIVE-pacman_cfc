@@ -12,6 +12,10 @@ namespace Pacman
 {
     public partial class frmJeu : Form
     {
+        #region private attributes
+        #endregion private attributes
+
+        #region constructors
         public frmJeu()
         {
             InitializeComponent();
@@ -21,6 +25,21 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
         }
+
+        #endregion constructors
+
+        #region accessors and mutators
+        #endregion accessors and mutators
+
+        #region public methods
+        #endregion public methods
+
+        #region private methods
+        private void frmJeu_Load(object sender, EventArgs e)
+        {
+
+        }
+        #endregion private methods
 
     }
 }
