@@ -20,6 +20,20 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// constructeur de notre objet pacman
+        /// qui contiendra toutes les informations utiles comme,
+        /// le nombre de vies qu'il possède,
+        /// le nombre de pièces mangées,
+        /// le nombre de fontômes mangés,
+        /// sa vitesse de déplacement et ces coordonées
+        /// </summary>
+        /// <param name="vitesse"></param>
+        /// <param name="positionX"></param>
+        /// <param name="positionY"></param>
+        /// <param name="life"></param>
+        /// <param name="coins"></param>
+        /// <param name="ghostEaten"></param>
         public ClassPacman(int vitesse, int positionX, int positionY, int life, int coins, int ghostEaten)
         {
             _vitesse = vitesse;
@@ -63,6 +77,10 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        /// <summary>
+        /// méthode permettant de diriger pacman en fonction de l'orientation retournée
+        /// </summary>
+        /// <param name="orientationPacman"></param>
         public void DeplacementPacman(string orientationPacman)
         {
             if (_orientationPacman == "Est") _positionX++;

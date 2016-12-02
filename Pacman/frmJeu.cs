@@ -31,6 +31,10 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// via le constructeur, nous allons créer l'objet pacman et regler les different 
+        /// paramètres de la form du jeu.
+        /// </summary>
         public frmJeu()
         {
             InitializeComponent();
@@ -57,12 +61,13 @@ namespace Pacman
         #endregion public methods
 
         #region private methods
-        private void frmJeu_Load(object sender, EventArgs e)
-        {
-
-        }
         #endregion private methods
-
+        /// <summary>
+        /// timeur qui va incrémenter une variable pour qu'un  certain moment
+        /// on lise la nouvelle direction que nous donnons à pacman
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerDeplacement_Tick(object sender, EventArgs e)
         {
             _actualisation++;
@@ -78,6 +83,11 @@ namespace Pacman
             }
         }
 
+        /// <summary>
+        /// pour chaque touche pressée nous retournons un vrai ou faux qui sera lu part le timeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmJeu_KeyDown(object sender, KeyEventArgs e)
         {
             switch(e.KeyCode)

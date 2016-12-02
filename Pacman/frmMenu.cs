@@ -17,6 +17,11 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// via le constructeur du form menu, nous allons la centrer au centre de l'écran,
+        /// définir sa taille maximale et minimale,
+        /// cacher les labels et pictures box.
+        /// </summary>
         public FrmMenu()
         {
             InitializeComponent();
@@ -38,6 +43,13 @@ namespace Pacman
         #endregion public methods
 
         #region private methods
+
+        /// <summary>
+        /// quand la souris passera sur un bouton un label(règles ou scores) ou une picturebox(nouvelle partie) 
+        /// s'affichera et inversement quand la souris sortira du bouton 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdRegles_MouseEnter(object sender, EventArgs e)
         {
             this.lblRegles.Visible = true;
@@ -68,14 +80,19 @@ namespace Pacman
 
         }
 
+        /// <summary>
+        /// quand on cliquera sur nouvelle partie on lancera le form du jeu "frmJeu"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdNouvellePartie_Click(object sender, EventArgs e)
         {
             _frmJeu = new frmJeu();
             _frmJeu.Show(this);
         }
+
+
         #endregion private methods
-
-
-
+        
     }
 }
