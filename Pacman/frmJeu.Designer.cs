@@ -47,6 +47,7 @@
             this.Name = "frmJeu";
             this.Text = "frmJeu";
             this.Load += new System.EventHandler(this.frmJeu_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmJeu_KeyDown);
             this.ResumeLayout(false);
 
         }

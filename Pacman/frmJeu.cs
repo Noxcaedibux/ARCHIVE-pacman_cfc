@@ -23,6 +23,10 @@ namespace Pacman
         private int _life=3;
         private int _actualisation = 0;
         private string _orientationPacman = "Ouest";
+        private bool _Nord = false;
+        private bool _Est = false;
+        private bool _Ouest = false;
+        private bool _Sud = false;
 
         #endregion private attributes
 
@@ -64,9 +68,46 @@ namespace Pacman
             _actualisation++;
             if(_actualisation == 100)
             {
+                if (_Nord) _orientationPacman = "Nord";
+                if (_Sud) _orientationPacman = "Sud";
+                if (_Ouest) _orientationPacman = "Ouest";
+                if (_Est) _orientationPacman = "Est";
                 _pacman.DeplacementPacman(this._orientationPacman);
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                 _actualisation = 0;
+            }
+        }
+
+        private void frmJeu_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Up:
+                    _Nord = true;
+                    _Est = false;
+                    _Ouest = false;
+                    _Sud = false;
+                    break;
+                case Keys.Left:
+                    _Nord = false;
+                    _Est = false;
+                    _Ouest = true;
+                    _Sud = false;
+                    break;
+                case Keys.Right:
+                    _Nord = false;
+                    _Est = true;
+                    _Ouest = false;
+                    _Sud = false;
+                    break;
+                case Keys.Down:
+                    _Nord = false;
+                    _Est = false;
+                    _Ouest = false;
+                    _Sud = true;
+                    break;
+                default:
+                    break;
             }
         }
     }
