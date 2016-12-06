@@ -15,7 +15,7 @@ namespace Pacman
         #region private attributes
         private ClassPacman _pacman;
         private PictureBox _pacmanImage;
-        private int _vitessePacman=100;
+        private int _vitessePacman=50;
         private int _positionX=6;
         private int _positionY=10;
         private int _coins=0;
@@ -27,7 +27,8 @@ namespace Pacman
         private bool _Est = false;
         private bool _Ouest = false;
         private bool _Sud = false;
-        private int _deplacement;
+        private int _deplacement=0;
+        private int _actualisation2 = 0;
 
         #endregion private attributes
 
@@ -72,32 +73,56 @@ namespace Pacman
         /// <param name="e"></param>
         private void timerDeplacement_Tick(object sender, EventArgs e)
         {
-            switch (_pacman.orientation)
-            {
-                case "Nord":
-                    _pacmanImage.Image = global::Pacman.Properties.Resources.haut;
-                    break;
-                case "Sud":
-                    _pacmanImage.Image = global::Pacman.Properties.Resources.bas;
-                    break;
-                case "Ouest":
-                    _pacmanImage.Image = global::Pacman.Properties.Resources.gauche;
-                    break;
-                case "Est":
-                    _pacmanImage.Image = global::Pacman.Properties.Resources.droite;
-                    break;
-            }
             _actualisation++;
+            _actualisation2++;
+            if(_actualisation2 == _pacman.vitesse/20)
+            {
+                _deplacement += 1;
+                switch (_pacman.orientation)
+                {
+                    case "Nord":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph - _deplacement);
+                        break;
+                    case "Sud":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph + _deplacement);
+                        break;
+                    case "Ouest":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph - _deplacement, _pacman.positionYGraph);
+                        break;
+                    case "Est":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph + _deplacement, _pacman.positionYGraph);
+                        break;
+                }
+                _actualisation2 = 0;
+            }
             if(_actualisation == _pacman.vitesse)
             {
                 if (_Nord) _orientationPacman = "Nord";
                 if (_Sud) _orientationPacman = "Sud";
                 if (_Ouest) _orientationPacman = "Ouest";
                 if (_Est) _orientationPacman = "Est";
-                
                 _pacman.DeplacementPacman(this._orientationPacman);
-                _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                switch (_pacman.orientation)
+                {
+                    case "Nord":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                        _pacmanImage.Image = global::Pacman.Properties.Resources.haut;
+                        break;
+                    case "Sud":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                        _pacmanImage.Image = global::Pacman.Properties.Resources.bas;
+                        break;
+                    case "Ouest":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                        _pacmanImage.Image = global::Pacman.Properties.Resources.gauche;
+                        break;
+                    case "Est":
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                        _pacmanImage.Image = global::Pacman.Properties.Resources.droite;
+                        break;
+                }
                 _actualisation = 0;
+                _deplacement = 0;
             }
         }
 
