@@ -23,10 +23,18 @@ namespace Pacman
         private int _life=3;
         private int _actualisation = 0;
         private string _orientationPacman = "Ouest";
+        private bool _Nord = false;
+        private bool _Est = false;
+        private bool _Ouest = false;
+        private bool _Sud = false;
 
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// via le constructeur, nous allons créer l'objet pacman et regler les different 
+        /// paramètres de la form du jeu.
+        /// </summary>
         public frmJeu()
         {
             InitializeComponent();
@@ -53,20 +61,63 @@ namespace Pacman
         #endregion public methods
 
         #region private methods
-        private void frmJeu_Load(object sender, EventArgs e)
-        {
-
-        }
         #endregion private methods
-
+        /// <summary>
+        /// timeur qui va incrémenter une variable pour qu'un  certain moment
+        /// on lise la nouvelle direction que nous donnons à pacman
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerDeplacement_Tick(object sender, EventArgs e)
         {
             _actualisation++;
             if(_actualisation == 100)
             {
+                if (_Nord) _orientationPacman = "Nord";
+                if (_Sud) _orientationPacman = "Sud";
+                if (_Ouest) _orientationPacman = "Ouest";
+                if (_Est) _orientationPacman = "Est";
                 _pacman.DeplacementPacman(this._orientationPacman);
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                 _actualisation = 0;
+            }
+        }
+
+        /// <summary>
+        /// pour chaque touche pressée nous retournons un vrai ou faux qui sera lu part le timeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmJeu_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Up:
+                    _Nord = true;
+                    _Est = false;
+                    _Ouest = false;
+                    _Sud = false;
+                    break;
+                case Keys.Left:
+                    _Nord = false;
+                    _Est = false;
+                    _Ouest = true;
+                    _Sud = false;
+                    break;
+                case Keys.Right:
+                    _Nord = false;
+                    _Est = true;
+                    _Ouest = false;
+                    _Sud = false;
+                    break;
+                case Keys.Down:
+                    _Nord = false;
+                    _Est = false;
+                    _Ouest = false;
+                    _Sud = true;
+                    break;
+                default:
+                    break;
             }
         }
     }
