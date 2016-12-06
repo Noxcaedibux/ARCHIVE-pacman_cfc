@@ -63,9 +63,39 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap zRERkjv {
+        internal static System.Drawing.Bitmap bas {
             get {
-                object obj = ResourceManager.GetObject("zRERkjv", resourceCulture);
+                object obj = ResourceManager.GetObject("bas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap droite {
+            get {
+                object obj = ResourceManager.GetObject("droite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gauche {
+            get {
+                object obj = ResourceManager.GetObject("gauche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap haut {
+            get {
+                object obj = ResourceManager.GetObject("haut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -74,6 +74,20 @@ namespace Pacman
                 return this._positionY * 20;
             }
         }
+        public int vitesse
+        {
+            get
+            {
+                return this._vitesse;
+            }
+        }
+        public string orientation
+        {
+            get
+            {
+                return this._orientationPacman;
+            }
+        }
         #endregion accessors and mutators
 
         #region public methods

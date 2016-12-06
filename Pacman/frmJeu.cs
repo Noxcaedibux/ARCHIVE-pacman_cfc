@@ -15,7 +15,7 @@ namespace Pacman
         #region private attributes
         private ClassPacman _pacman;
         private PictureBox _pacmanImage;
-        private int _vitesse=10;
+        private int _vitessePacman=100;
         private int _positionX=6;
         private int _positionY=10;
         private int _coins=0;
@@ -27,6 +27,7 @@ namespace Pacman
         private bool _Est = false;
         private bool _Ouest = false;
         private bool _Sud = false;
+        private int _deplacement;
 
         #endregion private attributes
 
@@ -43,9 +44,10 @@ namespace Pacman
             this.MinimumSize = new Size(794, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
-            _pacman = new ClassPacman(_vitesse, _positionX, _positionY, _life, _coins, _ghostEaten);
+            _pacman = new ClassPacman(_vitessePacman, _positionX, _positionY, _life, _coins, _ghostEaten);
             _pacmanImage = new PictureBox();
-            _pacmanImage.BackColor = Color.Black;
+            _pacmanImage.Image = Pacman.Properties.Resources.gauche;
+            _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
             _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
             _pacmanImage.Size = new Size(21, 21);
             this.Controls.Add(_pacmanImage);
@@ -70,13 +72,29 @@ namespace Pacman
         /// <param name="e"></param>
         private void timerDeplacement_Tick(object sender, EventArgs e)
         {
+            switch (_pacman.orientation)
+            {
+                case "Nord":
+                    _pacmanImage.Image = global::Pacman.Properties.Resources.haut;
+                    break;
+                case "Sud":
+                    _pacmanImage.Image = global::Pacman.Properties.Resources.bas;
+                    break;
+                case "Ouest":
+                    _pacmanImage.Image = global::Pacman.Properties.Resources.gauche;
+                    break;
+                case "Est":
+                    _pacmanImage.Image = global::Pacman.Properties.Resources.droite;
+                    break;
+            }
             _actualisation++;
-            if(_actualisation == 100)
+            if(_actualisation == _pacman.vitesse)
             {
                 if (_Nord) _orientationPacman = "Nord";
                 if (_Sud) _orientationPacman = "Sud";
                 if (_Ouest) _orientationPacman = "Ouest";
                 if (_Est) _orientationPacman = "Est";
+                
                 _pacman.DeplacementPacman(this._orientationPacman);
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                 _actualisation = 0;

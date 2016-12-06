@@ -88,7 +88,7 @@
             // 
             // pbPacman
             // 
-            this.pbPacman.Image = global::Pacman.Properties.Resources.zRERkjv;
+            this.pbPacman.Image = global::Pacman.Properties.Resources.droite;
             this.pbPacman.Location = new System.Drawing.Point(180, 28);
             this.pbPacman.Name = "pbPacman";
             this.pbPacman.Size = new System.Drawing.Size(401, 375);
