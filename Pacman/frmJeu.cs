@@ -15,7 +15,7 @@ namespace Pacman
         #region private attributes
         private ClassPacman _pacman;
         private PictureBox _pacmanImage;
-        private int _vitessePacman=50;
+        private int _vitessePacman=20;
         private int _positionX=6;
         private int _positionY=10;
         private int _coins=0;
@@ -29,6 +29,7 @@ namespace Pacman
         private bool _Sud = false;
         private int _deplacement=0;
         private int _actualisation2 = 0;
+        private int _avancer = 1;
 
         #endregion private attributes
 
@@ -73,34 +74,62 @@ namespace Pacman
         /// <param name="e"></param>
         private void timerDeplacement_Tick(object sender, EventArgs e)
         {
-            _actualisation++;
-            _actualisation2++;
-            if(_actualisation2 == _pacman.vitesse/20)
+            if (_Nord) _orientationPacman = "Nord";
+            if (_Sud) _orientationPacman = "Sud";
+            if (_Ouest) _orientationPacman = "Ouest";
+            if (_Est) _orientationPacman = "Est";
+            if (_avancer == 1)
             {
-                _deplacement += 1;
-                switch (_pacman.orientation)
+                _actualisation++;
+                _actualisation2++;
+                if (_actualisation2 == _pacman.vitesse / 20)
                 {
-                    case "Nord":
-                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph - _deplacement);
-                        break;
-                    case "Sud":
-                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph + _deplacement);
-                        break;
-                    case "Ouest":
-                        _pacmanImage.Location = new Point(_pacman.positionXGraph - _deplacement, _pacman.positionYGraph);
-                        break;
-                    case "Est":
-                        _pacmanImage.Location = new Point(_pacman.positionXGraph + _deplacement, _pacman.positionYGraph);
-                        break;
+                    _deplacement += 1;
+                    switch (_pacman.orientation)
+                    {
+                        case "Nord":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph - _deplacement);
+                            break;
+                        case "Sud":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph + _deplacement);
+                            break;
+                        case "Ouest":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph - _deplacement, _pacman.positionYGraph);
+                            break;
+                        case "Est":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph + _deplacement, _pacman.positionYGraph);
+                            break;
+                    }
+                    _actualisation2 = 0;
                 }
-                _actualisation2 = 0;
+                if (_actualisation == _pacman.vitesse)
+                {
+                    _pacman.DeplacementPacman(this._orientationPacman);
+                    switch (_pacman.orientation)
+                    {
+                        case "Nord":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                            _pacmanImage.Image = global::Pacman.Properties.Resources.haut;
+                            break;
+                        case "Sud":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                            _pacmanImage.Image = global::Pacman.Properties.Resources.bas;
+                            break;
+                        case "Ouest":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                            _pacmanImage.Image = global::Pacman.Properties.Resources.gauche;
+                            break;
+                        case "Est":
+                            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                            _pacmanImage.Image = global::Pacman.Properties.Resources.droite;
+                            break;
+                    }
+                    _actualisation = 0;
+                    _deplacement = 0;
+                }
             }
-            if(_actualisation == _pacman.vitesse)
+            else
             {
-                if (_Nord) _orientationPacman = "Nord";
-                if (_Sud) _orientationPacman = "Sud";
-                if (_Ouest) _orientationPacman = "Ouest";
-                if (_Est) _orientationPacman = "Est";
                 _pacman.DeplacementPacman(this._orientationPacman);
                 switch (_pacman.orientation)
                 {
@@ -121,9 +150,8 @@ namespace Pacman
                         _pacmanImage.Image = global::Pacman.Properties.Resources.droite;
                         break;
                 }
-                _actualisation = 0;
-                _deplacement = 0;
             }
+            _avancer = _pacman.avancer();
         }
 
         /// <summary>

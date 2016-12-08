@@ -17,6 +17,7 @@ namespace Pacman
         private int _life;
         private int _totalScore;
         private string _orientationPacman = "Ouest";
+        private int _avancer = 1;
         #endregion private attributes
 
         #region constructors
@@ -88,6 +89,33 @@ namespace Pacman
                 return this._orientationPacman;
             }
         }
+
+        public int avancer()
+        {
+            if(_orientationPacman == "Nord" && _positionY == 1)
+            {
+                _avancer = 0;
+            }
+            else if (_orientationPacman == "Sud" && _positionY == 18)
+            {
+                _avancer = 0;
+            }
+            else if (_orientationPacman == "Est" && _positionX == 37)
+            {
+                _avancer = 1;
+                _positionX = 0;
+            }
+            else if (_orientationPacman == "Ouest" && _positionX == 0)
+            {
+                _avancer = 1;
+                _positionX = 37;
+            }
+            else
+            {
+                _avancer = 1;
+            }
+            return _avancer;
+        }
         #endregion accessors and mutators
 
         #region public methods
@@ -97,10 +125,13 @@ namespace Pacman
         /// <param name="orientationPacman"></param>
         public void DeplacementPacman(string orientationPacman)
         {
-            if (_orientationPacman == "Est") _positionX++;
-            if (_orientationPacman == "Ouest") _positionX--;
-            if (_orientationPacman == "Nord") _positionY--;
-            if (_orientationPacman == "Sud") _positionY++;
+            if(_avancer == 1)
+            {
+                if (_orientationPacman == "Est") _positionX++;
+                if (_orientationPacman == "Ouest") _positionX--;
+                if (_orientationPacman == "Nord") _positionY--;
+                if (_orientationPacman == "Sud") _positionY++;
+            }
             _orientationPacman = orientationPacman;
         }
         #endregion public methods
