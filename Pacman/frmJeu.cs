@@ -15,6 +15,7 @@ namespace Pacman
         #region private attributes
         private ClassPacman _pacman;
         private PictureBox _pacmanImage;
+        private Map _classMap;
         private int _vitessePacman=20;
         private int _positionX=6;
         private int _positionY=10;
@@ -30,6 +31,7 @@ namespace Pacman
         private int _deplacement=0;
         private int _actualisation2 = 0;
         private int _avancer = 1;
+        private string _nomMap = "Map01";
 
         #endregion private attributes
 
@@ -54,6 +56,7 @@ namespace Pacman
             _pacmanImage.Size = new Size(21, 21);
             this.Controls.Add(_pacmanImage);
             timerDeplacement.Start();
+            _classMap = new Map(_nomMap);
         }
 
         #endregion constructors
@@ -191,5 +194,6 @@ namespace Pacman
                     break;
             }
         }
+        
     }
 }

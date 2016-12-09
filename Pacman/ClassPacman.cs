@@ -90,9 +90,17 @@ namespace Pacman
             }
         }
 
+
+        #endregion accessors and mutators
+
+        #region public methods
+        /// <summary>
+        /// detection des murs
+        /// </summary>
+        /// <returns></returns>
         public int avancer()
         {
-            if(_orientationPacman == "Nord" && _positionY == 1)
+            if (_orientationPacman == "Nord" && _positionY == 1)
             {
                 _avancer = 0;
             }
@@ -116,9 +124,6 @@ namespace Pacman
             }
             return _avancer;
         }
-        #endregion accessors and mutators
-
-        #region public methods
         /// <summary>
         /// méthode permettant de diriger pacman en fonction de l'orientation retournée
         /// </summary>
