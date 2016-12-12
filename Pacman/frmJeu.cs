@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe du form jeu
+    /// grâce à elle on pourra afficher le jeu 
+    /// </summary>
     public partial class frmJeu : Form
     {
         #region private attributes
@@ -37,8 +41,8 @@ namespace Pacman
 
         #region constructors
         /// <summary>
-        /// via le constructeur, nous allons créer l'objet pacman et regler les different 
-        /// paramètres de la form du jeu.
+        /// via le constructeur, nous allons créer l'objet pacman, les 4 fantômes,
+        /// et regler les different paramètres de la form du jeu.
         /// </summary>
         public frmJeu()
         {
@@ -70,8 +74,10 @@ namespace Pacman
         #region private methods
         #endregion private methods
         /// <summary>
-        /// timeur qui va incrémenter une variable pour qu'un  certain moment
-        /// on lise la nouvelle direction que nous donnons à pacman
+        /// timeur qui va incrémenter une variable pour qu'à un certain moment
+        /// on lise la nouvelle direction que nous donnons à pacman,
+        /// on aura aussi un affichage graphique de pacman au lieu d'avoir un déplacement de case en case(comme si 
+        /// on déplaçait pacman dans un tableau)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -161,7 +167,7 @@ namespace Pacman
         /// pour chaque touche pressée nous retournons un vrai ou faux qui sera lu part le timeur
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">evenement des touches du clavier</param>
         private void frmJeu_KeyDown(object sender, KeyEventArgs e)
         {
             switch(e.KeyCode)
