@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pacman
 {
@@ -24,6 +25,7 @@ namespace Pacman
         private int _avancer = 1;
         private int[,] _map;
         private int[,] _personnages = new int[20, 38];
+        private int _nbPiece;
         #endregion private attributes
 
         #region constructors
@@ -51,6 +53,11 @@ namespace Pacman
             _life = life;
             _map = map;
             _personnages[positionY, _positionX] = 4;
+            _nbPiece = 0;
+            foreach(int piece in this._map)
+            {
+                if (piece == 2) _nbPiece++;
+            }
         }
         #endregion constructors
 
@@ -123,8 +130,6 @@ namespace Pacman
                 return this._orientationPacman;
             }
         }
-
-
         #endregion accessors and mutators
 
         #region public methods
@@ -187,6 +192,16 @@ namespace Pacman
                 _personnages[positionY, _positionX] = 4;
             }
             _orientationPacman = orientationPacman;
+        }
+
+        public int MangerPiece()
+        {
+            if(_map[positionY, positionX] == 2)
+            {
+                _map[positionY, positionX] = 0;
+                _nbPiece--;
+            }
+            return _nbPiece;
         }
         #endregion public methods
 

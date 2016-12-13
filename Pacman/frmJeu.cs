@@ -37,6 +37,8 @@ namespace Pacman
         private int _avancer = 1;
         private string _nomMap = "Map01";
         private int[,] _map;
+        private int _nbPiece;
+        private int _pieceRestantes;
 
         #endregion private attributes
 
@@ -54,12 +56,22 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
             int i = 0;
+            int a = 0;
             int x;
             int y;
             _classMap = new Map(_nomMap);
             _map = _classMap.map;
+            _pacman = new ClassPacman(_vitessePacman, _positionX, _positionY, _life, _coins, _ghostEaten, _map);
+            _pacmanImage = new PictureBox();
+            _pacmanImage.Image = Pacman.Properties.Resources.gauche;
+            _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+            _pacmanImage.Size = new Size(21, 21);
+            this.Controls.Add(_pacmanImage);
             PictureBox[] _mur;
             _mur = new PictureBox[500];
+            PictureBox[] _piece;
+            _piece = new PictureBox[500];
             for (y = 0; y <= 19; y++)
             {
                 for (x = 0; x <= 37; x++)
@@ -73,15 +85,30 @@ namespace Pacman
                         this.Controls.Add(_mur[i]);
                         i++;
                     }
+                    if(_map[y, x] == 2)
+                    {
+                        _piece[a] = new PictureBox();
+                        _piece[a].Location = new Point(x * 20, y * 20);
+                        _piece[a].Size = new Size(21, 21);
+                        _piece[a].Image = Pacman.Properties.Resources.piece;
+                        _piece[a].SizeMode = PictureBoxSizeMode.StretchImage;
+                        this.Controls.Add(_piece[a]);
+                        a++;
+                    }
+                    if (_map[y, x] == 3)
+                    {
+                        _piece[a] = new PictureBox();
+                        _piece[a].Location = new Point(x * 20, y * 20);
+                        _piece[a].Size = new Size(21, 21);
+                        _piece[a].Image = Pacman.Properties.Resources.superPiece;
+                        _piece[a].SizeMode = PictureBoxSizeMode.StretchImage;
+                        this.Controls.Add(_piece[a]);
+                        a++;
+                    }
                 }
             }
-            _pacman = new ClassPacman(_vitessePacman, _positionX, _positionY, _life, _coins, _ghostEaten, _map);
-            _pacmanImage = new PictureBox();
-            _pacmanImage.Image = Pacman.Properties.Resources.gauche;
-            _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
-            _pacmanImage.Size = new Size(21, 21);
-            this.Controls.Add(_pacmanImage);
+            _nbPiece = _pacman.MangerPiece();
+            _pieceRestantes = _nbPiece;
             timerDeplacement.Start();
         }
 
@@ -136,6 +163,15 @@ namespace Pacman
                 if (_actualisation == _pacman.vitesse)
                 {
                     _pacman.DeplacementPacman(this._orientationPacman);
+                    if(_pieceRestantes != _pacman.MangerPiece())
+                    {
+                        int i;
+                        _pieceRestantes = _pacman.MangerPiece();
+                        for(i = 0; i < _nbPiece; i++)
+                        {
+                            
+                        }
+                    }
                     switch (_pacman.orientation)
                     {
                         case "Nord":
