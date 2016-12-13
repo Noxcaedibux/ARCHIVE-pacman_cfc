@@ -20,12 +20,11 @@ namespace Pacman
         private int _coins;
         private int _ghostEaten;
         private int _life;
-        private int _totalScore;
+        private int _piecesRestantes;
         private string _orientationPacman = "Nord";
         private int _avancer = 1;
         private int[,] _map;
         private int[,] _personnages = new int[20, 38];
-        private int _nbPiece;
         #endregion private attributes
 
         #region constructors
@@ -43,6 +42,7 @@ namespace Pacman
         /// <param name="life"></param>
         /// <param name="coins"></param>
         /// <param name="ghostEaten"></param>
+        /// <param name="map"></param>
         public ClassPacman(int vitesse, int positionX, int positionY, int life, int coins, int ghostEaten, int[,] map)
         {
             _vitesse = vitesse;
@@ -53,15 +53,20 @@ namespace Pacman
             _life = life;
             _map = map;
             _personnages[positionY, _positionX] = 4;
-            _nbPiece = 0;
-            foreach(int piece in this._map)
-            {
-                if (piece == 2) _nbPiece++;
-            }
         }
         #endregion constructors
 
         #region accessors and mutators
+        /// <summary>
+        /// accesseur du nombre de pièces mangées
+        /// </summary>
+        public int coins
+        {
+            get
+            {
+                return this._coins;
+            }
+        }
         /// <summary>
         /// accesseur de la position horizontale de pacman
         /// qui sera des entier comme si on lisait des lignes d'un tableau
@@ -117,11 +122,11 @@ namespace Pacman
             }
         }
         /// <summary>
-        /// accesseur qui nous permettra de savoir la direction dans la quelle pacman regarde
-        /// Nord
-        /// Sud 
-        /// Est 
-        /// Öuest
+        /// accesseur qui nous permettra de savoir la direction dans la quelle pacman regarde:
+        /// - Nord
+        /// - Sud 
+        /// - Est 
+        /// - Öuest
         /// </summary>
         public string orientation
         {
@@ -138,7 +143,7 @@ namespace Pacman
         /// exemple pacman va dépasser le haut du jeu il est arreté
         /// pareil pour le bas.
         /// et il pourra se teleporter de droite à gauche ou vice versa 
-        /// quand il dépace le droit ou gauche
+        /// quand il dépace le mur droite ou gauche
         /// et s'arretera s'il a un mur en face de lui
         /// </summary>
         /// <returns></returns>
@@ -193,15 +198,24 @@ namespace Pacman
             }
             _orientationPacman = orientationPacman;
         }
-
-        public int MangerPiece()
+        /// <summary>
+        /// cette méthode sert à savoir si on est sur une pièce, si c'est le cas on va 
+        /// éffacer sa valeur(=2) du tableau et on recalcule le nombre de pièces mangées
+        /// </summary>
+        /// <returns></returns>
+        public int PiecesRestantes()
         {
-            if(_map[positionY, positionX] == 2)
+            if(_map[positionY, positionX] == 2 || _map[positionY, positionX] == 3)
             {
                 _map[positionY, positionX] = 0;
-                _nbPiece--;
+                _coins++;
+                _piecesRestantes = 0;
+                foreach (int piece in _map)
+                {
+                    if (piece == 2 || piece == 3) _piecesRestantes++;
+                }
             }
-            return _nbPiece;
+            return this._piecesRestantes;
         }
         #endregion public methods
 
