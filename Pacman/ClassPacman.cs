@@ -20,8 +20,10 @@ namespace Pacman
         private int _ghostEaten;
         private int _life;
         private int _totalScore;
-        private string _orientationPacman = "Ouest";
+        private string _orientationPacman = "Nord";
         private int _avancer = 1;
+        private int[,] _map;
+        private int[,] _personnages = new int[20, 38];
         #endregion private attributes
 
         #region constructors
@@ -39,7 +41,7 @@ namespace Pacman
         /// <param name="life"></param>
         /// <param name="coins"></param>
         /// <param name="ghostEaten"></param>
-        public ClassPacman(int vitesse, int positionX, int positionY, int life, int coins, int ghostEaten)
+        public ClassPacman(int vitesse, int positionX, int positionY, int life, int coins, int ghostEaten, int[,] map)
         {
             _vitesse = vitesse;
             _positionX = positionX;
@@ -47,6 +49,8 @@ namespace Pacman
             _coins = coins;
             _ghostEaten = ghostEaten;
             _life = life;
+            _map = map;
+            _personnages[positionY, _positionX] = 4;
         }
         #endregion constructors
 
@@ -81,7 +85,7 @@ namespace Pacman
         {
             get
             {
-                return this._positionX * 20 + 2;
+                return this._positionX * 20;
             }
         }
         /// <summary>
@@ -135,15 +139,7 @@ namespace Pacman
         /// <returns></returns>
         public int avancer()
         {
-            if (_orientationPacman == "Nord" && _positionY == 1)
-            {
-                _avancer = 0;
-            }
-            else if (_orientationPacman == "Sud" && _positionY == 18)
-            {
-                _avancer = 0;
-            }
-            else if (_orientationPacman == "Est" && _positionX == 37)
+            if (_orientationPacman == "Est" && _positionX == 37)
             {
                 _avancer = 1;
                 _positionX = 0;
@@ -152,6 +148,22 @@ namespace Pacman
             {
                 _avancer = 1;
                 _positionX = 37;
+            }
+            else if (_orientationPacman == "Nord" && _map[positionY - 1, positionX] == 1)
+            {
+                _avancer = 0;
+            }
+            else if (_orientationPacman == "Sud" && _map[positionY + 1, positionX] == 1)
+            {
+                _avancer = 0;
+            }
+            else if (_orientationPacman == "Est" && _map[positionY, positionX + 1] == 1)
+            {
+                _avancer = 0;
+            }
+            else if (_orientationPacman == "Ouest" && _map[positionY, positionX - 1] == 1)
+            {
+                _avancer = 0;
             }
             else
             {
@@ -167,10 +179,12 @@ namespace Pacman
         {
             if(_avancer == 1)
             {
+                _personnages[positionY, _positionX] = 0;
                 if (_orientationPacman == "Est") _positionX++;
                 if (_orientationPacman == "Ouest") _positionX--;
                 if (_orientationPacman == "Nord") _positionY--;
                 if (_orientationPacman == "Sud") _positionY++;
+                _personnages[positionY, _positionX] = 4;
             }
             _orientationPacman = orientationPacman;
         }

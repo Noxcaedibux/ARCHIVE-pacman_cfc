@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJeu));
             this.timerDeplacement = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -42,8 +41,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(778, 568);
+            this.ClientSize = new System.Drawing.Size(765, 568);
             this.Name = "frmJeu";
             this.Text = "frmJeu";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmJeu_KeyDown);

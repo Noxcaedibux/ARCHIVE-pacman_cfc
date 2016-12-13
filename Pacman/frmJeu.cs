@@ -21,13 +21,13 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private Map _classMap;
         private int _vitessePacman=20;
-        private int _positionX=6;
-        private int _positionY=10;
+        private int _positionX=18;
+        private int _positionY=16;
         private int _coins=0;
         private int _ghostEaten=0;
         private int _life=3;
         private int _actualisation = 0;
-        private string _orientationPacman = "Ouest";
+        private string _orientationPacman = "Nord";
         private bool _Nord = false;
         private bool _Est = false;
         private bool _Ouest = false;
@@ -36,6 +36,7 @@ namespace Pacman
         private int _actualisation2 = 0;
         private int _avancer = 1;
         private string _nomMap = "Map01";
+        private int[,] _map;
 
         #endregion private attributes
 
@@ -48,11 +49,33 @@ namespace Pacman
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.MaximumSize = new Size(794, 606);
-            this.MinimumSize = new Size(794, 606);
+            this.MaximumSize = new Size(778, 606);
+            this.MinimumSize = new Size(778, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
-            _pacman = new ClassPacman(_vitessePacman, _positionX, _positionY, _life, _coins, _ghostEaten);
+            int i = 0;
+            int x;
+            int y;
+            _classMap = new Map(_nomMap);
+            _map = _classMap.map;
+            PictureBox[] _mur;
+            _mur = new PictureBox[500];
+            for (y = 0; y <= 19; y++)
+            {
+                for (x = 0; x <= 37; x++)
+                {
+                    if (_map[y, x] == 1)
+                    {
+                        _mur[i] = new PictureBox();
+                        _mur[i].Location = new Point(x * 20, y * 20);
+                        _mur[i].Size = new Size(21, 21);
+                        _mur[i].BackColor = Color.Black;
+                        this.Controls.Add(_mur[i]);
+                        i++;
+                    }
+                }
+            }
+            _pacman = new ClassPacman(_vitessePacman, _positionX, _positionY, _life, _coins, _ghostEaten, _map);
             _pacmanImage = new PictureBox();
             _pacmanImage.Image = Pacman.Properties.Resources.gauche;
             _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -60,7 +83,6 @@ namespace Pacman
             _pacmanImage.Size = new Size(21, 21);
             this.Controls.Add(_pacmanImage);
             timerDeplacement.Start();
-            _classMap = new Map(_nomMap);
         }
 
         #endregion constructors
@@ -200,6 +222,5 @@ namespace Pacman
                     break;
             }
         }
-        
     }
 }
