@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe pacman qui permettra de construire un objet pacman
+    /// contenant les informations les plus importantes de pacman
+    /// </summary>
     public class ClassPacman
     {
         #region private attributes
@@ -47,6 +51,10 @@ namespace Pacman
         #endregion constructors
 
         #region accessors and mutators
+        /// <summary>
+        /// accesseur de la position horizontale de pacman
+        /// qui sera des entier comme si on lisait des lignes d'un tableau
+        /// </summary>
         public int positionX
         {
             get
@@ -54,6 +62,10 @@ namespace Pacman
                 return this._positionX;
             }
         }
+        /// <summary>
+        /// accesseur de la position verticale de pacman
+        /// qui sera des entier comme si on lisait des colonnes d'un tableau
+        /// </summary>
         public int positionY
         {
             get
@@ -61,6 +73,10 @@ namespace Pacman
                 return this._positionY;
             }
         }
+        /// <summary>
+        /// accesseur de la position horizontale de pacman qui correspondra aux positions du tableau 
+        /// qui fait 20pixels de large et 2 pixels de plus pour etre bien placé
+        /// </summary>
         public int positionXGraph
         {
             get
@@ -68,6 +84,10 @@ namespace Pacman
                 return this._positionX * 20 + 2;
             }
         }
+        /// <summary>
+        /// accesseur de la position verticale de pacman qui correspondra aux positions du tableau 
+        /// qui fait 20pixels de haut
+        /// </summary>
         public int positionYGraph
         {
             get
@@ -75,6 +95,9 @@ namespace Pacman
                 return this._positionY * 20;
             }
         }
+        /// <summary>
+        /// accesseur de la vitesse de deplacement de pacman
+        /// </summary>
         public int vitesse
         {
             get
@@ -82,6 +105,13 @@ namespace Pacman
                 return this._vitesse;
             }
         }
+        /// <summary>
+        /// accesseur qui nous permettra de savoir la direction dans la quelle pacman regarde
+        /// Nord
+        /// Sud 
+        /// Est 
+        /// Öuest
+        /// </summary>
         public string orientation
         {
             get
@@ -90,9 +120,22 @@ namespace Pacman
             }
         }
 
+
+        #endregion accessors and mutators
+
+        #region public methods
+        /// <summary>
+        /// methode public qui informe si on peut ou pas avancer
+        /// exemple pacman va dépasser le haut du jeu il est arreté
+        /// pareil pour le bas.
+        /// et il pourra se teleporter de droite à gauche ou vice versa 
+        /// quand il dépace le droit ou gauche
+        /// et s'arretera s'il a un mur en face de lui
+        /// </summary>
+        /// <returns></returns>
         public int avancer()
         {
-            if(_orientationPacman == "Nord" && _positionY == 1)
+            if (_orientationPacman == "Nord" && _positionY == 1)
             {
                 _avancer = 0;
             }
@@ -116,13 +159,10 @@ namespace Pacman
             }
             return _avancer;
         }
-        #endregion accessors and mutators
-
-        #region public methods
         /// <summary>
         /// méthode permettant de diriger pacman en fonction de l'orientation retournée
         /// </summary>
-        /// <param name="orientationPacman"></param>
+        /// <param name="orientationPacman">variable contenant l'orientation de pacman</param>
         public void DeplacementPacman(string orientationPacman)
         {
             if(_avancer == 1)

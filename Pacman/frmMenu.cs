@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /// <summary>
+    /// clase du form menu
+    /// qui contiendra l'essentiel avant de lancer une partie
+    /// alias le score, les règles et la possibilité de jouer une nouvelle partie
+    /// </summary>
     public partial class FrmMenu : Form
     {
         #region private attributes
@@ -20,7 +25,7 @@ namespace Pacman
         /// <summary>
         /// via le constructeur du form menu, nous allons la centrer au centre de l'écran,
         /// définir sa taille maximale et minimale,
-        /// cacher les labels et pictures box.
+        /// cacher les labels et pictures box et la nommer.
         /// </summary>
         public FrmMenu()
         {
@@ -90,9 +95,6 @@ namespace Pacman
             _frmJeu = new frmJeu();
             _frmJeu.Show(this);
         }
-
-
-        #endregion private methods
-        
+        #endregion private methods        
     }
 }
