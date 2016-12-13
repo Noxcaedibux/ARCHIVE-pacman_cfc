@@ -78,9 +78,7 @@ namespace Pacman
                     int lecteur=0;
                     string mapTemporaire = strReader.ReadToEnd();
                     strReader.Close();
-                    MessageBox.Show(mapTemporaire, "Map chargée ↓");
                     mapTemporaire = mapTemporaire.Replace("\r\n", "");
-                    MessageBox.Show(mapTemporaire, "Map chargée sans \\r\\n ↓");
                     for (y = 0; y <= 19; y++)
                     {
                         for (x = 0; x <= 37; x++)
@@ -89,16 +87,6 @@ namespace Pacman
                             lecteur++;
                         }
                     }
-                    StreamWriter writer = new StreamWriter(_emplacement.Substring(0, _emplacement.LastIndexOf("txt")) +"test");
-                     for (y = 0; y <= 19; y++)
-                     {
-                         for (x = 0; x <= 37; x++)
-                         {
-                             writer.Write(_map[y, x]);
-                        }
-                        writer.Write("\n");
-                    }
-                    writer.Close();
                 }
                 catch (Exception e)
                 {
