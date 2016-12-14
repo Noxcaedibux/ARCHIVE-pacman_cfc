@@ -96,9 +96,6 @@
     <None Include="Resources\zRERkjv.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pacmanGauche.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\gauche.gif" />
   </ItemGroup>
   <ItemGroup>

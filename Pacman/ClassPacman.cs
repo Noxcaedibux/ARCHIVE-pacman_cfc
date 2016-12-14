@@ -22,7 +22,7 @@ namespace Pacman
         private int _life;
         private int _piecesRestantes;
         private string _orientationPacman = "Nord";
-        private int _avancer = 1;
+        private int _avancer;
         private int[,] _map;
         private int[,] _personnages = new int[20, 38];
         #endregion private attributes
@@ -43,16 +43,19 @@ namespace Pacman
         /// <param name="coins"></param>
         /// <param name="ghostEaten"></param>
         /// <param name="map"></param>
-        public ClassPacman(int vitesse, int positionX, int positionY, int life, int coins, int ghostEaten, int[,] map)
+        public ClassPacman(int vitesse, int life, int coins, int ghostEaten, int[,] map)
         {
             _vitesse = vitesse;
-            _positionX = positionX;
-            _positionY = positionY;
             _coins = coins;
             _ghostEaten = ghostEaten;
             _life = life;
             _map = map;
-            _personnages[positionY, _positionX] = 4;
+            Emplacement();
+            _piecesRestantes = 0;
+            foreach (int piece in _map)
+            {
+                if (piece == 2 || piece == 3) _piecesRestantes++;
+            }
         }
         #endregion constructors
 
@@ -126,13 +129,23 @@ namespace Pacman
         /// - Nord
         /// - Sud 
         /// - Est 
-        /// - Öuest
+        /// - Ouest
         /// </summary>
         public string orientation
         {
             get
             {
                 return this._orientationPacman;
+            }
+        }
+        /// <summary>
+        /// Accesseur qui nous retourne la valeur des pièces que pacman n'a pas encore mangé
+        /// </summary>
+        public int NbPiecesRestantes
+        {
+            get
+            {
+                return this._piecesRestantes;
             }
         }
         #endregion accessors and mutators
@@ -205,21 +218,34 @@ namespace Pacman
         /// <returns></returns>
         public int PiecesRestantes()
         {
-            if(_map[positionY, positionX] == 2 || _map[positionY, positionX] == 3)
+            if (_map[positionY, positionX] == 2 || _map[positionY, positionX] == 3)
             {
                 _map[positionY, positionX] = 0;
-                _coins++;
-                _piecesRestantes = 0;
-                foreach (int piece in _map)
-                {
-                    if (piece == 2 || piece == 3) _piecesRestantes++;
-                }
+                _piecesRestantes--;
+                _coins++;                
             }
             return this._piecesRestantes;
         }
         #endregion public methods
 
         #region private methods
+        private void Emplacement()
+        {
+            int x;
+            int y;
+            for (y = 0; y <= 19; y++)
+            {
+                for (x = 0; x <= 37; x++)
+                {
+                    if (_map[y, x] == 4)
+                    {
+                        _positionY = y;
+                        _positionX = x;
+                        _personnages[y, x] = 4;
+;                    }
+                }
+            }
+        }
         #endregion private methods
     }
 }
