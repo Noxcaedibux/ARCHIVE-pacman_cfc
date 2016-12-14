@@ -95,7 +95,8 @@ namespace Pacman
                             _mur[i] = new PictureBox();
                             _mur[i].Location = new Point(x * 20, y * 20);
                             _mur[i].Size = new Size(21, 21);
-                            _mur[i].BackColor = Color.Black;
+                            _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                            _mur[i].Image = Pacman.Properties.Resources.mur;
                             this.Controls.Add(_mur[i]);
                             i++;
                         }

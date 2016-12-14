@@ -93,9 +93,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\zRERkjv.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\gauche.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\superPiece.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
