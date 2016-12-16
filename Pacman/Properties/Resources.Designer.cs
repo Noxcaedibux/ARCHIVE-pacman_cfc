@@ -63,6 +63,46 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _0vies {
+            get {
+                object obj = ResourceManager.GetObject("_0vies", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1vies {
+            get {
+                object obj = ResourceManager.GetObject("_1vies", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2vies {
+            get {
+                object obj = ResourceManager.GetObject("_2vies", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3vies {
+            get {
+                object obj = ResourceManager.GetObject("_3vies", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bas {
             get {
                 object obj = ResourceManager.GetObject("bas", resourceCulture);
@@ -146,16 +186,6 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap superPiece {
             get {
                 object obj = ResourceManager.GetObject("superPiece", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap vies {
-            get {
-                object obj = ResourceManager.GetObject("vies", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
