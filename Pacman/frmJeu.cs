@@ -25,7 +25,6 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private PictureBox _interface_vie;
         private PictureBox[] _piece;
-        private Label lblPiecesRestantes = new Label();
         private Point _positionPacman;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
@@ -56,10 +55,6 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
             this.BackColor = Color.Black;
-            lblPiecesRestantes.Location = new Point(200,540);
-            lblPiecesRestantes.AutoSize = true;
-            lblPiecesRestantes.Text = "bonjour!";
-            Controls.Add(lblPiecesRestantes);
             gestionMap();
             timerDeplacement.Start();
         }
@@ -147,7 +142,6 @@ namespace Pacman
                 }
             }
             _pacman.PiecesRestantes();
-            lblPiecesRestantes.Text = _pacman.NbPiecesRestantes.ToString();
             if (_pacman.NbPiecesRestantes == 0)
             {
                 timerDeplacement.Stop();
