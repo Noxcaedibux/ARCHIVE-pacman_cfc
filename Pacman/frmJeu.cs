@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 
 namespace Pacman
 {
@@ -20,6 +23,7 @@ namespace Pacman
         private ClassPacman _pacman;
         private Map _classMap;
         private PictureBox _pacmanImage;
+        private PictureBox _interface_vie;
         private PictureBox[] _piece;
         private Label lblPiecesRestantes = new Label();
         private Point _positionPacman;
@@ -77,17 +81,12 @@ namespace Pacman
             if (_nouvelleMap)
             {
                 //mise en place des icones de base
-                PictureBox[] _interface_vie = new PictureBox[3];
-                for(int f=0;f<3;f++)
-                {
-                    _interface_vie[f] = new PictureBox();
-                    _interface_vie[f].Image = Pacman.Properties.Resources.vies;
-                    //_interface_vie[f].SizeMode = PictureBoxSizeMode.StretchImage;
-                    _interface_vie[f].Location = new Point(f*54+15, 401+25);
-                    _interface_vie[f].Size = new Size(54, 55);
-                    this.Controls.Add(_interface_vie[f]);
-                }
-                //mise en place des icones de base
+                _interface_vie = new PictureBox();
+                _interface_vie.Image = Pacman.Properties.Resources._3vies;
+                _interface_vie.Location = new Point(11, 425);
+                _interface_vie.Size = new Size(169, 61);
+                this.Controls.Add(_interface_vie);
+                //mise en place des icones de base et l'interface
                 PictureBox _interface_icones = new PictureBox();
                 _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface;
                 _interface_icones.Location = new Point(0, 401);
@@ -95,6 +94,7 @@ namespace Pacman
                 _interface_icones.BackgroundImage= Pacman.Properties.Resources.Interface_Bas;
                 _interface_icones.BackColor = Color.Transparent;
                 this.Controls.Add(_interface_icones);
+
                 int vitessePacman = 20;
                 _classMap = new Map(_nomMap);
                 _pacman = new ClassPacman(vitessePacman, _life, _coins, _ghostEaten, _classMap.map);
