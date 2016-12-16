@@ -22,6 +22,7 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private PictureBox[] _piece;
         private Label lblPiecesRestantes = new Label();
+        private Point _positionPacman;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacement = 0;
@@ -50,6 +51,7 @@ namespace Pacman
             this.MinimumSize = new Size(778, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
+            this.BackColor = Color.Black;
             lblPiecesRestantes.Location = new Point(200,540);
             lblPiecesRestantes.AutoSize = true;
             lblPiecesRestantes.Text = "bonjour!";
@@ -119,9 +121,9 @@ namespace Pacman
             {
                 if(_classMap.map[_pacman.positionY, _pacman.positionX] == 2 || _classMap.map[_pacman.positionY, _pacman.positionX] == 3)
                 {
-                    for(a=0;a< _classMap.NbPiece(); a++)
+                    foreach(PictureBox removePicture in this._piece)
                     {
-                        if (_piece[a].Location == _pacmanImage.Location) this.Controls.Remove(_piece[a]);
+                        if(removePicture.Location == _positionPacman) this.Controls.Remove(removePicture);
                     }
                 }
             }
@@ -170,6 +172,7 @@ namespace Pacman
                 if (_actualisation == _pacman.vitesse)
                 {
                     _pacman.DeplacementPacman(this._orientationPacman);
+                    _positionPacman = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                     gestionMap();
                     switch (_pacman.orientation)
                     {
