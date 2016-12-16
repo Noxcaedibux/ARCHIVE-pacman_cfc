@@ -76,6 +76,25 @@ namespace Pacman
             int y;
             if (_nouvelleMap)
             {
+                //mise en place des icones de base
+                PictureBox[] _interface_vie = new PictureBox[3];
+                for(int f=0;f<3;f++)
+                {
+                    _interface_vie[f] = new PictureBox();
+                    _interface_vie[f].Image = Pacman.Properties.Resources.vies;
+                    //_interface_vie[f].SizeMode = PictureBoxSizeMode.StretchImage;
+                    _interface_vie[f].Location = new Point(f*54+15, 401+25);
+                    _interface_vie[f].Size = new Size(54, 55);
+                    this.Controls.Add(_interface_vie[f]);
+                }
+                //mise en place des icones de base
+                PictureBox _interface_icones = new PictureBox();
+                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface;
+                _interface_icones.Location = new Point(0, 401);
+                _interface_icones.Size = new Size(768, 167);
+                _interface_icones.BackgroundImage= Pacman.Properties.Resources.Interface_Bas;
+                _interface_icones.BackColor = Color.Transparent;
+                this.Controls.Add(_interface_icones);
                 int vitessePacman = 20;
                 _classMap = new Map(_nomMap);
                 _pacman = new ClassPacman(vitessePacman, _life, _coins, _ghostEaten, _classMap.map);
