@@ -103,6 +103,26 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icones_Interface {
+            get {
+                object obj = ResourceManager.GetObject("Icones_Interface", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Interface_Bas {
+            get {
+                object obj = ResourceManager.GetObject("Interface_Bas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mur {
             get {
                 object obj = ResourceManager.GetObject("mur", resourceCulture);
@@ -126,6 +146,16 @@ namespace Pacman.Properties {
         internal static System.Drawing.Bitmap superPiece {
             get {
                 object obj = ResourceManager.GetObject("superPiece", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vies {
+            get {
+                object obj = ResourceManager.GetObject("vies", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

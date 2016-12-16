@@ -22,6 +22,7 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private PictureBox[] _piece;
         private Label lblPiecesRestantes = new Label();
+        private Point _positionPacman;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacement = 0;
@@ -50,6 +51,7 @@ namespace Pacman
             this.MinimumSize = new Size(778, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
+            this.BackColor = Color.Black;
             lblPiecesRestantes.Location = new Point(200,540);
             lblPiecesRestantes.AutoSize = true;
             lblPiecesRestantes.Text = "bonjour!";
@@ -74,6 +76,25 @@ namespace Pacman
             int y;
             if (_nouvelleMap)
             {
+                //mise en place des icones de base
+                PictureBox[] _interface_vie = new PictureBox[3];
+                for(int f=0;f<3;f++)
+                {
+                    _interface_vie[f] = new PictureBox();
+                    _interface_vie[f].Image = Pacman.Properties.Resources.vies;
+                    //_interface_vie[f].SizeMode = PictureBoxSizeMode.StretchImage;
+                    _interface_vie[f].Location = new Point(f*54+15, 401+25);
+                    _interface_vie[f].Size = new Size(54, 55);
+                    this.Controls.Add(_interface_vie[f]);
+                }
+                //mise en place des icones de base
+                PictureBox _interface_icones = new PictureBox();
+                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface;
+                _interface_icones.Location = new Point(0, 401);
+                _interface_icones.Size = new Size(768, 167);
+                _interface_icones.BackgroundImage= Pacman.Properties.Resources.Interface_Bas;
+                _interface_icones.BackColor = Color.Transparent;
+                this.Controls.Add(_interface_icones);
                 int vitessePacman = 20;
                 _classMap = new Map(_nomMap);
                 _pacman = new ClassPacman(vitessePacman, _life, _coins, _ghostEaten, _classMap.map);
@@ -119,9 +140,9 @@ namespace Pacman
             {
                 if(_classMap.map[_pacman.positionY, _pacman.positionX] == 2 || _classMap.map[_pacman.positionY, _pacman.positionX] == 3)
                 {
-                    for(a=0;a< _classMap.NbPiece(); a++)
+                    foreach(PictureBox removePicture in this._piece)
                     {
-                        if (_piece[a].Location == _pacmanImage.Location) this.Controls.Remove(_piece[a]);
+                        if(removePicture.Location == _positionPacman) this.Controls.Remove(removePicture);
                     }
                 }
             }
@@ -170,6 +191,7 @@ namespace Pacman
                 if (_actualisation == _pacman.vitesse)
                 {
                     _pacman.DeplacementPacman(this._orientationPacman);
+                    _positionPacman = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                     gestionMap();
                     switch (_pacman.orientation)
                     {

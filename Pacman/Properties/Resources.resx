@@ -130,6 +130,12 @@
   <data name="haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icones_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icones_Interface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Interface_Bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Interface_Bas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mur" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,5 +144,8 @@
   </data>
   <data name="superPiece" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\superPiece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
