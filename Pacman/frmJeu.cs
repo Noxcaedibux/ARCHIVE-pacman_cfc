@@ -50,8 +50,8 @@ namespace Pacman
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.MaximumSize = new Size(778, 606);
-            this.MinimumSize = new Size(778, 606);
+            this.MaximumSize = new Size(777, 606);
+            this.MinimumSize = new Size(777, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
             this.BackColor = Color.Black;
@@ -97,7 +97,7 @@ namespace Pacman
                 _pacmanImage.Image = Pacman.Properties.Resources.haut;
                 _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
-                _pacmanImage.Size = new Size(21, 21);
+                _pacmanImage.Size = new Size(20, 20);
                 this.Controls.Add(_pacmanImage);
                 _piece = new PictureBox[_classMap.NbPiece()];
                 PictureBox[] _mur;
@@ -110,9 +110,9 @@ namespace Pacman
                         {
                             _mur[i] = new PictureBox();
                             _mur[i].Location = new Point(x * 20, y * 20);
-                            _mur[i].Size = new Size(21, 21);
+                            _mur[i].Size = new Size(20, 20);
                             _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                            _mur[i].Image = Pacman.Properties.Resources.mur;
+                            _mur[i].Image = Pacman.Properties.Resources.mur2;
                             this.Controls.Add(_mur[i]);
                             i++;
                         }
@@ -120,7 +120,7 @@ namespace Pacman
                         {
                             _piece[a] = new PictureBox();
                             _piece[a].Location = new Point(x * 20, y * 20);
-                            _piece[a].Size = new Size(21, 21);
+                            _piece[a].Size = new Size(20, 20);
                             _piece[a].SizeMode = PictureBoxSizeMode.StretchImage;
                             if(_classMap.map[y, x] == 2) _piece[a].Image = Pacman.Properties.Resources.piece;
                             else _piece[a].Image = Pacman.Properties.Resources.superPiece;
@@ -147,7 +147,7 @@ namespace Pacman
                 timerDeplacement.Stop();
                 if (DialogResult.No == MessageBox.Show("Vous avez attrapé toutes les pièces voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
                 _nouvelleMap = true;
-                this.Controls.Remove(_pacmanImage);
+                this.Controls.Clear();
                 timerDeplacement.Start();
             }
         }
