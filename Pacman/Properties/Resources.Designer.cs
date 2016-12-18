@@ -183,16 +183,6 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mur3 {
-            get {
-                object obj = ResourceManager.GetObject("mur3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap murBase {
             get {
                 object obj = ResourceManager.GetObject("murBase", resourceCulture);
