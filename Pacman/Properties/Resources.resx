@@ -145,7 +145,22 @@
   <data name="superPiece" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\superPiece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_0vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\0vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_3vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mur2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mur2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="murBase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\murBase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
