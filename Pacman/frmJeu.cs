@@ -26,10 +26,11 @@ namespace Pacman
         private PictureBox _interface_vie;
         private PictureBox[] _piece;
         private Point _positionPacman;
+        private Label lblNbPac_gomme;//240 435
+        private Label lblNbSuperPac_gomme;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacement = 0;
-        private int _coins=0;
         private int _ghostEaten=0;
         private int _life=3;
         private string _orientationPacman = "Nord";
@@ -55,8 +56,16 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
             this.BackColor = Color.Black;
-            gestionMap();
-            timerDeplacement.Start();
+            try
+            {
+                gestionMap();
+                timerDeplacement.Start();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Veuillez créer une Map01.txt dans le dossier Map\n faites une map de 20→ sur 39↓:\n\nChiffres à Utiliser:\n\n 1=mur,\n 2=pac-gomme,\n 3=super pac-gomme\n 4=pacman,\n 5-8=fantômes,\n 9=mur invisible pour la sortie des fantômes", "Fichier inexistant", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+            }
+            
         }
         #endregion constructors
 
@@ -75,30 +84,50 @@ namespace Pacman
             int y;
             if (_nouvelleMap)
             {
+                lblNbPac_gomme = new Label();
+                lblNbSuperPac_gomme = new Label();
                 //mise en place des icones de base
                 _interface_vie = new PictureBox();
                 _interface_vie.Image = Pacman.Properties.Resources._3vies;
                 _interface_vie.Location = new Point(11, 425);
                 _interface_vie.Size = new Size(169, 61);
-                this.Controls.Add(_interface_vie);
                 //mise en place des icones de base et l'interface
                 PictureBox _interface_icones = new PictureBox();
-                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface;
+                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface2;
                 _interface_icones.Location = new Point(0, 401);
                 _interface_icones.Size = new Size(768, 167);
                 _interface_icones.BackgroundImage= Pacman.Properties.Resources.Interface_Bas;
                 _interface_icones.BackColor = Color.Transparent;
-                this.Controls.Add(_interface_icones);
 
                 int vitessePacman = 20;
                 _classMap = new Map(_nomMap);
-                _pacman = new ClassPacman(vitessePacman, _life, _coins, _ghostEaten, _classMap.map);
-                _pacmanImage = new PictureBox();
+                _pacman = new ClassPacman(vitessePacman, _life, _ghostEaten, _classMap.map);
+;                _pacmanImage = new PictureBox();
                 _pacmanImage.Image = Pacman.Properties.Resources.haut;
                 _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                 _pacmanImage.Size = new Size(20, 20);
                 this.Controls.Add(_pacmanImage);
+
+                lblNbPac_gomme.Location = new Point(213, 430);
+                lblNbPac_gomme.ForeColor = Color.Yellow;
+                lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                lblNbPac_gomme.BackColor = Color.Transparent;
+                lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+                lblNbPac_gomme.AutoSize = true;
+
+                lblNbSuperPac_gomme.Location = new Point(416, 430);
+                lblNbSuperPac_gomme.ForeColor = Color.Yellow;
+                lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                lblNbSuperPac_gomme.BackColor = Color.Transparent;
+                lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+                lblNbSuperPac_gomme.AutoSize = true;
+
+                this.Controls.Add(_interface_vie);
+                this.Controls.Add(lblNbPac_gomme);
+                this.Controls.Add(lblNbSuperPac_gomme);
+                this.Controls.Add(_interface_icones);
+
                 _piece = new PictureBox[_classMap.NbPiece()];
                 PictureBox[] _mur;
                 _mur = new PictureBox[_classMap.NbMurs()];
@@ -142,6 +171,8 @@ namespace Pacman
                 }
             }
             _pacman.PiecesRestantes();
+            lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+            lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
             if (_pacman.NbPiecesRestantes == 0)
             {
                 timerDeplacement.Stop();
