@@ -17,7 +17,8 @@ namespace Pacman
         private int _vitesse;
         private int _positionX;
         private int _positionY;
-        private int _coins;
+        private int _pac_gome=0;
+        private int _superPac_gome=0;
         private int _ghostEaten;
         private int _life;
         private int _piecesRestantes;
@@ -43,10 +44,9 @@ namespace Pacman
         /// <param name="coins"></param>
         /// <param name="ghostEaten"></param>
         /// <param name="map"></param>
-        public ClassPacman(int vitesse, int life, int coins, int ghostEaten, int[,] map)
+        public ClassPacman(int vitesse, int life, int ghostEaten, int[,] map)
         {
             _vitesse = vitesse;
-            _coins = coins;
             _ghostEaten = ghostEaten;
             _life = life;
             _map = map;
@@ -63,11 +63,21 @@ namespace Pacman
         /// <summary>
         /// accesseur du nombre de pièces mangées
         /// </summary>
-        public int coins
+        public int pac_gome
         {
             get
             {
-                return this._coins;
+                return this._pac_gome;
+            }
+        }
+        /// <summary>
+        /// accesseur du nombre de pièces mangées
+        /// </summary>
+        public int superPac_gome
+        {
+            get
+            {
+                return this._superPac_gome;
             }
         }
         /// <summary>
@@ -218,11 +228,17 @@ namespace Pacman
         /// <returns></returns>
         public int PiecesRestantes()
         {
-            if (_map[positionY, positionX] == 2 || _map[positionY, positionX] == 3)
+            if (_map[positionY, positionX] == 2)
             {
                 _map[positionY, positionX] = 0;
                 _piecesRestantes--;
-                _coins++;                
+                _pac_gome++;                
+            }
+            if (_map[positionY, positionX] == 3)
+            {
+                _map[positionY, positionX] = 0;
+                _piecesRestantes--;
+                _superPac_gome++;
             }
             return this._piecesRestantes;
         }

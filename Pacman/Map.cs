@@ -46,16 +46,6 @@ namespace Pacman
                 return _map;
             }
         }
-        /// <summary>
-        /// accesseur qui retournera une erreur en cas de problème
-        /// </summary>
-        public string error
-        {
-            get
-            {
-                return _error;
-            }
-        }
         #endregion accessors and mutators
 
         #region public methods
@@ -104,38 +94,30 @@ namespace Pacman
         private void ReadFile()
         {
             StreamReader strReader = null;
-
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Map\")) Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Map\");
+            
             if (File.Exists(_emplacement))
             {
-                try
+                strReader = new StreamReader(_emplacement);
+                int x;
+                int y;
+                int lecteur = 0;
+                string mapTemporaire = strReader.ReadToEnd();
+                strReader.Close();
+                mapTemporaire = mapTemporaire.Replace("\r\n", "");
+                for (y = 0; y <= 19; y++)
                 {
-                    strReader = new StreamReader(_emplacement);
-                    int x;
-                    int y;
-                    int lecteur=0;
-                    string mapTemporaire = strReader.ReadToEnd();
-                    strReader.Close();
-                    mapTemporaire = mapTemporaire.Replace("\r\n", "");
-                    for (y = 0; y <= 19; y++)
+                    for (x = 0; x <= 37; x++)
                     {
-                        for (x = 0; x <= 37; x++)
-                        {
-                           _map[y, x] = int.Parse(mapTemporaire.Substring(lecteur, 1));
-                            lecteur++;
-                        }
+                        _map[y, x] = int.Parse(mapTemporaire.Substring(lecteur, 1));
+                        lecteur++;
                     }
-                }
-                catch (Exception e)
-                {
-                    _error = e.ToString();
-                    MessageBox.Show(_error);
                 }
             }
             else
             {
-                MessageBox.Show("Veuillez créer un dossier Map");
+                throw new Exception(_error);
             }
-
         }
         #endregion private methods
     }

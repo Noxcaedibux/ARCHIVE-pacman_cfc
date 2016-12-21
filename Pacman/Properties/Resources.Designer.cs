@@ -153,6 +153,16 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icones_Interface2 {
+            get {
+                object obj = ResourceManager.GetObject("Icones_Interface2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Interface_Bas {
             get {
                 object obj = ResourceManager.GetObject("Interface_Bas", resourceCulture);
