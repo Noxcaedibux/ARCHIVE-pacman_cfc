@@ -15,11 +15,12 @@ namespace Pacman
     public class Map
     {
         #region private attributes
-        private string _emplacement;
+        private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"Map\";
+        private string _emplacementFichier;
         private string _error;
         private int _nbMurs;
         private int _nbPieces;
-        private int[,] _map = new int[20,38];
+        private int[,] _map = new int[20, 38];
         #endregion private attributes
 
         #region constructors
@@ -30,8 +31,8 @@ namespace Pacman
         /// <param name="nomMap">on lui envoie le nom que notre fichier doit avoir sans l'extension</param>
         public Map(string nomMap)
         {
-            _emplacement = AppDomain.CurrentDomain.BaseDirectory + @"Map\" + nomMap + ".txt";
-            ReadFile();
+            _emplacementFichier += _emplacementDossier + nomMap + ".txt";
+            ReadOrCreateFile();
         }
         #endregion constructors
 
@@ -68,10 +69,10 @@ namespace Pacman
             return _nbPieces;
         }
         /// <summary>
-         /// methode publique qui retourne le nombre de murs dont on va avoir besoin 
-         /// pour construire l'interace graphique
-         /// </summary>
-         /// <returns></returns>
+        /// methode publique qui retourne le nombre de murs dont on va avoir besoin 
+        /// pour construire l'interace graphique
+        /// </summary>
+        /// <returns></returns>
         public int NbMurs()
         {
             _nbMurs = 0;
@@ -89,34 +90,31 @@ namespace Pacman
         #region private methods
         /// <summary>
         /// methode privé qui lis le fichier et l'enregistre dans un tableau,
-        /// s'il y a une erreur on averti l'utilisateur sans que le programme ne plante.
+        /// si lê fichier n'existe pas en le crée.
         /// </summary>
-        private void ReadFile()
+        private void ReadOrCreateFile()
         {
             StreamReader strReader = null;
-            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Map\")) Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Map\");
-            
-            if (File.Exists(_emplacement))
+            if (!Directory.Exists(_emplacementDossier)) Directory.CreateDirectory(_emplacementDossier);
+            if (!File.Exists(_emplacementFichier))
             {
-                strReader = new StreamReader(_emplacement);
-                int x;
-                int y;
-                int lecteur = 0;
-                string mapTemporaire = strReader.ReadToEnd();
-                strReader.Close();
-                mapTemporaire = mapTemporaire.Replace("\r\n", "");
-                for (y = 0; y <= 19; y++)
-                {
-                    for (x = 0; x <= 37; x++)
-                    {
-                        _map[y, x] = int.Parse(mapTemporaire.Substring(lecteur, 1));
-                        lecteur++;
-                    }
-                }
+                //on va créer une copie de notre map01.txt sur l'ordinateur 
+                File.WriteAllText(_emplacementFichier, Properties.Resources.Map01);
             }
-            else
+            strReader = new StreamReader(_emplacementFichier);
+            int x;
+            int y;
+            int lecteur = 0;
+            string mapTemporaire = strReader.ReadToEnd();
+            strReader.Close();
+            mapTemporaire = mapTemporaire.Replace("\r\n", "");
+            for (y = 0; y <= 19; y++)
             {
-                throw new Exception(_error);
+                for (x = 0; x <= 37; x++)
+                {
+                    _map[y, x] = int.Parse(mapTemporaire.Substring(lecteur, 1));
+                    lecteur++;
+                }
             }
         }
         #endregion private methods

@@ -59,9 +59,17 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
             this.BackColor = Color.Black;
-            gestionMap();
-            timerDeplacement.Start();
-            timerClydeSortirCage.Start();
+            try
+            {
+                gestionMap();
+                timerDeplacement.Start();
+                timerClydeSortirCage.Start();
+            }
+            catch(Exception)
+            {
+
+            }
+            
         }
         #endregion constructors
 
