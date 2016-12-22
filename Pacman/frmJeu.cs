@@ -26,8 +26,8 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private PictureBox _clydeImage;
         private PictureBox _interface_vie;
-        private Label lblNbPac_gomme;
-        private Label lblNbSuperPac_gomme;
+        private Label _lblNbPac_gomme;
+        private Label _lblNbSuperPac_gomme;
         private PictureBox[] _piece;
         private Point _positionPacman;
         private int _actualisation = 0;
@@ -89,8 +89,8 @@ namespace Pacman
             int y;
             if (_nouvelleMap)
             {
-                lblNbPac_gomme = new Label();
-                lblNbSuperPac_gomme = new Label();
+                _lblNbPac_gomme = new Label();
+                _lblNbSuperPac_gomme = new Label();
                 //mise en place des icones de base
                 _interface_vie = new PictureBox();
                 _interface_vie.Image = Pacman.Properties.Resources._3vies;
@@ -114,23 +114,23 @@ namespace Pacman
                 _pacmanImage.Size = new Size(20, 20);
                 this.Controls.Add(_pacmanImage);
 
-                lblNbPac_gomme.Location = new Point(213, 430);
-                lblNbPac_gomme.ForeColor = Color.Yellow;
-                lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
-                lblNbPac_gomme.BackColor = Color.Transparent;
-                lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
-                lblNbPac_gomme.AutoSize = true;
+                _lblNbPac_gomme.Location = new Point(213, 430);
+                _lblNbPac_gomme.ForeColor = Color.Yellow;
+                _lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                _lblNbPac_gomme.BackColor = Color.Transparent;
+                _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+                _lblNbPac_gomme.AutoSize = true;
 
-                lblNbSuperPac_gomme.Location = new Point(416, 430);
-                lblNbSuperPac_gomme.ForeColor = Color.Yellow;
-                lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
-                lblNbSuperPac_gomme.BackColor = Color.Transparent;
-                lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
-                lblNbSuperPac_gomme.AutoSize = true;
+                _lblNbSuperPac_gomme.Location = new Point(416, 430);
+                _lblNbSuperPac_gomme.ForeColor = Color.Yellow;
+                _lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                _lblNbSuperPac_gomme.BackColor = Color.Transparent;
+                _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+                _lblNbSuperPac_gomme.AutoSize = true;
 
                 this.Controls.Add(_interface_vie);
-                this.Controls.Add(lblNbPac_gomme);
-                this.Controls.Add(lblNbSuperPac_gomme);
+                this.Controls.Add(_lblNbPac_gomme);
+                this.Controls.Add(_lblNbSuperPac_gomme);
                 this.Controls.Add(_interface_icones);
                 _clyde = new Clyde(vitesse, _classMap.map);
                 _clydeImage = new PictureBox();
@@ -181,8 +181,8 @@ namespace Pacman
                 }
             }
             _pacman.PiecesRestantes();
-            lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
-            lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+            _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+            _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
             if (_pacman.NbPiecesRestantes == 0)
             {
                 timerDeplacement.Stop();
