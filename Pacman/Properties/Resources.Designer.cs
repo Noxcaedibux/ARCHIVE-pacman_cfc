@@ -171,6 +171,27 @@ namespace Pacman.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 11111111111111111111111111111111111111
+        ///13221222221222222222222222212222212231
+        ///12221211121211112111121111212111212221
+        ///12222211121211222211222211212111222221
+        ///11112222222222212222221222222222221111
+        ///01222112112112112111121121121121122210
+        ///01212222222222212111121222222222221210
+        ///01212111111112000111100021111111121210
+        ///01212112221112100000000121112221121210
+        ///11212222122222101199110122222122221211
+        ///00211112112112101000010121121121111200
+        ///11212222112112101567810121121122221211
+        ///01212112222222101111110122222221 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Map01 {
+            get {
+                return ResourceManager.GetString("Map01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap mur {
