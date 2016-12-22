@@ -26,6 +26,8 @@ namespace Pacman
         private PictureBox _pacmanImage;
         private PictureBox _clydeImage;
         private PictureBox _interface_vie;
+        private Label lblNbPac_gomme;
+        private Label lblNbSuperPac_gomme;
         private PictureBox[] _piece;
         private Point _positionPacman;
         private int _actualisation = 0;
@@ -87,30 +89,49 @@ namespace Pacman
             int y;
             if (_nouvelleMap)
             {
+                lblNbPac_gomme = new Label();
+                lblNbSuperPac_gomme = new Label();
                 //mise en place des icones de base
                 _interface_vie = new PictureBox();
                 _interface_vie.Image = Pacman.Properties.Resources._3vies;
                 _interface_vie.Location = new Point(11, 425);
                 _interface_vie.Size = new Size(169, 61);
-                this.Controls.Add(_interface_vie);
                 //mise en place des icones de base et l'interface
                 PictureBox _interface_icones = new PictureBox();
-                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface;
+                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface2;
                 _interface_icones.Location = new Point(0, 401);
                 _interface_icones.Size = new Size(768, 167);
-                _interface_icones.BackgroundImage= Pacman.Properties.Resources.Interface_Bas;
+                _interface_icones.BackgroundImage = Pacman.Properties.Resources.Interface_Bas;
                 _interface_icones.BackColor = Color.Transparent;
-                this.Controls.Add(_interface_icones);
 
                 int vitesse = 20;
                 _classMap = new Map(_nomMap);
                 _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
-                _pacmanImage = new PictureBox();
+                ; _pacmanImage = new PictureBox();
                 _pacmanImage.Image = Pacman.Properties.Resources.haut;
                 _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                 _pacmanImage.Size = new Size(20, 20);
                 this.Controls.Add(_pacmanImage);
+
+                lblNbPac_gomme.Location = new Point(213, 430);
+                lblNbPac_gomme.ForeColor = Color.Yellow;
+                lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                lblNbPac_gomme.BackColor = Color.Transparent;
+                lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+                lblNbPac_gomme.AutoSize = true;
+
+                lblNbSuperPac_gomme.Location = new Point(416, 430);
+                lblNbSuperPac_gomme.ForeColor = Color.Yellow;
+                lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                lblNbSuperPac_gomme.BackColor = Color.Transparent;
+                lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+                lblNbSuperPac_gomme.AutoSize = true;
+
+                this.Controls.Add(_interface_vie);
+                this.Controls.Add(lblNbPac_gomme);
+                this.Controls.Add(lblNbSuperPac_gomme);
+                this.Controls.Add(_interface_icones);
                 _clyde = new Clyde(vitesse, _classMap.map);
                 _clydeImage = new PictureBox();
                 _clydeImage.BackColor = Color.Orange;
