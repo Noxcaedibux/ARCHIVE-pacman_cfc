@@ -181,6 +181,8 @@ namespace Pacman
                 }
             }
             _pacman.PiecesRestantes();
+            lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+            lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
             if (_pacman.NbPiecesRestantes == 0)
             {
                 timerDeplacement.Stop();
