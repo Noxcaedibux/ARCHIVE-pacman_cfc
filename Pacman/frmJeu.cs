@@ -65,12 +65,11 @@ namespace Pacman
                 timerDeplacement.Start();
                 timerClydeSortirCage.Start();
             }
-            catch(Exception)
+            catch (Exception s)
             {
-
+                MessageBox.Show("Veuillez créer une Map01.txt dans le dossier Map\n faites une map de 20→ sur 39↓:\n\nChiffres à Utiliser:\n\n 1=mur,\n 2=pac-gomme,\n 3=super pac-gomme\n 4=pacman,\n 5-8=fantômes,\n 9=mur invisible pour la sortie des fantômes", "Fichier inexistant", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
-            
-        }
+        }          
         #endregion constructors
 
         #region accessors and mutators
