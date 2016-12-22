@@ -25,7 +25,6 @@ namespace Pacman
         private string _orientationPacman = "Nord";
         private int _avancer;
         private int[,] _map;
-        private int[,] _personnages = new int[20, 38];
         #endregion private attributes
 
         #region constructors
@@ -182,19 +181,19 @@ namespace Pacman
                 _avancer = 1;
                 _positionX = 37;
             }
-            else if (_orientationPacman == "Nord" && _map[positionY - 1, positionX] == 1)
+            else if (_orientationPacman == "Nord" && (_map[positionY - 1, positionX] == 1 || _map[positionY - 1, positionX] == 9))
             {
                 _avancer = 0;
             }
-            else if (_orientationPacman == "Sud" && _map[positionY + 1, positionX] == 1)
+            else if (_orientationPacman == "Sud" && (_map[positionY + 1, positionX] == 1 || _map[positionY + 1, positionX] == 9))
             {
                 _avancer = 0;
             }
-            else if (_orientationPacman == "Est" && _map[positionY, positionX + 1] == 1)
+            else if (_orientationPacman == "Est" && (_map[positionY, positionX + 1] == 1 || _map[positionY, positionX + 1] == 9))
             {
                 _avancer = 0;
             }
-            else if (_orientationPacman == "Ouest" && _map[positionY, positionX - 1] == 1)
+            else if (_orientationPacman == "Ouest" && (_map[positionY, positionX - 1] == 1 || _map[positionY, positionX - 1] == 9))
             {
                 _avancer = 0;
             }
@@ -212,14 +211,75 @@ namespace Pacman
         {
             if(_avancer == 1)
             {
-                _personnages[positionY, _positionX] = 0;
                 if (_orientationPacman == "Est") _positionX++;
                 if (_orientationPacman == "Ouest") _positionX--;
                 if (_orientationPacman == "Nord") _positionY--;
                 if (_orientationPacman == "Sud") _positionY++;
-                _personnages[positionY, _positionX] = 4;
             }
             _orientationPacman = orientationPacman;
+        }
+
+        public int collisionGhost(string orientationGhost, int positionGhostX, int positionYGhost)
+        {
+            int mort = 0;
+            if (positionGhostX == _positionX && positionYGhost == _positionY) mort = 1;
+            else if(positionYGhost == _positionY)
+            {
+                if(positionGhostX == _positionX + 1)
+                {
+                    if(orientationGhost == "Est")
+                    {
+                        if (_orientationPacman != "Est") mort = 1;
+                    }
+                    else if(_orientationPacman == "Ouest")
+                    {
+                        if (orientationGhost != "Ouest") mort = 1;
+                    }
+                }
+
+                else if (positionGhostX == _positionX - 1)
+                {
+                    if (orientationGhost == "Ouest")
+                    {
+                        if (_orientationPacman != "Ouest") mort = 1;
+                    }
+                    else if (_orientationPacman == "Est")
+                    {
+                        if (orientationGhost != "Est") mort = 1;
+                    }
+                }
+            }
+
+            else if(positionGhostX == _positionX)
+            {
+                if(positionYGhost == _positionY + 1)
+                {
+                    if(orientationGhost == "Sud")
+                    {
+                        if (_orientationPacman != "Sud") mort = 1;
+                    }
+
+                    else if(_orientationPacman == "Nord")
+                    {
+                        if (orientationGhost != "Nord") mort = 1;
+                    }
+                }
+
+                else if (positionYGhost == _positionY - 1)
+                {
+                    if (orientationGhost == "Nord")
+                    {
+                        if (_orientationPacman != "Nord") mort = 1;
+                    }
+
+                    else if (_orientationPacman == "Sud")
+                    {
+                        if (orientationGhost != "Sud") mort = 1;
+                    }
+                }
+            }
+
+            return mort;
         }
         /// <summary>
         /// cette méthode sert à savoir si on est sur une pièce, si c'est le cas on va 
@@ -257,7 +317,6 @@ namespace Pacman
                     {
                         _positionY = y;
                         _positionX = x;
-                        _personnages[y, x] = 4;
 ;                    }
                 }
             }

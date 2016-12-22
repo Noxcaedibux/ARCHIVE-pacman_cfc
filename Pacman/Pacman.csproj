@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassPacman.cs" />
+    <Compile Include="Clyde.cs" />
     <Compile Include="frmJeu.cs">
       <SubType>Form</SubType>
     </Compile>

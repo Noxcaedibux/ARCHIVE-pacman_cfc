@@ -30,12 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timerDeplacement = new System.Windows.Forms.Timer(this.components);
+            this.timerClydeSortirCage = new System.Windows.Forms.Timer(this.components);
+            this.timerClyde = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timerDeplacement
             // 
             this.timerDeplacement.Interval = 10;
             this.timerDeplacement.Tick += new System.EventHandler(this.timerDeplacement_Tick);
+            // 
+            // timerClydeSortirCage
+            // 
+            this.timerClydeSortirCage.Interval = 10;
+            this.timerClydeSortirCage.Tick += new System.EventHandler(this.timerClydeSortirCage_Tick);
+            // 
+            // timerClyde
+            // 
+            this.timerClyde.Interval = 10;
+            this.timerClyde.Tick += new System.EventHandler(this.timerClyde_Tick);
             // 
             // frmJeu
             // 
@@ -52,5 +64,7 @@
         #endregion
 
         private System.Windows.Forms.Timer timerDeplacement;
+        private System.Windows.Forms.Timer timerClydeSortirCage;
+        private System.Windows.Forms.Timer timerClyde;
     }
 }
