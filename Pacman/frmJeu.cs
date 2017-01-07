@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Drawing.Imaging;
 
 
@@ -153,28 +152,32 @@ namespace Pacman
 
                 _clyde = new Clyde(vitesse, _classMap.map);
                 _clydeImage = new PictureBox();
-                _clydeImage.BackColor = Color.Orange;
+                _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
+                _clydeImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph);
                 _clydeImage.Size = new Size(20, 20);
                 this.Controls.Add(_clydeImage);
 
                 _blinky = new Blinky(vitesse, _classMap.map);
                 _blinkyImage = new PictureBox();
-                _blinkyImage.BackColor = Color.Red;
+                _blinkyImage.Image = Pacman.Properties.Resources.rouge;
+                _blinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
                 _blinkyImage.Size = new Size(20, 20);
                 this.Controls.Add(_blinkyImage);
 
                 _pinky = new Pinky(vitesse, _classMap.map);
                 _pinkyImage = new PictureBox();
-                _pinkyImage.BackColor = Color.Pink;
+                _pinkyImage.Image = Pacman.Properties.Resources.pink_haut;
+                _pinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
                 _pinkyImage.Size = new Size(20, 20);
                 this.Controls.Add(_pinkyImage);
 
                 _inky = new Inky(vitesse, _classMap.map);
                 _inkyImage = new PictureBox();
-                _inkyImage.BackColor = Color.Blue;
+                _inkyImage.Image = Pacman.Properties.Resources.bleu_haut;
+                _inkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
                 _inkyImage.Size = new Size(20, 20);
                 this.Controls.Add(_inkyImage);
@@ -226,10 +229,19 @@ namespace Pacman
             _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
             if (_pacman.NbPiecesRestantes == 0)
             {
+                //timerClydeSortirCage.Stop();
+                //timerBlinkySortirCage.Stop();
+                //timerPinkySortirCage.Stop();
+                //timerInkySortirCage.Stop();
+                timerBlinky.Stop();
+                timerPinky.Stop();
+                timerInky.Stop();
+                timerClyde.Stop();
                 timerDeplacement.Stop();
                 if (DialogResult.No == MessageBox.Show("Vous avez attrapé toutes les pièces voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
                 _nouvelleMap = true;
                 this.Controls.Clear();
+                gestionMap();
                 timerDeplacement.Start();
                 timerClydeSortirCage.Start();
                 timerBlinkySortirCage.Start();
@@ -472,15 +484,19 @@ namespace Pacman
             switch(_clyde.orientationClyde)
             {
                 case "Nord":
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph - _deplacementClyde);
                     break;
                 case "Sud":
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_bas;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph + _deplacementClyde);
                     break;
                 case "Est":
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_right;
                     _clydeImage.Location = new Point(_clyde.positionXGraph + _deplacementClyde, _clyde.positionYGraph);
                     break;
                 case "Ouest":
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_left;
                     _clydeImage.Location = new Point(_clyde.positionXGraph - _deplacementClyde, _clyde.positionYGraph);
                     break;
             }
@@ -535,15 +551,19 @@ namespace Pacman
                 switch (_pinky.orientationPinky)
                 {
                     case "Nord":
+                        _pinkyImage.Image = Pacman.Properties.Resources.pink_haut;
                         _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph - _deplacementPinky);
                         break;
                     case "Sud":
+                        _pinkyImage.Image = Pacman.Properties.Resources.pink_bas;
                         _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph + _deplacementPinky);
                         break;
                     case "Est":
+                        _pinkyImage.Image = Pacman.Properties.Resources.pink_droite;
                         _pinkyImage.Location = new Point(_pinky.positionXGraph + _deplacementPinky, _pinky.positionYGraph);
                         break;
                     case "Ouest":
+                        _pinkyImage.Image = Pacman.Properties.Resources.pink_left;
                         _pinkyImage.Location = new Point(_pinky.positionXGraph - _deplacementPinky, _pinky.positionYGraph);
                         break;
                 }
@@ -577,15 +597,19 @@ namespace Pacman
                 switch (_inky.orientationInky)
                 {
                     case "Nord":
+                        _inkyImage.Image = Pacman.Properties.Resources.bleu_haut;
                         _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph - _deplacementInky);
                         break;
                     case "Sud":
+                        _inkyImage.Image = Pacman.Properties.Resources.bleu_bas;
                         _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph + _deplacementInky);
                         break;
                     case "Est":
+                        _inkyImage.Image = Pacman.Properties.Resources.bleu_right;
                         _inkyImage.Location = new Point(_inky.positionXGraph + _deplacementInky, _inky.positionYGraph);
                         break;
                     case "Ouest":
+                        _inkyImage.Image = Pacman.Properties.Resources.bleu_left;
                         _inkyImage.Location = new Point(_inky.positionXGraph - _deplacementInky, _inky.positionYGraph);
                         break;
                 }

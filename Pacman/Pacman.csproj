@@ -162,6 +162,45 @@
   <ItemGroup>
     <None Include="Resources\Map01.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink_haut.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink_left.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rouge.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bleu_bas.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bleu_haut.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bleu_left.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bleu_right.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange_bas.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange_haut.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange_left.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange_right.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink_bas.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink_droite.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
