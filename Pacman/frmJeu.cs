@@ -23,10 +23,12 @@ namespace Pacman
         private ClassPacman _pacman;
         private Clyde _clyde;
         private Blinky _blinky;
+        private Pinky _pinky;
         private Map _classMap;
         private PictureBox _pacmanImage;
         private PictureBox _clydeImage;
         private PictureBox _blinkyImage;
+        private PictureBox _pinkyImage;
         private PictureBox _interface_vie;
         private Label _lblNbPac_gomme;
         private Label _lblNbSuperPac_gomme;
@@ -39,11 +41,14 @@ namespace Pacman
         private int _deplacementClyde = 0;
         private int _actualisationBlinky = 0;
         private int _deplacementBlinky = 0;
+        private int _actualisationPinky = 0;
+        private int _deplacementPinky = 0;
         private int _ghostEaten=0;
         private int _life=3;
         private string _orientationPacman = "Nord";
         private string _orientationClyde;
         private string _orientationBlinky;
+        private string _orientationPinky;
         private string _nomMap = "Map01";
         private bool _Nord = false;
         private bool _Est = false;
@@ -72,6 +77,7 @@ namespace Pacman
                 timerDeplacement.Start();
                 timerClydeSortirCage.Start();
                 timerBlinkySortirCage.Start();
+                timerPinkySortirCage.Start();
             }
             catch (Exception s)
             {
@@ -153,6 +159,13 @@ namespace Pacman
                 _blinkyImage.Size = new Size(20, 20);
                 this.Controls.Add(_blinkyImage);
 
+                _pinky = new Pinky(vitesse, _classMap.map);
+                _pinkyImage = new PictureBox();
+                _pinkyImage.BackColor = Color.Pink;
+                _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
+                _pinkyImage.Size = new Size(20, 20);
+                this.Controls.Add(_pinkyImage);
+
                 _piece = new PictureBox[_classMap.NbPiece()];
                 PictureBox[] _mur;
                 _mur = new PictureBox[_classMap.NbMurs()];
@@ -206,6 +219,8 @@ namespace Pacman
                 this.Controls.Clear();
                 timerDeplacement.Start();
                 timerClydeSortirCage.Start();
+                timerBlinkySortirCage.Start();
+                timerPinkySortirCage.Start();
             }
         }
 
@@ -362,6 +377,34 @@ namespace Pacman
             }
         }
 
+        private void timerPinkySortirCage_Tick(object sender, EventArgs e)
+        {
+            _actualisationPinky++;
+
+            _orientationPinky = "Nord";
+
+            if(_actualisationPinky <= _pinky.vitesse * 3)
+            {
+                _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph - _deplacementPinky);
+            }
+            _deplacementPinky++;
+
+            if(_actualisationPinky == _pinky.vitesse || _actualisationPinky == _pinky.vitesse * 2)
+            {
+                _deplacementPinky = 0;
+                _pinky.AvancerDirection(_orientationPinky);
+            }
+            else if(_actualisationPinky == _pinky.vitesse * 3)
+            {
+                _pinky.DeplacementPinky();
+                _pinky.ChangerDirectionPinky("Ouest");
+                _actualisationPinky = 0;
+                _deplacementPinky = 0;
+                timerPinky.Start();
+                timerPinkySortirCage.Stop();
+            }
+        }
+
         private void timerClyde_Tick(object sender, EventArgs e)
         {
             _actualisationClyde++;
@@ -420,6 +463,48 @@ namespace Pacman
                 _blinky.DeplacementBlinky();
                 _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
                 _blinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+            }
+        }
+
+        private void timerPinky_Tick(object sender, EventArgs e)
+        {
+            _actualisationPinky++;
+            _deplacementPinky++;
+
+            if(_pinky.mur == 0)
+            {
+                switch (_pinky.orientationPinky)
+                {
+                    case "Nord":
+                        _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph - _deplacementPinky);
+                        break;
+                    case "Sud":
+                        _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph + _deplacementPinky);
+                        break;
+                    case "Est":
+                        _pinkyImage.Location = new Point(_pinky.positionXGraph + _deplacementPinky, _pinky.positionYGraph);
+                        break;
+                    case "Ouest":
+                        _pinkyImage.Location = new Point(_pinky.positionXGraph - _deplacementPinky, _pinky.positionYGraph);
+                        break;
+                }
+
+                if (_actualisationPinky == _pinky.vitesse)
+                {
+                    _actualisationPinky = 0;
+                    _deplacementPinky = 0;
+                    _pinky.DeplacementPinky();
+                    _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
+                }
+            }
+            else
+            {
+                if (_actualisationPinky == _pinky.vitesse)
+                {
+                    _actualisationPinky = 0;
+                    _deplacementPinky = 0;
+                    _pinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+                }
             }
         }
 
