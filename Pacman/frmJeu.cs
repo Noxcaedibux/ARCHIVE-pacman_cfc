@@ -59,6 +59,7 @@ namespace Pacman
         private bool _Ouest = false;
         private bool _Sud = false;
         private bool _nouvelleMap = true;
+        private bool _recommencer = true;
         #endregion private attributes
 
         #region constructors
@@ -103,11 +104,39 @@ namespace Pacman
                 int y;
                 if (_nouvelleMap)
                 {
-                    _lblNbPac_gomme = new Label();
-                    _lblNbSuperPac_gomme = new Label();
+                    int vitesse = 20;
+                    if (_recommencer)
+                    {
+                        _lblNbPac_gomme = new Label();
+                        _lblNbSuperPac_gomme = new Label();
+                        _classMap = new Map(_nomMap);
+                        _recommencer = false;
+
+                        _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
+                        _pacmanImage = new PictureBox();
+                        _pacmanImage.Image = Pacman.Properties.Resources.haut;
+                        _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                        _pacmanImage.Size = new Size(20, 20);
+                    }
+                    _pacman.replacement();
                     //mise en place des icones de base
                     _interface_vie = new PictureBox();
-                    _interface_vie.Image = Pacman.Properties.Resources._3vies;
+                    switch(_life)
+                    {
+                        case 1:
+                            _interface_vie.Image = Pacman.Properties.Resources._1vies;
+                            break;
+                        case 2:
+                            _interface_vie.Image = Pacman.Properties.Resources._2vies;
+                            break;
+                        case 3:
+                            _interface_vie.Image = Pacman.Properties.Resources._3vies;
+                            break;
+                        default:
+                            _interface_vie.Image = Pacman.Properties.Resources._0vies;
+                            break;
+                    }
                     _interface_vie.Location = new Point(11, 425);
                     _interface_vie.Size = new Size(169, 61);
                     //mise en place des icones de base et l'interface
@@ -117,16 +146,6 @@ namespace Pacman
                     _interface_icones.Size = new Size(768, 167);
                     _interface_icones.BackgroundImage = Pacman.Properties.Resources.Interface_Bas;
                     _interface_icones.BackColor = Color.Transparent;
-
-                    int vitesse = 20;
-                    _classMap = new Map(_nomMap);
-                    _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
-                    ; _pacmanImage = new PictureBox();
-                    _pacmanImage.Image = Pacman.Properties.Resources.haut;
-                    _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                    _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
-                    _pacmanImage.Size = new Size(20, 20);
-                    this.Controls.Add(_pacmanImage);
 
                     _lblNbPac_gomme.Location = new Point(213, 430);
                     _lblNbPac_gomme.ForeColor = Color.Yellow;
@@ -142,10 +161,6 @@ namespace Pacman
                     _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
                     _lblNbSuperPac_gomme.AutoSize = true;
 
-                    this.Controls.Add(_interface_vie);
-                    this.Controls.Add(_lblNbPac_gomme);
-                    this.Controls.Add(_lblNbSuperPac_gomme);
-                    this.Controls.Add(_interface_icones);
 
                     _clyde = new Clyde(vitesse, _classMap.map);
                     _clydeImage = new PictureBox();
@@ -153,7 +168,6 @@ namespace Pacman
                     _clydeImage.SizeMode = PictureBoxSizeMode.StretchImage;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph);
                     _clydeImage.Size = new Size(20, 20);
-                    this.Controls.Add(_clydeImage);
 
                     _blinky = new Blinky(vitesse, _classMap.map);
                     _blinkyImage = new PictureBox();
@@ -161,7 +175,6 @@ namespace Pacman
                     _blinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                     _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
                     _blinkyImage.Size = new Size(20, 20);
-                    this.Controls.Add(_blinkyImage);
 
                     _pinky = new Pinky(vitesse, _classMap.map);
                     _pinkyImage = new PictureBox();
@@ -169,7 +182,6 @@ namespace Pacman
                     _pinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                     _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
                     _pinkyImage.Size = new Size(20, 20);
-                    this.Controls.Add(_pinkyImage);
 
                     _inky = new Inky(vitesse, _classMap.map);
                     _inkyImage = new PictureBox();
@@ -177,6 +189,15 @@ namespace Pacman
                     _inkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
                     _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
                     _inkyImage.Size = new Size(20, 20);
+
+                    this.Controls.Add(_pacmanImage);
+                    this.Controls.Add(_interface_vie);
+                    this.Controls.Add(_lblNbPac_gomme);
+                    this.Controls.Add(_lblNbSuperPac_gomme);
+                    this.Controls.Add(_interface_icones);
+                    this.Controls.Add(_clydeImage);
+                    this.Controls.Add(_blinkyImage);
+                    this.Controls.Add(_pinkyImage);
                     this.Controls.Add(_inkyImage);
 
                     _piece = new PictureBox[_classMap.NbPiece()];
@@ -218,6 +239,7 @@ namespace Pacman
                 }
                 else
                 {
+                    
                     if (_classMap.map[_pacman.positionY, _pacman.positionX] == 2 || _classMap.map[_pacman.positionY, _pacman.positionX] == 3)
                     {
                         foreach (PictureBox removePicture in this._piece)
@@ -229,14 +251,25 @@ namespace Pacman
                 _pacman.PiecesRestantes();
                 _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
                 _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
-                if (_pacman.NbPiecesRestantes == 0)
+                int lifeTemp = _life;
+                if ((_clyde.positionX == _pacman.positionX && _clyde.positionY == _pacman.positionY) || (_pinky.positionX == _pacman.positionX && _pinky.positionY == _pacman.positionY) || (_inky.positionX == _pacman.positionX && _inky.positionY == _pacman.positionY) || (_blinky.positionX == _pacman.positionX && _blinky.positionY == _pacman.positionY))
+                {
+                    _life--;
+                    _pacman.DeplacementPacman("Nord");
+                }
+                if (_life != lifeTemp || _pacman.NbPiecesRestantes == 0)
                 {
                     timerBlinky.Stop();
                     timerPinky.Stop();
                     timerInky.Stop();
                     timerClyde.Stop();
                     timerDeplacement.Stop();
-                    if (DialogResult.No == MessageBox.Show("Vous avez attrapé toutes les pièces voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                    if(_life==0 || _pacman.NbPiecesRestantes == 0)
+                    {
+                        if (DialogResult.No == MessageBox.Show("Vous avez fini le jeu BRAVO!\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                        _life = 3;
+                        _recommencer = true;
+                    }
                     _nouvelleMap = true;
                     this.Controls.Clear();
                 }
@@ -305,6 +338,7 @@ namespace Pacman
                     _pacman.DeplacementPacman(this._orientationPacman);
                     _actualisation = 0;
                     _actualisation2 = 0;
+                    gestionMap();
                 }
 
                 switch (_pacman.orientation)

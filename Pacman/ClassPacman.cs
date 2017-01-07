@@ -161,6 +161,13 @@ namespace Pacman
 
         #region public methods
         /// <summary>
+        /// cette methode remet pacman à son point de départ
+        /// </summary>
+        public void replacement()
+        {
+            Emplacement();
+        }
+        /// <summary>
         /// methode public qui informe si on peut ou pas avancer
         /// exemple pacman va dépasser le haut du jeu il est arreté
         /// pareil pour le bas.
