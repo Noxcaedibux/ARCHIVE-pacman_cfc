@@ -78,17 +78,12 @@ namespace Pacman
             try
             {
                 gestionMap();
-                timerDeplacement.Start();
-                timerClydeSortirCage.Start();
-                timerBlinkySortirCage.Start();
-                timerPinkySortirCage.Start();
-                timerInkySortirCage.Start();
             }
             catch (Exception s)
             {
                 MessageBox.Show("Veuillez créer une Map01.txt dans le dossier Map\n faites une map de 20→ sur 39↓:\n\nChiffres à Utiliser:\n\n 1=mur,\n 2=pac-gomme,\n 3=super pac-gomme\n 4=pacman,\n 5-8=fantômes,\n 9=mur invisible pour la sortie des fantômes", "Fichier inexistant", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }
-        }          
+        }
         #endregion constructors
 
         #region accessors and mutators
@@ -100,154 +95,152 @@ namespace Pacman
         #region private methods
         private void gestionMap()
         {
-            int i = 0;
-            int a = 0;
-            int x;
-            int y;
-            if (_nouvelleMap)
+            do
             {
-                _lblNbPac_gomme = new Label();
-                _lblNbSuperPac_gomme = new Label();
-                //mise en place des icones de base
-                _interface_vie = new PictureBox();
-                _interface_vie.Image = Pacman.Properties.Resources._3vies;
-                _interface_vie.Location = new Point(11, 425);
-                _interface_vie.Size = new Size(169, 61);
-                //mise en place des icones de base et l'interface
-                PictureBox _interface_icones = new PictureBox();
-                _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface2;
-                _interface_icones.Location = new Point(0, 401);
-                _interface_icones.Size = new Size(768, 167);
-                _interface_icones.BackgroundImage = Pacman.Properties.Resources.Interface_Bas;
-                _interface_icones.BackColor = Color.Transparent;
+                int i = 0;
+                int a = 0;
+                int x;
+                int y;
+                if (_nouvelleMap)
+                {
+                    _lblNbPac_gomme = new Label();
+                    _lblNbSuperPac_gomme = new Label();
+                    //mise en place des icones de base
+                    _interface_vie = new PictureBox();
+                    _interface_vie.Image = Pacman.Properties.Resources._3vies;
+                    _interface_vie.Location = new Point(11, 425);
+                    _interface_vie.Size = new Size(169, 61);
+                    //mise en place des icones de base et l'interface
+                    PictureBox _interface_icones = new PictureBox();
+                    _interface_icones.Image = Pacman.Properties.Resources.Icones_Interface2;
+                    _interface_icones.Location = new Point(0, 401);
+                    _interface_icones.Size = new Size(768, 167);
+                    _interface_icones.BackgroundImage = Pacman.Properties.Resources.Interface_Bas;
+                    _interface_icones.BackColor = Color.Transparent;
 
-                int vitesse = 20;
-                _classMap = new Map(_nomMap);
-                _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
-                ; _pacmanImage = new PictureBox();
-                _pacmanImage.Image = Pacman.Properties.Resources.haut;
-                _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
-                _pacmanImage.Size = new Size(20, 20);
-                this.Controls.Add(_pacmanImage);
+                    int vitesse = 20;
+                    _classMap = new Map(_nomMap);
+                    _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
+                    ; _pacmanImage = new PictureBox();
+                    _pacmanImage.Image = Pacman.Properties.Resources.haut;
+                    _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
+                    _pacmanImage.Size = new Size(20, 20);
+                    this.Controls.Add(_pacmanImage);
 
-                _lblNbPac_gomme.Location = new Point(213, 430);
-                _lblNbPac_gomme.ForeColor = Color.Yellow;
-                _lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
-                _lblNbPac_gomme.BackColor = Color.Transparent;
+                    _lblNbPac_gomme.Location = new Point(213, 430);
+                    _lblNbPac_gomme.ForeColor = Color.Yellow;
+                    _lblNbPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                    _lblNbPac_gomme.BackColor = Color.Transparent;
+                    _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
+                    _lblNbPac_gomme.AutoSize = true;
+
+                    _lblNbSuperPac_gomme.Location = new Point(416, 430);
+                    _lblNbSuperPac_gomme.ForeColor = Color.Yellow;
+                    _lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                    _lblNbSuperPac_gomme.BackColor = Color.Transparent;
+                    _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+                    _lblNbSuperPac_gomme.AutoSize = true;
+
+                    this.Controls.Add(_interface_vie);
+                    this.Controls.Add(_lblNbPac_gomme);
+                    this.Controls.Add(_lblNbSuperPac_gomme);
+                    this.Controls.Add(_interface_icones);
+
+                    _clyde = new Clyde(vitesse, _classMap.map);
+                    _clydeImage = new PictureBox();
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
+                    _clydeImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph);
+                    _clydeImage.Size = new Size(20, 20);
+                    this.Controls.Add(_clydeImage);
+
+                    _blinky = new Blinky(vitesse, _classMap.map);
+                    _blinkyImage = new PictureBox();
+                    _blinkyImage.Image = Pacman.Properties.Resources.rouge;
+                    _blinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
+                    _blinkyImage.Size = new Size(20, 20);
+                    this.Controls.Add(_blinkyImage);
+
+                    _pinky = new Pinky(vitesse, _classMap.map);
+                    _pinkyImage = new PictureBox();
+                    _pinkyImage.Image = Pacman.Properties.Resources.pink_haut;
+                    _pinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
+                    _pinkyImage.Size = new Size(20, 20);
+                    this.Controls.Add(_pinkyImage);
+
+                    _inky = new Inky(vitesse, _classMap.map);
+                    _inkyImage = new PictureBox();
+                    _inkyImage.Image = Pacman.Properties.Resources.bleu_haut;
+                    _inkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
+                    _inkyImage.Size = new Size(20, 20);
+                    this.Controls.Add(_inkyImage);
+
+                    _piece = new PictureBox[_classMap.NbPiece()];
+                    PictureBox[] _mur;
+                    _mur = new PictureBox[_classMap.NbMurs()];
+                    for (y = 0; y <= 19; y++)
+                    {
+                        for (x = 0; x <= 37; x++)
+                        {
+                            if (_classMap.map[y, x] == 1)
+                            {
+                                _mur[i] = new PictureBox();
+                                _mur[i].Location = new Point(x * 20, y * 20);
+                                _mur[i].Size = new Size(20, 20);
+                                _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                                _mur[i].Image = Pacman.Properties.Resources.mur2;
+                                this.Controls.Add(_mur[i]);
+                                i++;
+                            }
+                            if (_classMap.map[y, x] == 2 || _classMap.map[y, x] == 3)
+                            {
+                                _piece[a] = new PictureBox();
+                                _piece[a].Location = new Point(x * 20, y * 20);
+                                _piece[a].Size = new Size(20, 20);
+                                _piece[a].SizeMode = PictureBoxSizeMode.StretchImage;
+                                if (_classMap.map[y, x] == 2) _piece[a].Image = Pacman.Properties.Resources.piece;
+                                else _piece[a].Image = Pacman.Properties.Resources.superPiece;
+                                this.Controls.Add(_piece[a]);
+                                a++;
+                            }
+                        }
+                    }
+                    _nouvelleMap = false;
+                    timerDeplacement.Start();
+                    timerClydeSortirCage.Start();
+                    timerBlinkySortirCage.Start();
+                    timerPinkySortirCage.Start();
+                    timerInkySortirCage.Start();
+                }
+                else
+                {
+                    if (_classMap.map[_pacman.positionY, _pacman.positionX] == 2 || _classMap.map[_pacman.positionY, _pacman.positionX] == 3)
+                    {
+                        foreach (PictureBox removePicture in this._piece)
+                        {
+                            if (removePicture.Location == _positionPacman) this.Controls.Remove(removePicture);
+                        }
+                    }
+                }
+                _pacman.PiecesRestantes();
                 _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
-                _lblNbPac_gomme.AutoSize = true;
-
-                _lblNbSuperPac_gomme.Location = new Point(416, 430);
-                _lblNbSuperPac_gomme.ForeColor = Color.Yellow;
-                _lblNbSuperPac_gomme.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
-                _lblNbSuperPac_gomme.BackColor = Color.Transparent;
                 _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
-                _lblNbSuperPac_gomme.AutoSize = true;
-
-                this.Controls.Add(_interface_vie);
-                this.Controls.Add(_lblNbPac_gomme);
-                this.Controls.Add(_lblNbSuperPac_gomme);
-                this.Controls.Add(_interface_icones);
-
-                _clyde = new Clyde(vitesse, _classMap.map);
-                _clydeImage = new PictureBox();
-                _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
-                _clydeImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph);
-                _clydeImage.Size = new Size(20, 20);
-                this.Controls.Add(_clydeImage);
-
-                _blinky = new Blinky(vitesse, _classMap.map);
-                _blinkyImage = new PictureBox();
-                _blinkyImage.Image = Pacman.Properties.Resources.rouge;
-                _blinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
-                _blinkyImage.Size = new Size(20, 20);
-                this.Controls.Add(_blinkyImage);
-
-                _pinky = new Pinky(vitesse, _classMap.map);
-                _pinkyImage = new PictureBox();
-                _pinkyImage.Image = Pacman.Properties.Resources.pink_haut;
-                _pinkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
-                _pinkyImage.Size = new Size(20, 20);
-                this.Controls.Add(_pinkyImage);
-
-                _inky = new Inky(vitesse, _classMap.map);
-                _inkyImage = new PictureBox();
-                _inkyImage.Image = Pacman.Properties.Resources.bleu_haut;
-                _inkyImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
-                _inkyImage.Size = new Size(20, 20);
-                this.Controls.Add(_inkyImage);
-
-                _piece = new PictureBox[_classMap.NbPiece()];
-                PictureBox[] _mur;
-                _mur = new PictureBox[_classMap.NbMurs()];
-                for (y = 0; y <= 19; y++)
+                if (_pacman.NbPiecesRestantes == 0)
                 {
-                    for (x = 0; x <= 37; x++)
-                    {
-                        if (_classMap.map[y, x] == 1)
-                        {
-                            _mur[i] = new PictureBox();
-                            _mur[i].Location = new Point(x * 20, y * 20);
-                            _mur[i].Size = new Size(20, 20);
-                            _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                            _mur[i].Image = Pacman.Properties.Resources.mur2;
-                            this.Controls.Add(_mur[i]);
-                            i++;
-                        }
-                        if (_classMap.map[y, x] == 2 || _classMap.map[y, x] == 3)
-                        {
-                            _piece[a] = new PictureBox();
-                            _piece[a].Location = new Point(x * 20, y * 20);
-                            _piece[a].Size = new Size(20, 20);
-                            _piece[a].SizeMode = PictureBoxSizeMode.StretchImage;
-                            if(_classMap.map[y, x] == 2) _piece[a].Image = Pacman.Properties.Resources.piece;
-                            else _piece[a].Image = Pacman.Properties.Resources.superPiece;
-                            this.Controls.Add(_piece[a]);
-                            a++;
-                        }
-                    }
+                    timerBlinky.Stop();
+                    timerPinky.Stop();
+                    timerInky.Stop();
+                    timerClyde.Stop();
+                    timerDeplacement.Stop();
+                    if (DialogResult.No == MessageBox.Show("Vous avez attrapé toutes les pièces voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                    _nouvelleMap = true;
+                    this.Controls.Clear();
                 }
-                _nouvelleMap = false;
-            }
-            else
-            {
-                if(_classMap.map[_pacman.positionY, _pacman.positionX] == 2 || _classMap.map[_pacman.positionY, _pacman.positionX] == 3)
-                {
-                    foreach(PictureBox removePicture in this._piece)
-                    {
-                        if(removePicture.Location == _positionPacman) this.Controls.Remove(removePicture);
-                    }
-                }
-            }
-            _pacman.PiecesRestantes();
-            _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
-            _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
-            if (_pacman.NbPiecesRestantes == 0)
-            {
-                //timerClydeSortirCage.Stop();
-                //timerBlinkySortirCage.Stop();
-                //timerPinkySortirCage.Stop();
-                //timerInkySortirCage.Stop();
-                timerBlinky.Stop();
-                timerPinky.Stop();
-                timerInky.Stop();
-                timerClyde.Stop();
-                timerDeplacement.Stop();
-                if (DialogResult.No == MessageBox.Show("Vous avez attrapé toutes les pièces voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
-                _nouvelleMap = true;
-                this.Controls.Clear();
-                gestionMap();
-                timerDeplacement.Start();
-                timerClydeSortirCage.Start();
-                timerBlinkySortirCage.Start();
-                timerPinkySortirCage.Start();
-                timerInkySortirCage.Start();
-            }
+            } while (_nouvelleMap);
         }
 
         private void timerDeplacement_Tick(object sender, EventArgs e)
