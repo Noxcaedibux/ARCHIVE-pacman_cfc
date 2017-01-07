@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blinky.cs" />
     <Compile Include="ClassPacman.cs" />
     <Compile Include="Clyde.cs" />
     <Compile Include="frmJeu.cs">

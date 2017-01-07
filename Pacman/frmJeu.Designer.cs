@@ -32,6 +32,8 @@
             this.timerDeplacement = new System.Windows.Forms.Timer(this.components);
             this.timerClydeSortirCage = new System.Windows.Forms.Timer(this.components);
             this.timerClyde = new System.Windows.Forms.Timer(this.components);
+            this.timerBlinkySortirCage = new System.Windows.Forms.Timer(this.components);
+            this.timerBlinky = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timerDeplacement
@@ -48,6 +50,16 @@
             // 
             this.timerClyde.Interval = 10;
             this.timerClyde.Tick += new System.EventHandler(this.timerClyde_Tick);
+            // 
+            // timerBlinkySortirCage
+            // 
+            this.timerBlinkySortirCage.Interval = 10;
+            this.timerBlinkySortirCage.Tick += new System.EventHandler(this.timerBlinkySortirCage_Tick);
+            // 
+            // timerBlinky
+            // 
+            this.timerBlinky.Interval = 10;
+            this.timerBlinky.Tick += new System.EventHandler(this.timerBlinky_Tick);
             // 
             // frmJeu
             // 
@@ -66,5 +78,7 @@
         private System.Windows.Forms.Timer timerDeplacement;
         private System.Windows.Forms.Timer timerClydeSortirCage;
         private System.Windows.Forms.Timer timerClyde;
+        private System.Windows.Forms.Timer timerBlinkySortirCage;
+        private System.Windows.Forms.Timer timerBlinky;
     }
 }

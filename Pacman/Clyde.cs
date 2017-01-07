@@ -79,6 +79,7 @@ namespace Pacman
             if (_orientationGhost == "Nord") _positionY--;
             if (_orientationGhost == "Sud") _positionY++;
         }
+
         public void DeplacementClyde()
         {
             if (_orientationGhost == "Est") _positionX++;
