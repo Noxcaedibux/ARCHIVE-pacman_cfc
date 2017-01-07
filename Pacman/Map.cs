@@ -17,7 +17,6 @@ namespace Pacman
         #region private attributes
         private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"Map\";
         private string _emplacementFichier;
-        private string _error;
         private int _nbMurs;
         private int _nbPieces;
         private int[,] _map = new int[20, 38];
