@@ -62,6 +62,7 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inky.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Pinky.cs" />
     <Compile Include="Program.cs" />

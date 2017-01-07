@@ -24,11 +24,13 @@ namespace Pacman
         private Clyde _clyde;
         private Blinky _blinky;
         private Pinky _pinky;
+        private Inky _inky;
         private Map _classMap;
         private PictureBox _pacmanImage;
         private PictureBox _clydeImage;
         private PictureBox _blinkyImage;
         private PictureBox _pinkyImage;
+        private PictureBox _inkyImage;
         private PictureBox _interface_vie;
         private Label _lblNbPac_gomme;
         private Label _lblNbSuperPac_gomme;
@@ -43,12 +45,15 @@ namespace Pacman
         private int _deplacementBlinky = 0;
         private int _actualisationPinky = 0;
         private int _deplacementPinky = 0;
+        private int _actualisationInky = 0;
+        private int _deplacementInky = 0;
         private int _ghostEaten=0;
         private int _life=3;
         private string _orientationPacman = "Nord";
         private string _orientationClyde;
         private string _orientationBlinky;
         private string _orientationPinky;
+        private string _orientationInky;
         private string _nomMap = "Map01";
         private bool _Nord = false;
         private bool _Est = false;
@@ -78,6 +83,7 @@ namespace Pacman
                 timerClydeSortirCage.Start();
                 timerBlinkySortirCage.Start();
                 timerPinkySortirCage.Start();
+                timerInkySortirCage.Start();
             }
             catch (Exception s)
             {
@@ -166,6 +172,13 @@ namespace Pacman
                 _pinkyImage.Size = new Size(20, 20);
                 this.Controls.Add(_pinkyImage);
 
+                _inky = new Inky(vitesse, _classMap.map);
+                _inkyImage = new PictureBox();
+                _inkyImage.BackColor = Color.Blue;
+                _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
+                _inkyImage.Size = new Size(20, 20);
+                this.Controls.Add(_inkyImage);
+
                 _piece = new PictureBox[_classMap.NbPiece()];
                 PictureBox[] _mur;
                 _mur = new PictureBox[_classMap.NbMurs()];
@@ -221,6 +234,7 @@ namespace Pacman
                 timerClydeSortirCage.Start();
                 timerBlinkySortirCage.Start();
                 timerPinkySortirCage.Start();
+                timerInkySortirCage.Start();
             }
         }
 
@@ -405,6 +419,51 @@ namespace Pacman
             }
         }
 
+        private void timerInkySortirCage_Tick(object sender, EventArgs e)
+        {
+            _actualisationInky++;
+
+            if (_actualisationInky <= _inky.vitesse)
+            {
+                _orientationInky = "Nord";
+
+                _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph - _deplacementInky);
+            }
+            else if (_actualisationInky <= _inky.vitesse * 2)
+            {
+                _orientationInky = "Ouest";
+
+                _inkyImage.Location = new Point(_inky.positionXGraph - _deplacementInky, _inky.positionYGraph);
+            }
+            else if (_actualisationInky <= _inky.vitesse * 4)
+            {
+                _orientationInky = "Nord";
+
+                _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph - _deplacementInky);
+            }
+            _deplacementInky++;
+            
+            if (_actualisationInky == _inky.vitesse || _actualisationInky == _inky.vitesse * 3)
+            {
+                _deplacementInky = 0;
+                _inky.AvancerDirection(_orientationInky);
+            }
+            else if (_actualisationInky == _inky.vitesse * 2)
+            {
+                _deplacementInky = 0;
+                _inky.AvancerDirection(_orientationInky);
+            }
+            else if (_actualisationInky == _inky.vitesse * 4)
+            {
+                _inky.DeplacementInky();
+                _inky.ChangerDirectionInky("Est");
+                _actualisationInky = 0;
+                _deplacementInky = 0;
+                timerInky.Start();
+                timerInkySortirCage.Stop();
+            }
+        }
+
         private void timerClyde_Tick(object sender, EventArgs e)
         {
             _actualisationClyde++;
@@ -504,6 +563,48 @@ namespace Pacman
                     _actualisationPinky = 0;
                     _deplacementPinky = 0;
                     _pinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+                }
+            }
+        }
+
+        private void timerInky_Tick(object sender, EventArgs e)
+        {
+            _actualisationInky++;
+            _deplacementInky++;
+
+            if (_inky.mur == 0)
+            {
+                switch (_inky.orientationInky)
+                {
+                    case "Nord":
+                        _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph - _deplacementInky);
+                        break;
+                    case "Sud":
+                        _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph + _deplacementInky);
+                        break;
+                    case "Est":
+                        _inkyImage.Location = new Point(_inky.positionXGraph + _deplacementInky, _inky.positionYGraph);
+                        break;
+                    case "Ouest":
+                        _inkyImage.Location = new Point(_inky.positionXGraph - _deplacementInky, _inky.positionYGraph);
+                        break;
+                }
+
+                if (_actualisationInky == _inky.vitesse)
+                {
+                    _actualisationInky = 0;
+                    _deplacementInky = 0;
+                    _inky.DeplacementInky();
+                    _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
+                }
+            }
+            else
+            {
+                if (_actualisationInky == _inky.vitesse)
+                {
+                    _actualisationInky = 0;
+                    _deplacementInky = 0;
+                    _inky.SuivrePacman(_pacman.positionX, _pacman.positionY);
                 }
             }
         }
