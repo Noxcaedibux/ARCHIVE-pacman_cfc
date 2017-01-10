@@ -112,7 +112,11 @@ namespace Pacman
                 else if (_positionY < positionYPacman) _orientationGhost = "Sud";
             }
 
-            if (_orientationGhost == "Ouest" && (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9))
+            if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
+
+            else if (_orientationGhost == "Ouest" && _positionX == 0) _positionX = 37;
+
+            else if (_orientationGhost == "Ouest" && (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9))
             {
                 if (_positionY >= positionYPacman) _orientationGhost = "Nord";
                 else if (_positionY < positionYPacman) _orientationGhost = "Sud";
@@ -184,9 +188,7 @@ namespace Pacman
                 }
             }
 
-            else if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
-
-            else if (_orientationGhost == "Ouest" && _positionX == 0) _positionX = 37;
+            
         }
         #endregion public methods
 

@@ -116,10 +116,10 @@ namespace Pacman
                         _pacmanImage = new PictureBox();
                         _pacmanImage.Image = Pacman.Properties.Resources.haut;
                         _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                        _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                         _pacmanImage.Size = new Size(20, 20);
                     }
                     _pacman.replacement();
+                    _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
                     //mise en place des icones de base
                     _interface_vie = new PictureBox();
                     switch(_life)
@@ -252,7 +252,10 @@ namespace Pacman
                 _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
                 _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
                 int lifeTemp = _life;
-                if ((_clyde.positionX == _pacman.positionX && _clyde.positionY == _pacman.positionY) || (_pinky.positionX == _pacman.positionX && _pinky.positionY == _pacman.positionY) || (_inky.positionX == _pacman.positionX && _inky.positionY == _pacman.positionY) || (_blinky.positionX == _pacman.positionX && _blinky.positionY == _pacman.positionY))
+                if (_pacman.collisionGhost(_clyde.orientationClyde, _clyde.positionX, _clyde.positionY) == 1 || 
+                    _pacman.collisionGhost(_blinky.orientationBlinky, _blinky.positionX, _blinky.positionY) == 1 ||
+                    _pacman.collisionGhost(_pinky.orientationPinky, _pinky.positionX, _pinky.positionY) == 1 ||
+                    _pacman.collisionGhost(_inky.orientationInky, _inky.positionX, _inky.positionY) == 1)
                 {
                     _life--;
                     _pacman.DeplacementPacman("Nord");
@@ -647,6 +650,7 @@ namespace Pacman
                     _deplacementInky = 0;
                     _inky.DeplacementInky();
                     _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
+                    _inky.SuivrePacman(_pacman.positionX, _pacman.positionY);
                 }
             }
             else
