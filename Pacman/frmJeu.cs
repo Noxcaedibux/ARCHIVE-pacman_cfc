@@ -289,7 +289,12 @@ namespace Pacman
 
                             if (_pacman.collisionGhost(_blinky.orientationBlinky, _blinky.positionX, _blinky.positionY) == 1)
                             {
+                                timerBlinky.Stop();
 
+                                _actualisationBlinky = 0;
+                                _deplacementBlinky = 0;
+
+                                timerBlinkyRetourneCage.Start();
                             }
 
                             if (_pacman.collisionGhost(_pinky.orientationPinky, _pinky.positionX, _pinky.positionY) == 1)
