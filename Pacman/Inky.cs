@@ -99,10 +99,12 @@ namespace Pacman
         public void AvancerDirection(string direction)
         {
             _orientationGhost = direction;
-            if (_orientationGhost == "Est") _positionX++;
-            if (_orientationGhost == "Ouest") _positionX--;
-            if (_orientationGhost == "Nord") _positionY--;
-            if (_orientationGhost == "Sud") _positionY++;
+            if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
+            else if (_orientationGhost == "Ouest" && _positionX == 0) _positionX = 37;
+            else if (_orientationGhost == "Est") _positionX++;
+            else if (_orientationGhost == "Ouest") _positionX--;
+            else if (_orientationGhost == "Nord") _positionY--;
+            else if (_orientationGhost == "Sud") _positionY++;
         }
 
         public void DeplacementInky()

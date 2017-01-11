@@ -91,18 +91,22 @@ namespace Pacman
         public void AvancerDirection(string direction)
         {
             _orientationGhost = direction;
-            if (_orientationGhost == "Est") _positionX++;
-            if (_orientationGhost == "Ouest") _positionX--;
-            if (_orientationGhost == "Nord") _positionY--;
-            if (_orientationGhost == "Sud") _positionY++;
+            if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
+            else if (_orientationGhost == "Ouest" && _positionX == 0) _positionX = 37;
+            else if (_orientationGhost == "Est") _positionX++;
+            else if (_orientationGhost == "Ouest") _positionX--;
+            else if (_orientationGhost == "Nord") _positionY--;
+            else if (_orientationGhost == "Sud") _positionY++;
         }
 
         public void DeplacementClyde()
         {
-            if (_orientationGhost == "Est") _positionX++;
-            if (_orientationGhost == "Ouest") _positionX--;
-            if (_orientationGhost == "Nord") _positionY--;
-            if (_orientationGhost == "Sud") _positionY++;
+            if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
+            else if (_orientationGhost == "Ouest" && _positionX == 0) _positionX = 37;
+            else if (_orientationGhost == "Est") _positionX++;
+            else if (_orientationGhost == "Ouest") _positionX--;
+            else if (_orientationGhost == "Nord") _positionY--;
+            else if (_orientationGhost == "Sud") _positionY++;
 
             avancer();
         }
@@ -164,7 +168,7 @@ namespace Pacman
                 Random randomDirection = new Random();
                 rand = randomDirection.Next(0, 4);
 
-                switch(rand)
+                switch (rand)
                 {
                     case 0:
                         _orientationGhost = "Nord";
@@ -189,7 +193,7 @@ namespace Pacman
                 {
                     i = 1;
                 }
-                else if (_orientationGhost == "Sud" && (_map[positionY + 1, positionX] == 1 || _map[positionY +1, positionX] == 9))
+                else if (_orientationGhost == "Sud" && (_map[positionY + 1, positionX] == 1 || _map[positionY + 1, positionX] == 9))
                 {
                     i = 1;
                 }
@@ -201,7 +205,7 @@ namespace Pacman
                 {
                     i = 1;
                 }
-                else if(_orientationGhost == "Nord" && orientationBase == "Sud" && (_map[positionY + 1, positionX] != 1 && _map[positionY + 1, positionX] != 9))
+                else if (_orientationGhost == "Nord" && orientationBase == "Sud" && (_map[positionY + 1, positionX] != 1 && _map[positionY + 1, positionX] != 9))
                 {
                     i = 1;
                 }
@@ -209,13 +213,27 @@ namespace Pacman
                 {
                     i = 1;
                 }
-                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && (_map[positionY, positionX - 1] != 1 && _map[positionY, positionX - 1] != 9))
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && _positionX != 0)
                 {
-                    i = 1;
+                    if (_map[positionY, positionX - 1] != 1 && _map[positionY, positionX - 1] != 9)
+                    {
+                        i = 1;
+                    }
                 }
-                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && (_map[positionY, positionX + 1] != 1 && _map[positionY, positionX + 1] != 9))
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && _positionX != 37)
                 {
-                    i = 1;
+                    if (_map[positionY, positionX + 1] != 1 && _map[positionY, positionX + 1] != 9)
+                    {
+                        i = 1;
+                    }
+                }
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && _positionX == 0)
+                {
+                    _orientationGhost = "Ouest";
+                }
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && _positionX == 37)
+                {
+                    _orientationGhost = "Est";
                 }
             }
         }
