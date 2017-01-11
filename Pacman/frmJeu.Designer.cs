@@ -38,6 +38,11 @@
             this.timerPinky = new System.Windows.Forms.Timer(this.components);
             this.timerInkySortirCage = new System.Windows.Forms.Timer(this.components);
             this.timerInky = new System.Windows.Forms.Timer(this.components);
+            this.timeSuperPacman = new System.Windows.Forms.Timer(this.components);
+            this.timerClydeRetourneCage = new System.Windows.Forms.Timer(this.components);
+            this.timerBlinkyRetourneCage = new System.Windows.Forms.Timer(this.components);
+            this.timerPinkyRetourneCage = new System.Windows.Forms.Timer(this.components);
+            this.timerInkyRetourneCage = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timerDeplacement
@@ -85,6 +90,31 @@
             this.timerInky.Interval = 10;
             this.timerInky.Tick += new System.EventHandler(this.timerInky_Tick);
             // 
+            // timeSuperPacman
+            // 
+            this.timeSuperPacman.Interval = 10000;
+            this.timeSuperPacman.Tick += new System.EventHandler(this.timeSuperPacman_Tick);
+            // 
+            // timerClydeRetourneCage
+            // 
+            this.timerClydeRetourneCage.Interval = 10;
+            this.timerClydeRetourneCage.Tick += new System.EventHandler(this.timerClydeRetourneCage_Tick);
+            // 
+            // timerBlinkyRetourneCage
+            // 
+            this.timerBlinkyRetourneCage.Interval = 10;
+            this.timerBlinkyRetourneCage.Tick += new System.EventHandler(this.timerBlinkyRetourneCage_Tick);
+            // 
+            // timerPinkyRetourneCage
+            // 
+            this.timerPinkyRetourneCage.Interval = 10;
+            this.timerPinkyRetourneCage.Tick += new System.EventHandler(this.timerPinkyRetourneCage_Tick);
+            // 
+            // timerInkyRetourneCage
+            // 
+            this.timerInkyRetourneCage.Interval = 10;
+            this.timerInkyRetourneCage.Tick += new System.EventHandler(this.timerInkyRetourneCage_Tick);
+            // 
             // frmJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,5 +138,10 @@
         private System.Windows.Forms.Timer timerPinky;
         private System.Windows.Forms.Timer timerInkySortirCage;
         private System.Windows.Forms.Timer timerInky;
+        private System.Windows.Forms.Timer timeSuperPacman;
+        private System.Windows.Forms.Timer timerClydeRetourneCage;
+        private System.Windows.Forms.Timer timerBlinkyRetourneCage;
+        private System.Windows.Forms.Timer timerPinkyRetourneCage;
+        private System.Windows.Forms.Timer timerInkyRetourneCage;
     }
 }

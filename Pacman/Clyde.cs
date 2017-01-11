@@ -12,6 +12,8 @@ namespace Pacman
         private int _vitesse;
         private int _positionX;
         private int _positionY;
+        private int _positionXMap;
+        private int _positionYMap;
         private string _orientationGhost = "Nord";
         private int[,] _map;
         #endregion private attributes
@@ -38,6 +40,21 @@ namespace Pacman
             get
             {
                 return this._positionY;
+            }
+        }
+
+        public int positionXMap
+        {
+            get
+            {
+                return this._positionXMap;
+            }
+        }
+        public int positionYMap
+        {
+            get
+            {
+                return this._positionYMap;
             }
         }
         public int positionXGraph
@@ -197,6 +214,8 @@ namespace Pacman
                     {
                         _positionY = y;
                         _positionX = x;
+                        _positionYMap = y;
+                        _positionXMap = x;
                     }
                 }
             }
