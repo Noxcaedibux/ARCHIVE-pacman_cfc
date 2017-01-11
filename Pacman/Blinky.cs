@@ -13,6 +13,8 @@ namespace Pacman
         private int _vitesse;
         private int _positionX;
         private int _positionY;
+        private int _positionXMap;
+        private int _positionYMap;
         private string _orientationGhost = "Nord";
         private int[,] _map;
         #endregion private attributes
@@ -39,6 +41,21 @@ namespace Pacman
             get
             {
                 return this._positionY;
+            }
+        }
+
+        public int positionXMap
+        {
+            get
+            {
+                return this._positionXMap;
+            }
+        }
+        public int positionYMap
+        {
+            get
+            {
+                return this._positionYMap;
             }
         }
         public int positionXGraph
@@ -187,8 +204,55 @@ namespace Pacman
                     else _orientationGhost = "Ouest";
                 }
             }
+        }
+        public void TournerRandom()
+        {
+            int rand;
+            int i = 1;
 
-            
+            while (i == 1)
+            {
+                Random randomDirection = new Random();
+                rand = randomDirection.Next(0, 4);
+
+                switch (rand)
+                {
+                    case 0:
+                        _orientationGhost = "Nord";
+                        break;
+                    case 1:
+                        _orientationGhost = "Sud";
+                        break;
+                    case 2:
+                        _orientationGhost = "Est";
+                        break;
+                    case 3:
+                        _orientationGhost = "Ouest";
+                        break;
+                    default:
+                        _orientationGhost = "Nord";
+                        break;
+
+                }
+
+                i = 0;
+                if (_orientationGhost == "Nord" && (_map[positionY - 1, positionX] == 1 || _map[positionY - 1, positionX] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Sud" && (_map[positionY + 1, positionX] == 1 || _map[positionY + 1, positionX] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Est" && (_map[positionY, positionX + 1] == 1 || _map[positionY, positionX + 1] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Ouest" && (_map[positionY, positionX - 1] == 1 || _map[positionY, positionX - 1] == 9))
+                {
+                    i = 1;
+                }
+            }
         }
         #endregion public methods
 
@@ -205,6 +269,8 @@ namespace Pacman
                     {
                         _positionY = y;
                         _positionX = x;
+                        _positionYMap = y;
+                        _positionXMap = x;
                     }
                 }
             }

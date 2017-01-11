@@ -461,27 +461,30 @@ namespace Pacman
         {
             _actualisationBlinky++;
 
-            _orientationBlinky = "Nord";
+            if(_actualisationBlinky > 0)
+            {
+                _orientationBlinky = "Nord";
 
-            if(_actualisationBlinky <= _blinky.vitesse * 3)
-            {
-                _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
-            }
-            _deplacementBlinky++;
+                if (_actualisationBlinky <= _blinky.vitesse * 3)
+                {
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
+                }
+                _deplacementBlinky++;
 
-            if(_actualisationBlinky == _blinky.vitesse || _actualisationBlinky == _blinky.vitesse * 2)
-            {
-                _deplacementBlinky = 0;
-                _blinky.AvancerDirection(_orientationBlinky);
-            }
-            else if(_actualisationBlinky == _blinky.vitesse * 3)
-            {
-                _blinky.DeplacementBlinky();
-                _blinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
-                _actualisationBlinky = 0;
-                _deplacementBlinky = 0;
-                timerBlinky.Start();
-                timerBlinkySortirCage.Stop();
+                if (_actualisationBlinky == _blinky.vitesse || _actualisationBlinky == _blinky.vitesse * 2)
+                {
+                    _deplacementBlinky = 0;
+                    _blinky.AvancerDirection(_orientationBlinky);
+                }
+                else if (_actualisationBlinky == _blinky.vitesse * 3)
+                {
+                    _blinky.DeplacementBlinky();
+                    _blinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+                    _actualisationBlinky = 0;
+                    _deplacementBlinky = 0;
+                    timerBlinky.Start();
+                    timerBlinkySortirCage.Stop();
+                }
             }
         }
 
@@ -804,7 +807,58 @@ namespace Pacman
 
         private void timerBlinkyRetourneCage_Tick(object sender, EventArgs e)
         {
+            _actualisationBlinky++;
+            _deplacementBlinky += 2;
 
+            if(_blinky.positionY < _blinky.positionYMap)
+            {
+                _orientationBlinky = "Nord";
+            }
+
+            else if (_blinky.positionY > _blinky.positionYMap)
+            {
+                _orientationBlinky = "Sud";
+            }
+
+            else if (_blinky.positionX < _blinky.positionXMap)
+            {
+                _orientationBlinky = "Est";
+            }
+
+            else if (_blinky.positionX > _blinky.positionXMap)
+            {
+                _orientationBlinky = "Ouest";
+            }
+
+            switch (_orientationBlinky)
+            {
+                case "Nord":
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
+                    break;
+                case "Sud":
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph + _deplacementBlinky);
+                    break;
+                case "Est":
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph + _deplacementBlinky, _blinky.positionYGraph);
+                    break;
+                case "Ouest":
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph - _deplacementBlinky, _blinky.positionYGraph);
+                    break;
+            }
+
+            if(_actualisationBlinky == 10)
+            {
+                _blinky.AvancerDirection(_orientationBlinky);
+                _actualisationBlinky = 0;
+                _deplacementBlinky = 0;
+
+                if(_blinky.positionX == _blinky.positionXMap && _blinky.positionY == _blinky.positionYMap)
+                {
+                    _actualisationBlinky = -1000;
+                    timerBlinkySortirCage.Start();
+                    timerBlinkyRetourneCage.Stop();
+                }
+            }
         }
 
         private void timerPinkyRetourneCage_Tick(object sender, EventArgs e)
