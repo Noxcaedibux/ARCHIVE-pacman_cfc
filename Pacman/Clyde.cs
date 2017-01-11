@@ -157,6 +157,7 @@ namespace Pacman
         {
             int rand;
             int i = 1;
+            string orientationBase = _orientationGhost;
 
             while (i == 1)
             {
@@ -197,6 +198,22 @@ namespace Pacman
                     i = 1;
                 }
                 else if (_orientationGhost == "Ouest" && (_map[positionY, positionX - 1] == 1 || _map[positionY, positionX - 1] == 9))
+                {
+                    i = 1;
+                }
+                else if(_orientationGhost == "Nord" && orientationBase == "Sud" && (_map[positionY + 1, positionX] != 1 && _map[positionY + 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Sud" && orientationBase == "Nord" && (_map[positionY - 1, positionX] != 1 && _map[positionY - 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && (_map[positionY, positionX - 1] != 1 && _map[positionY, positionX - 1] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && (_map[positionY, positionX + 1] != 1 && _map[positionY, positionX + 1] != 9))
                 {
                     i = 1;
                 }

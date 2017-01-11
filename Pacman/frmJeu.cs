@@ -49,6 +49,7 @@ namespace Pacman
         private int _ghostEaten=0;
         private int _life=3;
         private int _superPacman = 0;
+        private int _blinkyFuite = 0;
         private string _orientationPacman = "Nord";
         private string _orientationClyde;
         private string _orientationBlinky;
@@ -262,6 +263,8 @@ namespace Pacman
                         if (_classMap.map[_pacman.positionY, _pacman.positionX] == 3)
                         {
                             _superPacman = 1;
+                            _blinkyFuite = 1;
+                            
                             timeSuperPacman.Start();
                         }
                     }
@@ -294,6 +297,7 @@ namespace Pacman
                                 _actualisationBlinky = 0;
                                 _deplacementBlinky = 0;
 
+                                _blinkyImage.Image = Pacman.Properties.Resources.yeux_blinky;
                                 timerBlinkyRetourneCage.Start();
                             }
 
@@ -425,18 +429,21 @@ namespace Pacman
                 {
                     _orientationClyde = "Nord";
 
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph - _deplacementClyde);
                 }
                 else if (_actualisationClyde <= _clyde.vitesse * 2)
                 {
                     _orientationClyde = "Est";
 
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_right;
                     _clydeImage.Location = new Point(_clyde.positionXGraph + _deplacementClyde, _clyde.positionYGraph);
                 }
                 else if (_actualisationClyde <= _clyde.vitesse * 4)
                 {
                     _orientationClyde = "Nord";
 
+                    _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph - _deplacementClyde);
                 }
                 _deplacementClyde++;
@@ -468,6 +475,10 @@ namespace Pacman
 
             if(_actualisationBlinky > 0)
             {
+                if(_actualisationBlinky == 1)
+                {
+                    _blinkyImage.Image = Pacman.Properties.Resources.rouge;
+                }
                 _orientationBlinky = "Nord";
 
                 if (_actualisationBlinky <= _blinky.vitesse * 3)
@@ -573,23 +584,22 @@ namespace Pacman
 
             if(_superPacman == 1)
             {
-                //Faudra changer l'image pour un fantome violet
                 switch (_clyde.orientationClyde)
                 {
                     case "Nord":
-                        _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
+                        _clydeImage.Image = Pacman.Properties.Resources.fuite_haut;
                         _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph - _deplacementClyde);
                         break;
                     case "Sud":
-                        _clydeImage.Image = Pacman.Properties.Resources.orange_bas;
+                        _clydeImage.Image = Pacman.Properties.Resources.fuite_bas;
                         _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph + _deplacementClyde);
                         break;
                     case "Est":
-                        _clydeImage.Image = Pacman.Properties.Resources.orange_right;
+                        _clydeImage.Image = Pacman.Properties.Resources.fuite_doite;
                         _clydeImage.Location = new Point(_clyde.positionXGraph + _deplacementClyde, _clyde.positionYGraph);
                         break;
                     case "Ouest":
-                        _clydeImage.Image = Pacman.Properties.Resources.orange_left;
+                        _clydeImage.Image = Pacman.Properties.Resources.fuite_gauche;
                         _clydeImage.Location = new Point(_clyde.positionXGraph - _deplacementClyde, _clyde.positionYGraph);
                         break;
                 }
@@ -632,29 +642,72 @@ namespace Pacman
             _actualisationBlinky++;
             _deplacementBlinky++;
 
-            switch(_blinky.orientationBlinky)
+            if(_superPacman == 1 && _blinkyFuite == 1)
             {
-                case "Nord":
-                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
-                    break;
-                case "Sud":
-                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph + _deplacementBlinky);
-                    break;
-                case "Est":
-                    _blinkyImage.Location = new Point(_blinky.positionXGraph + _deplacementBlinky, _blinky.positionYGraph);
-                    break;
-                case "Ouest":
-                    _blinkyImage.Location = new Point(_blinky.positionXGraph - _deplacementBlinky, _blinky.positionYGraph);
-                    break;
+                _blinkyFuite = 0;
+
+                _blinkyImage.Image = Pacman.Properties.Resources.fuite_blinky;
+            }
+            else if(_superPacman == 0 && _blinkyFuite == 1)
+            {
+                _blinkyFuite = 0;
+
+                _blinkyImage.Image = Pacman.Properties.Resources.rouge;
             }
 
-            if(_actualisationBlinky == _blinky.vitesse)
+            if(_superPacman == 0)
             {
-                _actualisationBlinky = 0;
-                _deplacementBlinky = 0;
-                _blinky.DeplacementBlinky();
-                _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
-                _blinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+                switch (_blinky.orientationBlinky)
+                {
+                    case "Nord":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
+                        break;
+                    case "Sud":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph + _deplacementBlinky);
+                        break;
+                    case "Est":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph + _deplacementBlinky, _blinky.positionYGraph);
+                        break;
+                    case "Ouest":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph - _deplacementBlinky, _blinky.positionYGraph);
+                        break;
+                }
+
+                if (_actualisationBlinky == _blinky.vitesse)
+                {
+                    _actualisationBlinky = 0;
+                    _deplacementBlinky = 0;
+                    _blinky.DeplacementBlinky();
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
+                    _blinky.SuivrePacman(_pacman.positionX, _pacman.positionY);
+                }
+            }
+            else
+            {
+                switch (_blinky.orientationBlinky)
+                {
+                    case "Nord":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph - _deplacementBlinky);
+                        break;
+                    case "Sud":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph + _deplacementBlinky);
+                        break;
+                    case "Est":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph + _deplacementBlinky, _blinky.positionYGraph);
+                        break;
+                    case "Ouest":
+                        _blinkyImage.Location = new Point(_blinky.positionXGraph - _deplacementBlinky, _blinky.positionYGraph);
+                        break;
+                }
+
+                if (_actualisationBlinky == _blinky.vitesse)
+                {
+                    _actualisationBlinky = 0;
+                    _deplacementBlinky = 0;
+                    _blinky.DeplacementBlinky();
+                    _blinky.TournerRandom();
+                    _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
+                }
             }
         }
 
@@ -778,19 +831,19 @@ namespace Pacman
             switch (_orientationClyde)
             {
                 case "Nord":
-                    _clydeImage.Image = Pacman.Properties.Resources.orange_haut;
+                    _clydeImage.Image = Pacman.Properties.Resources.yeux_haut;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph - _deplacementClyde);
                     break;
                 case "Sud":
-                    _clydeImage.Image = Pacman.Properties.Resources.orange_bas;
+                    _clydeImage.Image = Pacman.Properties.Resources.yeux_bas;
                     _clydeImage.Location = new Point(_clyde.positionXGraph, _clyde.positionYGraph + _deplacementClyde);
                     break;
                 case "Est":
-                    _clydeImage.Image = Pacman.Properties.Resources.orange_right;
+                    _clydeImage.Image = Pacman.Properties.Resources.yeux_droite;
                     _clydeImage.Location = new Point(_clyde.positionXGraph + _deplacementClyde, _clyde.positionYGraph);
                     break;
                 case "Ouest":
-                    _clydeImage.Image = Pacman.Properties.Resources.orange_left;
+                    _clydeImage.Image = Pacman.Properties.Resources.yeux_gauche;
                     _clydeImage.Location = new Point(_clyde.positionXGraph - _deplacementClyde, _clyde.positionYGraph);
                     break;
             }
@@ -803,7 +856,7 @@ namespace Pacman
 
                 if(_clyde.positionX == _clyde.positionXMap && _clyde.positionY == _clyde.positionYMap)
                 {
-                    _actualisationClyde = -1000;
+                    _actualisationClyde = -500;
                     timerClydeSortirCage.Start();
                     timerClydeRetourneCage.Stop();
                 }
@@ -817,12 +870,12 @@ namespace Pacman
 
             if(_blinky.positionY < _blinky.positionYMap)
             {
-                _orientationBlinky = "Nord";
+                _orientationBlinky = "Sud";
             }
 
             else if (_blinky.positionY > _blinky.positionYMap)
             {
-                _orientationBlinky = "Sud";
+                _orientationBlinky = "Nord";
             }
 
             else if (_blinky.positionX < _blinky.positionXMap)
@@ -859,7 +912,7 @@ namespace Pacman
 
                 if(_blinky.positionX == _blinky.positionXMap && _blinky.positionY == _blinky.positionYMap)
                 {
-                    _actualisationBlinky = -1000;
+                    _actualisationBlinky = -500;
                     timerBlinkySortirCage.Start();
                     timerBlinkyRetourneCage.Stop();
                 }
@@ -879,6 +932,8 @@ namespace Pacman
         private void timeSuperPacman_Tick(object sender, EventArgs e)
         {
             _superPacman = 0;
+            _blinkyFuite = 1;
+
             timeSuperPacman.Stop();
         }
 

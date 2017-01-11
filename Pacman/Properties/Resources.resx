@@ -208,4 +208,34 @@
   <data name="rouge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rouge.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fuite_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_doite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_doite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_gauche.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_bas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_droite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_gauche.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_haut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

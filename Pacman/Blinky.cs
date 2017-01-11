@@ -110,6 +110,9 @@ namespace Pacman
         {
             int differenceX = 0;
             int differenceY = 0;
+            int i = 0;
+
+            string orientationBase = _orientationGhost;
 
             if (_positionX > positionXPacman) differenceX = _positionX - positionXPacman;
             else if (_positionX < positionXPacman) differenceX = positionXPacman - _positionX;
@@ -119,14 +122,15 @@ namespace Pacman
 
             if(differenceX >= differenceY && differenceX != 0)
             {
-                if (_positionX > positionXPacman) _orientationGhost = "Ouest";
-                else if (_positionX < positionXPacman) _orientationGhost = "Est";
+                if (_positionX > positionXPacman && orientationBase != "Est") _orientationGhost = "Ouest";
+                else if (_positionX < positionXPacman && orientationBase != "Ouest") _orientationGhost = "Est";
+                else i = 1;
             }
 
-            else if(differenceY != 0)
+            else if(differenceY != 0 && i == 1)
             {
-                if (_positionY > positionYPacman) _orientationGhost = "Nord";
-                else if (_positionY < positionYPacman) _orientationGhost = "Sud";
+                if (_positionY > positionYPacman && orientationBase != "Sud") _orientationGhost = "Nord";
+                else if (_positionY < positionYPacman && orientationBase != "Nord") _orientationGhost = "Sud";
             }
 
             if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
@@ -135,8 +139,9 @@ namespace Pacman
 
             else if (_orientationGhost == "Ouest" && (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9))
             {
-                if (_positionY >= positionYPacman) _orientationGhost = "Nord";
-                else if (_positionY < positionYPacman) _orientationGhost = "Sud";
+                if (_positionY >= positionYPacman && orientationBase != "Sud" || orientationBase == "Nord") _orientationGhost = "Nord";
+                else if (orientationBase != "Nord") _orientationGhost = "Sud";
+                else _orientationGhost = "Est";
 
                 if (_orientationGhost == "Nord" && (_map[_positionY - 1, _positionX] == 1 || _map[_positionY - 1, _positionX] == 9))
                 {
@@ -153,8 +158,9 @@ namespace Pacman
 
             else if (_orientationGhost == "Est" && (_map[_positionY, _positionX + 1] == 1 || _map[_positionY, _positionX + 1] == 9))
             {
-                if (_positionY >= positionYPacman) _orientationGhost = "Nord";
-                else if (_positionY < positionYPacman) _orientationGhost = "Sud";
+                if (_positionY >= positionYPacman && orientationBase != "Sud" || orientationBase == "Nord") _orientationGhost = "Nord";
+                else if (orientationBase != "Nord") _orientationGhost = "Sud";
+                else _orientationGhost = "Ouest";
 
                 if (_orientationGhost == "Nord" && (_map[_positionY - 1, _positionX] == 1 || _map[_positionY - 1, _positionX] == 9))
                 {
@@ -171,8 +177,9 @@ namespace Pacman
 
             else if (_orientationGhost == "Nord" && (_map[_positionY - 1, _positionX] == 1 || _map[_positionY - 1, _positionX] == 9))
             {
-                if (_positionX >= positionXPacman) _orientationGhost = "Ouest";
-                else if (_positionX < positionXPacman) _orientationGhost = "Est";
+                if (_positionX >= positionXPacman && orientationBase != "Est" || orientationBase == "Ouest") _orientationGhost = "Ouest";
+                else if (orientationBase != "Ouest") _orientationGhost = "Est";
+                else _orientationGhost = "Sud";
 
                 if (_orientationGhost == "Ouest" && (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9))
                 {
@@ -189,8 +196,9 @@ namespace Pacman
 
             else if (_orientationGhost == "Sud" && (_map[_positionY + 1, _positionX] == 1 || _map[_positionY + 1, _positionX] == 9))
             {
-                if (_positionX >= positionXPacman) _orientationGhost = "Ouest";
-                else if (_positionX < positionXPacman) _orientationGhost = "Est";
+                if (_positionX >= positionXPacman && orientationBase != "Est" || orientationBase == "Ouest") _orientationGhost = "Ouest";
+                else if (orientationBase != "Ouest") _orientationGhost = "Est";
+                else _orientationGhost = "Nord";
 
                 if (_orientationGhost == "Ouest" && (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9))
                 {
@@ -209,6 +217,7 @@ namespace Pacman
         {
             int rand;
             int i = 1;
+            string orientationBase = _orientationGhost;
 
             while (i == 1)
             {
@@ -249,6 +258,22 @@ namespace Pacman
                     i = 1;
                 }
                 else if (_orientationGhost == "Ouest" && (_map[positionY, positionX - 1] == 1 || _map[positionY, positionX - 1] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Nord" && orientationBase == "Sud" && (_map[positionY + 1, positionX] != 1 && _map[positionY + 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Sud" && orientationBase == "Nord" && (_map[positionY - 1, positionX] != 1 && _map[positionY - 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && (_map[positionY, positionX - 1] != 1 && _map[positionY, positionX - 1] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && (_map[positionY, positionX + 1] != 1 && _map[positionY, positionX + 1] != 9))
                 {
                     i = 1;
                 }
