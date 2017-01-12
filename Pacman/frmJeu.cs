@@ -135,7 +135,7 @@ namespace Pacman
                         _pacmanImage.Size = new Size(20, 20);
 
                         _orientationPacman = "Nord";
-
+                        _pacman.DeplacementPacman(_orientationPacman);
                         _Nord = true;
                         _Sud = false;
                         _Est = false;
