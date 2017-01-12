@@ -20,6 +20,11 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// Permet de créer le fantome Pinky en lui passant en paramètre une vitesse et la map
+        /// </summary>
+        /// <param name="vitesse">vitesse de déplacement de Pinky</param>
+        /// <param name="map">map du jeu</param>
         public Pinky(int vitesse, int[,] map)
         {
             _vitesse = vitesse;
@@ -29,6 +34,9 @@ namespace Pacman
         #endregion constructors
 
         #region accessors and mutators
+        /// <summary>
+        /// retourne la position x de Pinky
+        /// </summary>
         public int positionX
         {
             get
@@ -36,6 +44,9 @@ namespace Pacman
                 return this._positionX;
             }
         }
+        /// <summary>
+        /// retourne la position y de Pinky
+        /// </summary>
         public int positionY
         {
             get
@@ -43,7 +54,9 @@ namespace Pacman
                 return this._positionY;
             }
         }
-
+        /// <summary>
+        /// retourne la position x de base (cage) de Pinky
+        /// </summary>
         public int positionXMap
         {
             get
@@ -51,6 +64,9 @@ namespace Pacman
                 return this._positionXMap;
             }
         }
+        /// <summary>
+        /// retourne la position y de base (cage) de pinky
+        /// </summary>
         public int positionYMap
         {
             get
@@ -58,6 +74,9 @@ namespace Pacman
                 return this._positionYMap;
             }
         }
+        /// <summary>
+        /// retourne la position x graphique de Pinky
+        /// </summary>
         public int positionXGraph
         {
             get
@@ -65,6 +84,9 @@ namespace Pacman
                 return this._positionX * 20;
             }
         }
+        /// <summary>
+        /// retourne la position y graphique de Pinky
+        /// </summary>
         public int positionYGraph
         {
             get
@@ -72,6 +94,9 @@ namespace Pacman
                 return this._positionY * 20;
             }
         }
+        /// <summary>
+        /// retourne la vitesse de Pinky
+        /// </summary>
         public int vitesse
         {
             get
@@ -79,6 +104,9 @@ namespace Pacman
                 return this._vitesse;
             }
         }
+        /// <summary>
+        /// retourne l'orientation de Pinky
+        /// </summary>
         public string orientationPinky
         {
             get
@@ -86,6 +114,9 @@ namespace Pacman
                 return this._orientationGhost;
             }
         }
+        /// <summary>
+        /// retourne la variable mur qui permet de savoir si Pinky est face à un mur
+        /// </summary>
         public int mur
         {
             get
@@ -96,6 +127,10 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        /// <summary>
+        /// méthode permettant de déplacer Pinky selon la direction demandé en paramètre
+        /// </summary>
+        /// <param name="direction">direction dans laquel Pinky doit se déplacer</param>
         public void AvancerDirection(string direction)
         {
             _orientationGhost = direction;
@@ -106,7 +141,9 @@ namespace Pacman
             else if (_orientationGhost == "Nord") _positionY--;
             else if (_orientationGhost == "Sud") _positionY++;
         }
-
+        /// <summary>
+        /// méthode permettant de dépalcer Pinky selon son orientation
+        /// </summary>
         public void DeplacementPinky()
         {
             if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
@@ -118,13 +155,20 @@ namespace Pacman
 
             Avancer();
         }
-
+        /// <summary>
+        /// méthode permettant de changer l'orientation de Pinky selon la directon demandé en paramètre
+        /// </summary>
+        /// <param name="orientationPinky">direction dans laquel Inky doit se tourner</param>
         public void ChangerDirectionPinky(string orientationPinky)
         {
             _orientationGhost = orientationPinky;
             Avancer();
         }
-
+        /// <summary>
+        /// méthode permettant à Inky de détecter ou se trouve Pacman afin de le prendre en chasse
+        /// </summary>
+        /// <param name="positionXPacman">position x de Pacman</param>
+        /// <param name="positionYPacman">position y de Pacman</param>
         public void SuivrePacman(int positionXPacman, int positionYPacman)
         {
             if(_positionX == positionXPacman)
@@ -141,7 +185,9 @@ namespace Pacman
 
             Avancer();
         }
-
+        /// <summary>
+        /// méthode permettant à Inky de tourner dans une direction aléatoire selon certains critères
+        /// </summary>
         public void TournerRandom()
         {
             int rand;

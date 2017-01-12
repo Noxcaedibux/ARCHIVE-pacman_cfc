@@ -19,6 +19,11 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// permet de créer le fantome clyde en lui passant en paramètre une vitesse et la map
+        /// </summary>
+        /// <param name="vitesse"></param>
+        /// <param name="map"></param>
         public Clyde(int vitesse, int[,] map)
         {
             _vitesse = vitesse;
@@ -28,6 +33,9 @@ namespace Pacman
         #endregion constructors
 
         #region accessors and mutators
+        /// <summary>
+        /// retourne la position x de Clyde
+        /// </summary>
         public int positionX
         {
             get
@@ -35,6 +43,9 @@ namespace Pacman
                 return this._positionX;
             }
         }
+        /// <summary>
+        /// retourne la position y de Clyde
+        /// </summary>
         public int positionY
         {
             get
@@ -42,7 +53,9 @@ namespace Pacman
                 return this._positionY;
             }
         }
-
+        /// <summary>
+        /// retourne la position x de base (cage) de clyde
+        /// </summary>
         public int positionXMap
         {
             get
@@ -50,6 +63,9 @@ namespace Pacman
                 return this._positionXMap;
             }
         }
+        /// <summary>
+        /// retourne la position y de base (cage) de Clyde
+        /// </summary>
         public int positionYMap
         {
             get
@@ -57,6 +73,9 @@ namespace Pacman
                 return this._positionYMap;
             }
         }
+        /// <summary>
+        /// retourne la position x graphique de Clyde
+        /// </summary>
         public int positionXGraph
         {
             get
@@ -64,6 +83,9 @@ namespace Pacman
                 return this._positionX * 20;
             }
         }
+        /// <summary>
+        /// retourne la position y graphique de Clyde
+        /// </summary>
         public int positionYGraph
         {
             get
@@ -71,6 +93,9 @@ namespace Pacman
                 return this._positionY * 20;
             }
         }
+        /// <summary>
+        /// retourne la vitesse de Clyde
+        /// </summary>
         public int vitesse
         {
             get
@@ -78,6 +103,9 @@ namespace Pacman
                 return this._vitesse;
             }
         }
+        /// <summary>
+        /// retourne l'orientation de Clyde
+        /// </summary>
         public string orientationClyde
         {
             get
@@ -88,6 +116,10 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        /// <summary>
+        /// méthode permettant de déplacer Clyde dans la direction demandé en paramètre
+        /// </summary>
+        /// <param name="direction">direction dans laquel Clyde doit se déplacer</param>
         public void AvancerDirection(string direction)
         {
             _orientationGhost = direction;
@@ -98,7 +130,9 @@ namespace Pacman
             else if (_orientationGhost == "Nord") _positionY--;
             else if (_orientationGhost == "Sud") _positionY++;
         }
-
+        /// <summary>
+        /// Permet de déplacer Clyde selon son orientation
+        /// </summary>
         public void DeplacementClyde()
         {
             if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;

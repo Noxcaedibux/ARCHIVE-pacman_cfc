@@ -33,8 +33,10 @@ namespace Pacman
         private PictureBox _interface_vie;
         private Label _lblNbPac_gomme;
         private Label _lblNbSuperPac_gomme;
+        private Label _lblNbFantomes;
         private PictureBox[] _piece;
         private Point _positionPacman;
+        private int _totalScore;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacementPacman = 0;
@@ -46,7 +48,6 @@ namespace Pacman
         private int _deplacementPinky = 0;
         private int _actualisationInky = 0;
         private int _deplacementInky = 0;
-        private int _ghostEaten=0;
         private int _life=3;
         private int _superPacman = 0;
         private int _blinkyFuite = 0;
@@ -62,6 +63,7 @@ namespace Pacman
         private bool _Sud = false;
         private bool _nouvelleMap = true;
         private bool _recommencer = true;
+        private bool _rechargerMap = false;
         #endregion private attributes
 
         #region constructors
@@ -111,14 +113,33 @@ namespace Pacman
                     {
                         _lblNbPac_gomme = new Label();
                         _lblNbSuperPac_gomme = new Label();
+                        _lblNbFantomes = new Label();
                         _classMap = new Map(_nomMap);
                         _recommencer = false;
 
-                        _pacman = new ClassPacman(vitesse, _life, _ghostEaten, _classMap.map);
+                        _pacman = new ClassPacman(vitesse, _life, _classMap.map);
                         _pacmanImage = new PictureBox();
                         _pacmanImage.Image = Pacman.Properties.Resources.haut;
                         _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
                         _pacmanImage.Size = new Size(20, 20);
+                    }
+                    if(_rechargerMap)
+                    {
+                        _rechargerMap = false;
+                        _classMap = new Map(_nomMap);
+                        _pacman.ResetPiecesMap(_classMap.map);
+
+                        _pacmanImage = new PictureBox();
+                        _pacmanImage.Image = Pacman.Properties.Resources.haut;
+                        _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                        _pacmanImage.Size = new Size(20, 20);
+
+                        _orientationPacman = "Nord";
+
+                        _Nord = true;
+                        _Sud = false;
+                        _Est = false;
+                        _Ouest = false;
                     }
                     _pacman.replacement();
                     _pacmanImage.Location = new Point(_pacman.positionXGraph, _pacman.positionYGraph);
@@ -163,6 +184,13 @@ namespace Pacman
                     _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
                     _lblNbSuperPac_gomme.AutoSize = true;
 
+                    _lblNbFantomes.Location = new Point(600, 430);
+                    _lblNbFantomes.ForeColor = Color.Yellow;
+                    _lblNbFantomes.Font = new Font("Modern No. 20", 36, FontStyle.Regular);
+                    _lblNbFantomes.BackColor = Color.Transparent;
+                    _lblNbFantomes.Text = _pacman.ghostEaten.ToString();
+                    _lblNbFantomes.AutoSize = true;
+
 
                     _clyde = new Clyde(vitesse, _classMap.map);
                     _clydeImage = new PictureBox();
@@ -196,6 +224,7 @@ namespace Pacman
                     this.Controls.Add(_interface_vie);
                     this.Controls.Add(_lblNbPac_gomme);
                     this.Controls.Add(_lblNbSuperPac_gomme);
+                    this.Controls.Add(_lblNbFantomes);
                     this.Controls.Add(_interface_icones);
                     this.Controls.Add(_clydeImage);
                     this.Controls.Add(_blinkyImage);
@@ -275,6 +304,7 @@ namespace Pacman
                     _pacman.PiecesRestantes();
                     _lblNbPac_gomme.Text = _pacman.pac_gome.ToString();
                     _lblNbSuperPac_gomme.Text = _pacman.superPac_gome.ToString();
+                    _lblNbFantomes.Text = _pacman.ghostEaten.ToString();
                     int lifeTemp = _life;
                     if (_pacman.collisionGhost(_clyde.orientationClyde, _clyde.positionX, _clyde.positionY) == 1 || 
                         _pacman.collisionGhost(_blinky.orientationBlinky, _blinky.positionX, _blinky.positionY) == 1 ||
@@ -283,9 +313,9 @@ namespace Pacman
                     {
                         if (_superPacman == 1)
                         {
-                            _ghostEaten++;
                             if (_pacman.collisionGhost(_clyde.orientationClyde, _clyde.positionX, _clyde.positionY) == 1)
                             {
+                                if (timerClyde.Enabled == true) _pacman.GhostEatenAdd();
                                 timerClyde.Stop();
 
                                 _actualisationClyde = 0;
@@ -296,6 +326,7 @@ namespace Pacman
 
                             if (_pacman.collisionGhost(_blinky.orientationBlinky, _blinky.positionX, _blinky.positionY) == 1)
                             {
+                                if (timerBlinky.Enabled == true) _pacman.GhostEatenAdd();
                                 timerBlinky.Stop();
 
                                 _actualisationBlinky = 0;
@@ -307,6 +338,7 @@ namespace Pacman
 
                             if (_pacman.collisionGhost(_pinky.orientationPinky, _pinky.positionX, _pinky.positionY) == 1)
                             {
+                                if (timerPinky.Enabled == true) _pacman.GhostEatenAdd();
                                 timerPinky.Stop();
 
                                 _actualisationPinky = 0;
@@ -317,6 +349,7 @@ namespace Pacman
 
                             if (_pacman.collisionGhost(_inky.orientationInky, _inky.positionX, _inky.positionY) == 1)
                             {
+                                if (timerInky.Enabled == true) _pacman.GhostEatenAdd();
                                 timerInky.Stop();
 
                                 _actualisationInky = 0;
@@ -329,6 +362,10 @@ namespace Pacman
                         {
                             _life--;
                             _pacman.DeplacementPacman("Nord");
+                            _Nord = true;
+                            _Sud = false;
+                            _Est = false;
+                            _Ouest = false;
                         }
                     }
                     if (_life != lifeTemp || _pacman.NbPiecesRestantes == 0)
@@ -338,11 +375,16 @@ namespace Pacman
                         timerInky.Stop();
                         timerClyde.Stop();
                         timerDeplacement.Stop();
-                        if(_life==0 || _pacman.NbPiecesRestantes == 0)
+                        if(_life==0)
                         {
-                            if (DialogResult.No == MessageBox.Show("Vous avez fini le jeu BRAVO!\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                            _totalScore=_pacman.ScoreTotal();
+                            if (DialogResult.No == MessageBox.Show("Votre score est de" + _totalScore.ToString() +"\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
                             _life = 3;
                             _recommencer = true;
+                        }
+                        if(_pacman.NbPiecesRestantes == 0)
+                        {
+                            _rechargerMap = true;
                         }
                         _nouvelleMap = true;
                         this.Controls.Clear();

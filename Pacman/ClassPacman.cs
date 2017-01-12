@@ -19,12 +19,13 @@ namespace Pacman
         private int _positionY;
         private int _pac_gome=0;
         private int _superPac_gome=0;
-        private int _ghostEaten;
         private int _life;
         private int _piecesRestantes;
         private string _orientationPacman = "Nord";
         private int _avancer;
         private int[,] _map;
+        private int _ghostEaten = 0;
+        private int _nbPiecesTotal;
         #endregion private attributes
 
         #region constructors
@@ -41,12 +42,10 @@ namespace Pacman
         /// <param name="positionY"></param>
         /// <param name="life"></param>
         /// <param name="coins"></param>
-        /// <param name="ghostEaten"></param>
         /// <param name="map"></param>
-        public ClassPacman(int vitesse, int life, int ghostEaten, int[,] map)
+        public ClassPacman(int vitesse, int life, int[,] map)
         {
             _vitesse = vitesse;
-            _ghostEaten = ghostEaten;
             _life = life;
             _map = map;
             Emplacement();
@@ -55,6 +54,7 @@ namespace Pacman
             {
                 if (piece == 2 || piece == 3) _piecesRestantes++;
             }
+            _nbPiecesTotal = _piecesRestantes;
         }
         #endregion constructors
 
@@ -67,6 +67,16 @@ namespace Pacman
             get
             {
                 return this._pac_gome;
+            }
+        }
+        /// <summary>
+        /// Retourne le nombre de fantomes mangés
+        /// </summary>
+        public int ghostEaten
+        {
+            get
+            {
+                return this._ghostEaten;
             }
         }
         /// <summary>
@@ -225,7 +235,13 @@ namespace Pacman
             }
             _orientationPacman = orientationPacman;
         }
-
+        /// <summary>
+        /// méthode permettant de détecter sir Pacman rencontre un fantôme
+        /// </summary>
+        /// <param name="orientationGhost">variable pour connaître l'orientation du fantome</param>
+        /// <param name="positionGhostX">variable pour connaître la position du fantome sur l'axe x</param>
+        /// <param name="positionYGhost">variable pour connaître la position du fantome sur l'axe y</param>
+        /// <returns></returns>
         public int collisionGhost(string orientationGhost, int positionGhostX, int positionYGhost)
         {
             int mort = 0;
@@ -240,7 +256,7 @@ namespace Pacman
                     }
                     else if(_orientationPacman == "Ouest")
                     {
-                        if (orientationGhost != "Ouest") mort = 1;
+                        if (orientationGhost != "Ouest") mort = 1; 
                     }
                 }
 
@@ -299,7 +315,7 @@ namespace Pacman
             {
                 _map[positionY, positionX] = 0;
                 _piecesRestantes--;
-                _pac_gome++;                
+                _pac_gome++;
             }
             if (_map[positionY, positionX] == 3)
             {
@@ -308,6 +324,31 @@ namespace Pacman
                 _superPac_gome++;
             }
             return this._piecesRestantes;
+        }
+        /// <summary>
+        /// augmente le nombre de fantomes mangés par Pacman
+        /// </summary>
+        public void GhostEatenAdd()
+        {
+            _ghostEaten++;
+        }
+
+        /// <summary>
+        /// méthode qui permet de calculer et de retourner le score final
+        /// </summary>
+        /// <param name="ghostEaten">nombre de fantomes que pacman a mangé</param>
+        /// <returns></returns>
+        public int ScoreTotal()
+        {
+            return this._ghostEaten + this._pac_gome + this._superPac_gome;
+        }
+        /// <summary>
+        /// méthode qui permet de recharger les pieces pour continuer une partie
+        /// </summary>
+        public void ResetPiecesMap(int[,] nouvelleMap)
+        {
+            _piecesRestantes = _nbPiecesTotal;
+            _map = nouvelleMap;
         }
         #endregion public methods
 

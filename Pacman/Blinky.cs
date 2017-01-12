@@ -20,6 +20,11 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// Permet de créer le fantome Blinky avec pour paramètres la vitesse du fantôme ainsi que la map
+        /// </summary>
+        /// <param name="vitesse">vitesse de déplacement du fantome</param>
+        /// <param name="map">contient les données de la map</param>
         public Blinky(int vitesse, int[,]map)
         {
             _vitesse = vitesse;
@@ -29,6 +34,9 @@ namespace Pacman
         #endregion constructors
 
         #region accessors and mutators
+        /// <summary>
+        /// retourne la posisiton x de blinky
+        /// </summary>
         public int positionX
         {
             get
@@ -36,6 +44,9 @@ namespace Pacman
                 return this._positionX;
             }
         }
+        /// <summary>
+        /// retourne la position y de blinky
+        /// </summary>
         public int positionY
         {
             get
@@ -43,7 +54,9 @@ namespace Pacman
                 return this._positionY;
             }
         }
-
+        /// <summary>
+        /// retourne la position x de base (cage) de blinky
+        /// </summary>
         public int positionXMap
         {
             get
@@ -51,6 +64,9 @@ namespace Pacman
                 return this._positionXMap;
             }
         }
+        /// <summary>
+        /// retourne la position y de base (cage) de blinky
+        /// </summary>
         public int positionYMap
         {
             get
@@ -58,6 +74,9 @@ namespace Pacman
                 return this._positionYMap;
             }
         }
+        /// <summary>
+        /// retourne la position x graphique de blinky
+        /// </summary>
         public int positionXGraph
         {
             get
@@ -65,6 +84,9 @@ namespace Pacman
                 return this._positionX * 20;
             }
         }
+        /// <summary>
+        /// retourne la position y graphique de blinky
+        /// </summary>
         public int positionYGraph
         {
             get
@@ -72,6 +94,9 @@ namespace Pacman
                 return this._positionY * 20;
             }
         }
+        /// <summary>
+        /// retourne la vitesse de blinky
+        /// </summary>
         public int vitesse
         {
             get
@@ -79,6 +104,9 @@ namespace Pacman
                 return this._vitesse;
             }
         }
+        /// <summary>
+        /// retourne l'orientation de blinky
+        /// </summary>
         public string orientationBlinky
         {
             get
@@ -89,6 +117,10 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        /// <summary>
+        /// méthode permettant de déplacer blinky dans la direction passée en paramètres
+        /// </summary>
+        /// <param name="direction">direction vers laquel blinky devra se déplacer</param>
         public void AvancerDirection(string direction)
         {
             _orientationGhost = direction;
@@ -99,7 +131,9 @@ namespace Pacman
             else if (_orientationGhost == "Nord") _positionY--;
             else if (_orientationGhost == "Sud") _positionY++;
         }
-
+        /// <summary>
+        /// méthode permettant de déplacer blinky selon l'orientation qu'il a
+        /// </summary>
         public void DeplacementBlinky()
         {
             if (_orientationGhost == "Est" && _positionX == 37) _positionX = 0;
@@ -109,12 +143,15 @@ namespace Pacman
             else if (_orientationGhost == "Nord") _positionY--;
             else if (_orientationGhost == "Sud") _positionY++;
         }
-
+        /// <summary>
+        /// méthode permettant à blinky de déterminer dans quel direction aller pour suivre pacman
+        /// </summary>
+        /// <param name="positionXPacman">position x de pacman</param>
+        /// <param name="positionYPacman">position y de pacman</param>
         public void SuivrePacman(int positionXPacman, int positionYPacman)
         {
             int differenceX = 0;
             int differenceY = 0;
-            int i = 0;
 
             string orientationBase = _orientationGhost;
 
@@ -128,10 +165,9 @@ namespace Pacman
             {
                 if (_positionX > positionXPacman && orientationBase != "Est") _orientationGhost = "Ouest";
                 else if (_positionX < positionXPacman && orientationBase != "Ouest") _orientationGhost = "Est";
-                else i = 1;
             }
 
-            else if(differenceY != 0 && i == 1)
+            else if(differenceY != 0)
             {
                 if (_positionY > positionYPacman && orientationBase != "Sud") _orientationGhost = "Nord";
                 else if (_positionY < positionYPacman && orientationBase != "Nord") _orientationGhost = "Sud";
@@ -217,7 +253,9 @@ namespace Pacman
                 }
             }
         }
-
+        /// <summary>
+        /// méthode permettant de tourner dans une direction aléatoire selon quelques critères
+        /// </summary>
         public void TournerRandom()
         {
             int rand;
