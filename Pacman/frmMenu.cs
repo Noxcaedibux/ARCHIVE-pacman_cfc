@@ -93,8 +93,8 @@ namespace Pacman
         private void cmdNouvellePartie_Click(object sender, EventArgs e)
         {
             _frmJeu = new frmJeu();
-            _frmJeu.Show(this);
+            _frmJeu.Show();
         }
-        #endregion private methods        
+        #endregion private methods
     }
 }

@@ -390,7 +390,11 @@ namespace Pacman
                         if(_life==0)
                         {
                             _totalScore=_pacman.ScoreTotal();
-                            if (DialogResult.No == MessageBox.Show("Votre score est de " + _totalScore.ToString() +"\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                            if (DialogResult.No == MessageBox.Show("Votre score est de " + _totalScore.ToString() + "\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo))
+                            {
+                                this.Close();
+                                break;
+                            }
                             _life = 3;
                             _recommencer = true;
                         }
