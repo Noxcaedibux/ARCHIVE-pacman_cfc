@@ -123,7 +123,7 @@ Le but du jeu est de récolter les pièces du niveau pour obtenir des points. Pa
 différents fantômes de couleur différentes. Si les fantômes attrappent Pacman, vous perdez une vie. 
 Si vous récolter toutes les pièces du niveau, vous passez au prochain niveau (la map est recréée jusqu'à ce que vous n'ayez plus de vie ).
 Pacman pourra aussi rammasser des bonus qui lui permettront de chasser les fantômes et de les enfermer
-dans la cage au centre du labyrinthe pour 10 secondes. Le jeu se termine quand vous perdez vos trois vies.
+dans la cage au centre du labyrinthe pour 3 secondes. Le jeu se termine quand vous perdez vos trois vies.
 Le score est calculé de la manière suivante: 1 point par pièce et 10 points par fantômes.</value>
   </data>
 </root>
