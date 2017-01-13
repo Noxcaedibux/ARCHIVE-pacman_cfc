@@ -17,6 +17,7 @@ namespace Pacman
         #region private attributes
         private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"Map\";
         private string _emplacementFichier;
+        private string _nomMap;
         private int _nbMurs;
         private int _nbPieces;
         private int[,] _map = new int[20, 38];
@@ -30,7 +31,8 @@ namespace Pacman
         /// <param name="nomMap">on lui envoie le nom que notre fichier doit avoir sans l'extension</param>
         public Map(string nomMap)
         {
-            _emplacementFichier += _emplacementDossier + nomMap + ".txt";
+            _nomMap = nomMap;
+            _emplacementFichier += _emplacementDossier + _nomMap + ".txt";
             ReadOrCreateFile();
         }
         #endregion constructors
@@ -98,7 +100,15 @@ namespace Pacman
             if (!File.Exists(_emplacementFichier))
             {
                 //on va créer une copie de notre map01.txt sur l'ordinateur 
-                File.WriteAllText(_emplacementFichier, Properties.Resources.Map01);
+                switch(_nomMap)
+                {
+                    case "Map01":
+                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map01);
+                        break;
+                    case "Map02":
+                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map02);
+                        break;
+                }
             }
             strReader = new StreamReader(_emplacementFichier);
             int x;

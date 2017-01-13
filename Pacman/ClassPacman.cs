@@ -25,7 +25,6 @@ namespace Pacman
         private int _avancer;
         private int[,] _map;
         private int _ghostEaten = 0;
-        private int _nbPiecesTotal;
         #endregion private attributes
 
         #region constructors
@@ -54,7 +53,6 @@ namespace Pacman
             {
                 if (piece == 2 || piece == 3) _piecesRestantes++;
             }
-            _nbPiecesTotal = _piecesRestantes;
         }
         #endregion constructors
 
@@ -343,11 +341,13 @@ namespace Pacman
             return this._ghostEaten + this._pac_gome + this._superPac_gome;
         }
         /// <summary>
-        /// méthode qui permet de recharger les pieces pour continuer une partie
+        /// Méthode permettant de recharger la map et les pièces pour continuer la partie
         /// </summary>
-        public void ResetPiecesMap(int[,] nouvelleMap)
+        /// <param name="nouvelleMap">Nouvelle map de jeu</param>
+        /// <param name="nbPieces">Nombre de pièces dans la nouvelle map</param>
+        public void ResetPiecesMap(int[,] nouvelleMap, int nbPieces)
         {
-            _piecesRestantes = _nbPiecesTotal;
+            _piecesRestantes = nbPieces;
             _map = nouvelleMap;
         }
         #endregion public methods

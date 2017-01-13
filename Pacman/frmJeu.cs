@@ -126,8 +126,19 @@ namespace Pacman
                     if(_rechargerMap)
                     {
                         _rechargerMap = false;
+
+                        switch(_nomMap)
+                        {
+                            case "Map01":
+                                _nomMap = "Map02";
+                                break;
+                            case "Map02":
+                                _nomMap = "Map01";
+                                break;
+                        }
+                            
                         _classMap = new Map(_nomMap);
-                        _pacman.ResetPiecesMap(_classMap.map);
+                        _pacman.ResetPiecesMap(_classMap.map, _classMap.NbPiece());
 
                         _pacmanImage = new PictureBox();
                         _pacmanImage.Image = Pacman.Properties.Resources.haut;
@@ -244,7 +255,8 @@ namespace Pacman
                                 _mur[i].Location = new Point(x * 20, y * 20);
                                 _mur[i].Size = new Size(20, 20);
                                 _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                                _mur[i].Image = Pacman.Properties.Resources.mur2;
+                                if(_nomMap == "Map01")_mur[i].Image = Pacman.Properties.Resources.mur2;
+                                else if(_nomMap == "Map02") _mur[i].Image = Pacman.Properties.Resources.mur;
                                 this.Controls.Add(_mur[i]);
                                 i++;
                             }
@@ -378,7 +390,7 @@ namespace Pacman
                         if(_life==0)
                         {
                             _totalScore=_pacman.ScoreTotal();
-                            if (DialogResult.No == MessageBox.Show("Votre score est de" + _totalScore.ToString() +"\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
+                            if (DialogResult.No == MessageBox.Show("Votre score est de " + _totalScore.ToString() +"\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo)) this.Close();
                             _life = 3;
                             _recommencer = true;
                         }
