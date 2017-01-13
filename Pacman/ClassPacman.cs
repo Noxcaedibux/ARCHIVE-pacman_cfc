@@ -338,7 +338,7 @@ namespace Pacman
         /// <returns></returns>
         public int ScoreTotal()
         {
-            return this._ghostEaten + this._pac_gome + this._superPac_gome;
+            return this._ghostEaten * 10 + this._pac_gome + this._superPac_gome;
         }
         /// <summary>
         /// Méthode permettant de recharger la map et les pièces pour continuer la partie
