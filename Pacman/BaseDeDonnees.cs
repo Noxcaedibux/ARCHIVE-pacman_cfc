@@ -24,6 +24,12 @@ namespace Pacman
         #endregion private attributes
 
         #region constructors
+        /// <summary>
+        /// constructeur qui va regarder si le dossier 
+        /// ou doit se trouver notre base de données existe.
+        /// il va créer un fichier de base de données pour stocker nos scores
+        /// </summary>
+        /// <param name="name">nom du fichier de la base de données</param>
         public BaseDeDonnees(string name)
         {
             name += ".SQLite";
@@ -35,9 +41,6 @@ namespace Pacman
             {
                 SQLiteConnection.CreateFile(_emplacementFichier);
                 _dbConnection.Open();
-                _sql = "drop table if exists HighScores";
-                _command = new SQLiteCommand(_sql, _dbConnection);
-                _command.ExecuteNonQuery();
                 _sql = "CREATE TABLE HighScores (PlayerName TEXT, score INTEGER)";
                 _command = new SQLiteCommand(_sql, _dbConnection);
                 _command.ExecuteNonQuery();
@@ -51,10 +54,20 @@ namespace Pacman
         #endregion accessors and mutators
 
         #region public methods
+        /// <summary>
+        /// permet d'ouvrir l'accès à notre base de données
+        /// </summary>
         public void OpenDataBase()
         {
             _dbConnection.Open();
         }
+
+        /// <summary>
+        /// méthode publique qui va écrire dans la base de données 
+        /// le nom de la personne dans la bonne table et pareil pour le score
+        /// </summary>
+        /// <param name="playerName">Nom que le joueur aura écrit</param>
+        /// <param name="score">le score total du joueur</param>
         public void WriteInDbTable(string playerName, int score)
         {
             _sql =" INSERT INTO HighScores (PlayerName, score) values(\""+playerName+"\", "+ score +")";
@@ -62,6 +75,12 @@ namespace Pacman
             _command.ExecuteNonQuery();
             _command.Dispose();
         }
+        /// <summary>
+        /// méthode publique qui vas enregistrer toute
+        /// la basse de données dans une liste et nous
+        /// la retourne après
+        /// </summary>
+        /// <returns>retourne notre liste qui contien le nom des joueurs et leur scores </returns>
         public List<string> retournerListeMeilleursScores()
         {
             if (_highScores == null) _highScores = new List<string>();
@@ -70,10 +89,14 @@ namespace Pacman
             _reader = _command.ExecuteReader();
             while (_reader.Read())
             {
-                _highScores.Add("Name: " + _reader["name"] + "\tScore: " + _reader["score"]);
+                _highScores.Add("Nom: " + _reader["PlayerName"] + "\tScore: " + _reader["score"]);
             }
             return _highScores;
         }
+        /// <summary>
+        /// cette methode nous permet de fermer 
+        /// notre base de données
+        /// </summary>
         public void CloseDataBase()
         {
             _dbConnection.Close();
