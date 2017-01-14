@@ -36,7 +36,7 @@ namespace Pacman
         private Label _lblNbFantomes;
         private PictureBox[] _piece;
         private Point _positionPacman;
-        private int _totalScore;
+        protected int _totalScore;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacementPacman = 0;
@@ -64,6 +64,7 @@ namespace Pacman
         private bool _nouvelleMap = true;
         private bool _recommencer = true;
         private bool _rechargerMap = false;
+        
         #endregion private attributes
 
         #region constructors
@@ -389,7 +390,10 @@ namespace Pacman
                         timerDeplacement.Stop();
                         if(_life==0)
                         {
-                            _totalScore=_pacman.ScoreTotal();
+                            _totalScore = _pacman.ScoreTotal();
+                            FrmInputMessageBox inputMessageBox = new FrmInputMessageBox();
+                            inputMessageBox.Show();
+                            break;
                             if (DialogResult.No == MessageBox.Show("Votre score est de " + _totalScore.ToString() + "\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo))
                             {
                                 this.Close();
