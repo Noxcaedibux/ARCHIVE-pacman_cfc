@@ -306,9 +306,9 @@ namespace Pacman
                             if (timeSuperPacman.Enabled == true) timeSuperPacman.Stop();
                             _superPacman = 1;
                             _blinkyFuite = 1;
-                            _blinky.RandomDirection();
-                            _pinky.RandomDirection();
-                            _inky.RandomDirection();
+                            _blinky.TournerRandom();
+                            _pinky.TournerRandom();
+                            _inky.TournerRandom();
                             
                             timeSuperPacman.Start();
                         }
@@ -792,7 +792,7 @@ namespace Pacman
                     _actualisationBlinky = 0;
                     _deplacementBlinky = 0;
                     _blinky.DeplacementBlinky();
-                    _blinky.RandomDirection();
+                    _blinky.TournerRandom();
                     _blinkyImage.Location = new Point(_blinky.positionXGraph, _blinky.positionYGraph);
                 }
             }
@@ -873,7 +873,7 @@ namespace Pacman
                     _actualisationPinky = 0;
                     _deplacementPinky = 0;
                     _pinky.DeplacementPinky();
-                    _pinky.RandomDirection();
+                    _pinky.TournerRandom();
                     _pinkyImage.Location = new Point(_pinky.positionXGraph, _pinky.positionYGraph);
                 }
             }
@@ -955,7 +955,7 @@ namespace Pacman
                     _deplacementInky = 0;
                     _inky.DeplacementInky();
                     _inkyImage.Location = new Point(_inky.positionXGraph, _inky.positionYGraph);
-                    _inky.RandomDirection();
+                    _inky.TournerRandom();
                 }
             }
         }

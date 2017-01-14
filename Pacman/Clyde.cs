@@ -194,142 +194,80 @@ namespace Pacman
         private void TournerRandom()
         {
             int rand;
-            string orientationPossible1 = _orientationGhost;
-            string orientationPossible2 = _orientationGhost;
-            string orientationPossible3 = _orientationGhost;
-            int nbRandom = 0;
+            int i = 1;
+            string orientationBase = _orientationGhost;
 
-            Random randomDirection = new Random();
-
-            if(_orientationGhost == "Est")
+            while (i == 1)
             {
-                if (_map[_positionY, _positionX + 1] == 1 || _map[_positionY, _positionX + 1] == 9)
-                {
-                    orientationPossible1 = "Ouest";
-                }
-                else orientationPossible1 = "Est";
-                nbRandom++;
+                Random randomDirection = new Random();
+                rand = randomDirection.Next(0, 4);
 
-                if(_map[_positionY - 1, _positionX] != 1 && _map[_positionY - 1, _positionX] != 9)
-                {
-                    orientationPossible2 = "Nord";
-                    nbRandom++;
-
-                    if(_map[_positionY + 1, _positionX] != 1 && _map[_positionY + 1, _positionX] != 9)
-                    {
-                        orientationPossible3 = "Sud";
-                        nbRandom++;
-                    }
-                }
-
-                else if(_map[_positionY + 1, _positionX] != 1 && _map[_positionY + 1, _positionX] != 9)
-                {
-                    orientationPossible2 = "Sud";
-                    nbRandom++;
-                }
-            }
-
-            else if (_orientationGhost == "Ouest")
-            {
-                if (_map[_positionY, _positionX - 1] == 1 || _map[_positionY, _positionX - 1] == 9)
-                {
-                    orientationPossible1 = "Est";
-                }
-                else orientationPossible1 = "Ouest";
-                nbRandom++;
-
-                if (_map[_positionY - 1, _positionX] != 1 && _map[_positionY - 1, _positionX] != 9)
-                {
-                    orientationPossible2 = "Nord";
-                    nbRandom++;
-
-                    if (_map[_positionY + 1, _positionX] != 1 && _map[_positionY + 1, _positionX] != 9)
-                    {
-                        orientationPossible3 = "Sud";
-                        nbRandom++;
-                    }
-                }
-
-                else if (_map[_positionY + 1, _positionX] != 1 && _map[_positionY + 1, _positionX] != 9)
-                {
-                    orientationPossible2 = "Sud";
-                    nbRandom++;
-                }
-            }
-
-            else if (_orientationGhost == "Nord")
-            {
-                if (_map[_positionY - 1, _positionX] == 1 || _map[_positionY - 1, _positionX] == 9)
-                {
-                    orientationPossible1 = "Sud";
-                }
-                else orientationPossible1 = "Nord";
-                nbRandom++;
-
-                if (_map[_positionY, _positionX - 1] != 1 && _map[_positionY, _positionX - 1] != 9)
-                {
-                    orientationPossible2 = "Ouest";
-                    nbRandom++;
-
-                    if (_map[_positionY, _positionX + 1] != 1 && _map[_positionY, _positionX + 1] != 9)
-                    {
-                        orientationPossible3 = "Est";
-                        nbRandom++;
-                    }
-                }
-
-                else if (_map[_positionY, _positionX + 1] != 1 && _map[_positionY, _positionX + 1] != 9)
-                {
-                    orientationPossible2 = "Est";
-                    nbRandom++;
-                }
-            }
-
-            else if (_orientationGhost == "Sud")
-            {
-                if (_map[_positionY + 1, _positionX] == 1 || _map[_positionY + 1, _positionX] == 9)
-                {
-                    orientationPossible1 = "Nord";
-                }
-                else orientationPossible1 = "Sud";
-                nbRandom++;
-
-                if (_map[_positionY, _positionX - 1] != 1 && _map[_positionY, _positionX - 1] != 9)
-                {
-                    orientationPossible2 = "Ouest";
-                    nbRandom++;
-
-                    if (_map[_positionY, _positionX + 1] != 1 && _map[_positionY, _positionX + 1] != 9)
-                    {
-                        orientationPossible3 = "Est";
-                        nbRandom++;
-                    }
-                }
-
-                else if (_map[_positionY, _positionX + 1] != 1 && _map[_positionY, _positionX + 1] != 9)
-                {
-                    orientationPossible2 = "Est";
-                    nbRandom++;
-                }
-            }
-
-            if (nbRandom == 1) _orientationGhost = orientationPossible1;
-
-            else
-            {
-                rand = randomDirection.Next(0, nbRandom);
-
-                switch(rand)
+                switch (rand)
                 {
                     case 0:
-                        _orientationGhost = orientationPossible1;
+                        _orientationGhost = "Nord";
                         break;
                     case 1:
-                        _orientationGhost = orientationPossible2;
+                        _orientationGhost = "Sud";
                         break;
                     case 2:
-                        _orientationGhost = orientationPossible3;
+                        _orientationGhost = "Est";
                         break;
+                    case 3:
+                        _orientationGhost = "Ouest";
+                        break;
+                    default:
+                        _orientationGhost = "Nord";
+                        break;
+
+                }
+
+                i = 0;
+                if (_orientationGhost == "Nord" && (_map[positionY - 1, positionX] == 1 || _map[positionY - 1, positionX] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Sud" && (_map[positionY + 1, positionX] == 1 || _map[positionY + 1, positionX] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Est" && (_map[positionY, positionX + 1] == 1 || _map[positionY, positionX + 1] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Ouest" && (_map[positionY, positionX - 1] == 1 || _map[positionY, positionX - 1] == 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Nord" && orientationBase == "Sud" && (_map[positionY + 1, positionX] != 1 && _map[positionY + 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Sud" && orientationBase == "Nord" && (_map[positionY - 1, positionX] != 1 && _map[positionY - 1, positionX] != 9))
+                {
+                    i = 1;
+                }
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && _positionX != 0)
+                {
+                    if (_map[positionY, positionX - 1] != 1 && _map[positionY, positionX - 1] != 9)
+                    {
+                        i = 1;
+                    }
+                }
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && _positionX != 37)
+                {
+                    if (_map[positionY, positionX + 1] != 1 && _map[positionY, positionX + 1] != 9)
+                    {
+                        i = 1;
+                    }
+                }
+                else if (_orientationGhost == "Est" && orientationBase == "Ouest" && _positionX == 0)
+                {
+                    _orientationGhost = "Ouest";
+                }
+                else if (_orientationGhost == "Ouest" && orientationBase == "Est" && _positionX == 37)
+                {
+                    _orientationGhost = "Est";
                 }
             }
         }
