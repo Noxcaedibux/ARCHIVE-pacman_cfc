@@ -194,7 +194,7 @@ namespace Pacman
         private void TournerRandom()
         {
             int rand;
-            string orientationPossible1 = _orientationGhost;
+            string orientationPossible1 = "Est";
             string orientationPossible2 = _orientationGhost;
             string orientationPossible3 = _orientationGhost;
             int nbRandom = 0;
@@ -261,6 +261,7 @@ namespace Pacman
             {
                 if (_map[_positionY - 1, _positionX] == 1 || _map[_positionY - 1, _positionX] == 9)
                 {
+                    if (_map[_positionY + 1, _positionX] != 1 && _map[_positionY + 1, _positionX] != 9)
                     orientationPossible1 = "Sud";
                 }
                 else orientationPossible1 = "Nord";
@@ -288,7 +289,7 @@ namespace Pacman
             else if (_orientationGhost == "Sud")
             {
                 if (_map[_positionY + 1, _positionX] == 1 || _map[_positionY + 1, _positionX] == 9)
-                {
+                {   
                     orientationPossible1 = "Nord";
                 }
                 else orientationPossible1 = "Sud";
