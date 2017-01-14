@@ -56,7 +56,7 @@ namespace Pacman
         private string _orientationBlinky;
         private string _orientationPinky;
         private string _orientationInky;
-        private string _nomMap = "Map01";
+        private string _nomMap = "MapGlace";
         private bool _Nord = false;
         private bool _Est = false;
         private bool _Ouest = false;
@@ -79,7 +79,38 @@ namespace Pacman
             this.MinimumSize = new Size(777, 606);
             this.MaximizeBox = false;
             this.Name = "Jeu";
-            this.BackColor = Color.Black;
+
+            int rand;
+
+            Random randomMap = new Random();
+            rand = randomMap.Next(0, 3);
+
+            switch(rand)
+            {
+                case 0:
+                    _nomMap = "Map01";
+                    break;
+                case 1:
+                    _nomMap = "Map02";
+                    break;
+                case 2:
+                    _nomMap = "MapGlace";
+                    break;
+            }
+
+            switch(_nomMap)
+            {
+                case "MapGlace":
+                    this.BackColor = Color.CornflowerBlue;
+                    break;
+                case "MapFeu":
+                    this.BackColor = Color.DarkRed;
+                    break;
+                default:
+                    this.BackColor = Color.Black;
+                    break;
+            }
+
             try
             {
                 gestionMap();
@@ -111,6 +142,18 @@ namespace Pacman
                     int vitesse = 20;
                     if (_recommencer)
                     {
+                        switch (_nomMap)
+                        {
+                            case "MapGlace":
+                                this.BackColor = Color.CornflowerBlue;
+                                break;
+                            case "MapFeu":
+                                this.BackColor = Color.DarkRed;
+                                break;
+                            default:
+                                this.BackColor = Color.Black;
+                                break;
+                        }
                         _lblNbPac_gomme = new Label();
                         _lblNbSuperPac_gomme = new Label();
                         _lblNbFantomes = new Label();
@@ -127,16 +170,29 @@ namespace Pacman
                     {
                         _rechargerMap = false;
 
-                        switch(_nomMap)
+                        int rand;
+                        string nomMap = _nomMap;
+                        
+                        while(_nomMap == nomMap)
                         {
-                            case "Map01":
-                                _nomMap = "Map02";
-                                break;
-                            case "Map02":
-                                _nomMap = "Map01";
-                                break;
+                            Random randomMap = new Random();
+                            rand = randomMap.Next(0, 3);
+
+
+                            switch (rand)
+                            {
+                                case 0:
+                                    _nomMap = "Map01";
+                                    break;
+                                case 1:
+                                    _nomMap = "Map02";
+                                    break;
+                                case 2:
+                                    _nomMap = "MapGlace";
+                                    break;
+                            }
                         }
-                            
+
                         _classMap = new Map(_nomMap);
                         _pacman.ResetPiecesMap(_classMap.map, _classMap.NbPiece());
 
@@ -255,8 +311,13 @@ namespace Pacman
                                 _mur[i].Location = new Point(x * 20, y * 20);
                                 _mur[i].Size = new Size(20, 20);
                                 _mur[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                                if(_nomMap == "Map01")_mur[i].Image = Pacman.Properties.Resources.mur2;
-                                else if(_nomMap == "Map02") _mur[i].Image = Pacman.Properties.Resources.mur;
+                                if (_nomMap == "Map01") _mur[i].Image = Pacman.Properties.Resources.mur2;
+                                else if (_nomMap == "Map02") _mur[i].Image = Pacman.Properties.Resources.mur;
+                                else if (_nomMap == "Map03") _mur[i].Image = Pacman.Properties.Resources.murBase;
+                                else if (_nomMap == "Map04") _mur[i].Image = Pacman.Properties.Resources.MUR4;
+                                else if (_nomMap == "Map05") _mur[i].Image = Pacman.Properties.Resources.MUR5;
+                                else if (_nomMap == "MapGlace") _mur[i].Image = Pacman.Properties.Resources.MurGlace;
+                                else if (_nomMap == "MapFeu") _mur[i].Image = Pacman.Properties.Resources.MurFeu;
                                 this.Controls.Add(_mur[i]);
                                 i++;
                             }

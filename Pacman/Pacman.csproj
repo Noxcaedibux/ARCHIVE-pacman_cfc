@@ -237,6 +237,27 @@
   <ItemGroup>
     <None Include="Resources\Map02.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MUR4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MUR5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\murGlace1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\murPierreDeLave.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapGlace.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MurFeu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MurGlace.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

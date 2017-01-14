@@ -241,4 +241,19 @@
   <data name="Map02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map02.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="MUR4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUR4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MUR5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUR5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapGlace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="MurFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MurFeu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MurGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MurGlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
