@@ -10,25 +10,29 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    public partial class FrmInputMessageBox : frmJeu
+    public partial class FrmInputMessageBox : Form
     {
         private Label _lblMessage;
         private TextBox _txtNom;
         private Button _cmdOk;
         private Button _cmdCancel;
         private BaseDeDonnees _baseDeDonnes;
+        private int _totalScore;
 
-        public FrmInputMessageBox()
+        public FrmInputMessageBox(int totalScore)
         {
             InitializeComponent();
-            this.Controls.Clear();
+            _totalScore = totalScore;
+
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Name = "InputMessageBox";
+            this.Size = new Size(305, 145);
+
             _lblMessage = new Label();
             _txtNom = new TextBox();
             _cmdOk = new Button();
             _cmdCancel = new Button();
 
-            this.Name = "InputMessageBox";
-            this.Size = new Size(305, 145);
             this._lblMessage.Location = new Point(24, 13);
             this._lblMessage.AutoSize = true;
 
@@ -57,9 +61,9 @@ namespace Pacman
 
         private void _cmdOk_Click(object sender, EventArgs e)
         {
-            if (_baseDeDonnes == null) _baseDeDonnes = new BaseDeDonnees("Scores");
+            _baseDeDonnes = new BaseDeDonnees("Scores");
             _baseDeDonnes.OpenDataBase();
-            _baseDeDonnes.WriteInDbTable(_txtNom.Text, base._totalScore);
+            _baseDeDonnes.WriteInDbTable(_txtNom.Text, _totalScore);
             _baseDeDonnes.CloseDataBase();
             this.Close();
         }

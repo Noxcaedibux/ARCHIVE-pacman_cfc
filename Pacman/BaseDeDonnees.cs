@@ -16,7 +16,9 @@ namespace Pacman
         #region private attributes
         private SQLiteConnection _dbConnection;
         private SQLiteDataReader _reader;
+        private SQLiteCommand _command;
         private List<string> _highScores;
+        private string _sql;
         private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"Scores\";
         private string _emplacementFichier;
         #endregion private attributes
@@ -27,18 +29,15 @@ namespace Pacman
             name += ".SQLite";
             _emplacementFichier = _emplacementDossier + name;
             _dbConnection = new SQLiteConnection("Data Source=" + name + ".SQLite;Version=3;");
-
+            
             if (!Directory.Exists(_emplacementDossier)) Directory.CreateDirectory(_emplacementDossier);
-            if (!File.Exists(_emplacementFichier))
-            {
-                SQLiteConnection.CreateFile(_emplacementFichier);
-                _dbConnection.Open();
-                string sql = "create table highScores (PlayerName varchar(20), score int)";
-                SQLiteCommand command = new SQLiteCommand(sql, _dbConnection);
-                command.ExecuteNonQuery();
-                command.Dispose();
-                _dbConnection.Close();
-            }
+            if(!File.Exists(_emplacementFichier))SQLiteConnection.CreateFile(_emplacementFichier);
+            _dbConnection.Open();
+            _sql = "CREATE TABLE HighScores (PlayerName TEXT, score INT)";
+            _command = new SQLiteCommand(_sql, _dbConnection);
+            _command.ExecuteNonQuery();
+            _command.Dispose();
+            _dbConnection.Close();
         }
         #endregion constructors 
 
@@ -52,17 +51,17 @@ namespace Pacman
         }
         public void WriteInDbTable(string playerName, int score)
         {
-            string sql = "insert into highScores (PlayerName, score) values ('" + playerName+"', "+score+")";
-            SQLiteCommand command = new SQLiteCommand(sql, _dbConnection);
-            command.ExecuteNonQuery();
-            command.Dispose();
+            _sql = "INSERT INTO HighScores (PlayerName, score) values ('" + playerName+"', "+score+")";
+            _command = new SQLiteCommand(_sql, _dbConnection);
+            _command.ExecuteNonQuery();
+            _command.Dispose();
         }
         public List<string> retournerListeMeilleursScores()
         {
             if (_highScores == null) _highScores = new List<string>();
-            string sql = "select * from highscores order by score desc";
-            SQLiteCommand command = new SQLiteCommand(sql, _dbConnection);
-            _reader = command.ExecuteReader();
+            _sql = "select * from HighScores order by score desc";
+            _command = new SQLiteCommand(_sql, _dbConnection);
+            _reader = _command.ExecuteReader();
             while (_reader.Read())
             {
                 _highScores.Add("Name: " + _reader["name"] + "\tScore: " + _reader["score"]);
