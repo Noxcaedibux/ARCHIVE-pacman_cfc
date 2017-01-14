@@ -31,13 +31,19 @@ namespace Pacman
             _dbConnection = new SQLiteConnection("Data Source=" + name + ".SQLite;Version=3;");
             
             if (!Directory.Exists(_emplacementDossier)) Directory.CreateDirectory(_emplacementDossier);
-            if(!File.Exists(_emplacementFichier))SQLiteConnection.CreateFile(_emplacementFichier);
-            _dbConnection.Open();
-            _sql = "CREATE TABLE HighScores (PlayerName TEXT, score INT)";
-            _command = new SQLiteCommand(_sql, _dbConnection);
-            _command.ExecuteNonQuery();
-            _command.Dispose();
-            _dbConnection.Close();
+            if (!File.Exists(_emplacementFichier))
+            {
+                SQLiteConnection.CreateFile(_emplacementFichier);
+                _dbConnection.Open();
+                _sql = "drop table if exists HighScores";
+                _command = new SQLiteCommand(_sql, _dbConnection);
+                _command.ExecuteNonQuery();
+                _sql = "CREATE TABLE HighScores (PlayerName TEXT, score INTEGER)";
+                _command = new SQLiteCommand(_sql, _dbConnection);
+                _command.ExecuteNonQuery();
+                _command.Dispose();
+                _dbConnection.Close();
+            }
         }
         #endregion constructors 
 
@@ -51,7 +57,7 @@ namespace Pacman
         }
         public void WriteInDbTable(string playerName, int score)
         {
-            _sql = "INSERT INTO HighScores (PlayerName, score) values ('" + playerName+"', "+score+")";
+            _sql =" INSERT INTO HighScores (PlayerName, score) values(\""+playerName+"\", "+ score +")";
             _command = new SQLiteCommand(_sql, _dbConnection);
             _command.ExecuteNonQuery();
             _command.Dispose();
