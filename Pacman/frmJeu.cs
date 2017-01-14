@@ -84,7 +84,7 @@ namespace Pacman
             int rand;
 
             Random randomMap = new Random();
-            rand = randomMap.Next(0, 3);
+            rand = randomMap.Next(0, 4);
 
             switch(rand)
             {
@@ -96,6 +96,9 @@ namespace Pacman
                     break;
                 case 2:
                     _nomMap = "MapGlace";
+                    break;
+                case 3:
+                    _nomMap = "MapFeu";
                     break;
             }
 
@@ -177,8 +180,7 @@ namespace Pacman
                         while(_nomMap == nomMap)
                         {
                             Random randomMap = new Random();
-                            rand = randomMap.Next(0, 3);
-
+                            rand = randomMap.Next(0, 4);
 
                             switch (rand)
                             {
@@ -190,6 +192,9 @@ namespace Pacman
                                     break;
                                 case 2:
                                     _nomMap = "MapGlace";
+                                    break;
+                                case 3:
+                                    _nomMap = "MapFeu";
                                     break;
                             }
                         }

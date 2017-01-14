@@ -250,10 +250,13 @@
   <data name="MapGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MapGlace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="MurFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MurFeu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MurGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MurGlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapFeu.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="MurFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MurFeu.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

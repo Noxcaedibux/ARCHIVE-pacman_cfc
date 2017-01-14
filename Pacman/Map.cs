@@ -111,6 +111,9 @@ namespace Pacman
                     case "MapGlace":
                         File.WriteAllText(_emplacementFichier, Properties.Resources.MapGlace);
                         break;
+                    case "MapFeu":
+                        File.WriteAllText(_emplacementFichier, Properties.Resources.MapFeu);
+                        break;
                 }
             }
             strReader = new StreamReader(_emplacementFichier);
