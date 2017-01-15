@@ -81,7 +81,7 @@
             // lblRegles
             // 
             this.lblRegles.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegles.Location = new System.Drawing.Point(176, 28);
+            this.lblRegles.Location = new System.Drawing.Point(176, 17);
             this.lblRegles.Name = "lblRegles";
             this.lblRegles.Size = new System.Drawing.Size(405, 375);
             this.lblRegles.TabIndex = 3;
@@ -90,7 +90,7 @@
             // pbPacman
             // 
             this.pbPacman.Image = global::Pacman.Properties.Resources.droite;
-            this.pbPacman.Location = new System.Drawing.Point(180, 28);
+            this.pbPacman.Location = new System.Drawing.Point(176, 17);
             this.pbPacman.Name = "pbPacman";
             this.pbPacman.Size = new System.Drawing.Size(401, 375);
             this.pbPacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -101,7 +101,7 @@
             // 
             this.lblScores.AutoSize = true;
             this.lblScores.Font = new System.Drawing.Font("Engravers MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScores.Location = new System.Drawing.Point(215, 42);
+            this.lblScores.Location = new System.Drawing.Point(175, 17);
             this.lblScores.Name = "lblScores";
             this.lblScores.Size = new System.Drawing.Size(0, 25);
             this.lblScores.TabIndex = 5;

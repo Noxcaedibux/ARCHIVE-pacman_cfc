@@ -19,7 +19,7 @@ namespace Pacman
         private SQLiteCommand _command;
         private List<string> _highScores;
         private string _sql;
-        private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"Scores\";
+        private string _emplacementDossier = AppDomain.CurrentDomain.BaseDirectory + @"\Scores\";
         private string _emplacementFichier;
         #endregion private attributes
 
@@ -32,9 +32,9 @@ namespace Pacman
         /// <param name="name">nom du fichier de la base de données</param>
         public BaseDeDonnees(string name)
         {
-            name += ".SQLite";
-            _emplacementFichier = _emplacementDossier + name;
-            _dbConnection = new SQLiteConnection("Data Source=" + name + ".SQLite;Version=3;");
+            name += ".sqlite";
+            _emplacementFichier = _emplacementDossier+name;
+            _dbConnection = new SQLiteConnection("Data Source=" + _emplacementFichier + ";Version=3;");
             
             if (!Directory.Exists(_emplacementDossier)) Directory.CreateDirectory(_emplacementDossier);
             if (!File.Exists(_emplacementFichier))

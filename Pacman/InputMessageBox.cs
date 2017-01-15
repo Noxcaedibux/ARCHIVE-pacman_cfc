@@ -30,6 +30,7 @@ namespace Pacman
 
             _lblMessage = new Label();
             _txtNom = new TextBox();
+            _txtNom.MaxLength = 15;
             _cmdOk = new Button();
             _cmdCancel = new Button();
 
@@ -40,7 +41,7 @@ namespace Pacman
                                   "\nVeuillez entrer un nom pour enregistrer votre score.";
             this._txtNom.Size = new Size(156, 20);
             this._txtNom.Location = new Point(69, 40);
-            this._txtNom.Text = "\"Votre Nom\"";
+            this._txtNom.Text = "\"1-15 caractères max\"";
 
             this._cmdOk.Size = new Size(75, 23);
             this._cmdOk.Location = new Point(114, 73);
@@ -62,11 +63,16 @@ namespace Pacman
 
         private void _cmdOk_Click(object sender, EventArgs e)
         {
-            _baseDeDonnes = new BaseDeDonnees("Scores");
-            _baseDeDonnes.OpenDataBase();
-            _baseDeDonnes.WriteInDbTable(_txtNom.Text, _totalScore);
-            _baseDeDonnes.CloseDataBase();
-            this.Close();
+            string Nom = _txtNom.Text.Replace(" ", "");
+            if (Nom == "") MessageBox.Show("Veuillez écrire un nom svp", "Nom manquant");
+            else
+            {
+                _baseDeDonnes = new BaseDeDonnees("Scores");
+                _baseDeDonnes.OpenDataBase();
+                _baseDeDonnes.WriteInDbTable(_txtNom.Text, _totalScore);
+                _baseDeDonnes.CloseDataBase();
+                this.Close();
+            }
         }
         private void _cmdCancel_Click(object sender, EventArgs e)
         {
