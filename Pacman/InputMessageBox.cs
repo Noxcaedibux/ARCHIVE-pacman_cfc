@@ -36,7 +36,8 @@ namespace Pacman
             this._lblMessage.Location = new Point(24, 13);
             this._lblMessage.AutoSize = true;
 
-            this._lblMessage.Text = "Veuillez entrer un nom pour enregistrer votre score.";
+            this._lblMessage.Text = "                           Score: " + totalScore.ToString() + 
+                                  "\nVeuillez entrer un nom pour enregistrer votre score.";
             this._txtNom.Size = new Size(156, 20);
             this._txtNom.Location = new Point(69, 40);
             this._txtNom.Text = "\"Votre Nom\"";

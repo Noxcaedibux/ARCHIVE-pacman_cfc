@@ -86,10 +86,11 @@ namespace Pacman
             if (_highScores == null) _highScores = new List<string>();
             _sql = "select * from HighScores order by score desc";
             _command = new SQLiteCommand(_sql, _dbConnection);
+            _dbConnection.Open();
             _reader = _command.ExecuteReader();
             while (_reader.Read())
             {
-                _highScores.Add("Nom: " + _reader["PlayerName"] + "\tScore: " + _reader["score"]);
+                _highScores.Add(_reader["PlayerName"] + ":      " + "\t" + _reader["score"]);
             }
             return _highScores;
         }

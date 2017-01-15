@@ -477,7 +477,7 @@ namespace Pacman
                             _totalScore = _pacman.ScoreTotal();
                             FrmInputMessageBox inputMessageBox = new FrmInputMessageBox(_totalScore);
                             inputMessageBox.ShowDialog();
-                            if (DialogResult.No == MessageBox.Show("Votre score est de " + _totalScore.ToString() + "\n voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo))
+                            if (DialogResult.No == MessageBox.Show("voulez vous recommencer?", "Fin de partie", MessageBoxButtons.YesNo))
                             {
                                 this.Close();
                                 break;

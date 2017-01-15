@@ -34,6 +34,7 @@
             this.cmdScores = new System.Windows.Forms.Button();
             this.lblRegles = new System.Windows.Forms.Label();
             this.pbPacman = new System.Windows.Forms.PictureBox();
+            this.lblScores = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPacman)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,11 +97,21 @@
             this.pbPacman.TabIndex = 4;
             this.pbPacman.TabStop = false;
             // 
+            // lblScores
+            // 
+            this.lblScores.AutoSize = true;
+            this.lblScores.Font = new System.Drawing.Font("Engravers MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScores.Location = new System.Drawing.Point(215, 42);
+            this.lblScores.Name = "lblScores";
+            this.lblScores.Size = new System.Drawing.Size(0, 25);
+            this.lblScores.TabIndex = 5;
+            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 426);
+            this.Controls.Add(this.lblScores);
             this.Controls.Add(this.pbPacman);
             this.Controls.Add(this.lblRegles);
             this.Controls.Add(this.cmdScores);
@@ -110,6 +121,7 @@
             this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.pbPacman)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,6 +131,7 @@
         private System.Windows.Forms.Button cmdScores;
         private System.Windows.Forms.Label lblRegles;
         private System.Windows.Forms.PictureBox pbPacman;
+        private System.Windows.Forms.Label lblScores;
     }
 }
 

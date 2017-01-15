@@ -37,6 +37,7 @@ namespace Pacman
             this.cmdNouvellePartie.TabIndex = 0;
             this.MaximizeBox = false;
             this.pbPacman.Visible = false;
+            this.lblScores.Visible = false;
             this.Name = "Menu";
         }
         #endregion constructors
@@ -77,12 +78,35 @@ namespace Pacman
 
         private void cmdScores_MouseEnter(object sender, EventArgs e)
         {
+            List<string> listScores = new List<string>();
+            BaseDeDonnees baseDeDonnees = new BaseDeDonnees("Scores");
+            int i;
 
+            lblScores.Text = "";
+
+            listScores = baseDeDonnees.retournerListeMeilleursScores();
+
+            if(listScores.Count <= 10)
+            {
+                foreach(string score in listScores)
+                {
+                    lblScores.Text += score.ToString() + "\n";
+                }
+            }
+
+            else
+            {
+                for(i = 0; i < 10; i++)
+                {
+                    lblScores.Text += listScores[i].ToString() + "\n";
+                }
+            }
+            this.lblScores.Visible = true;
         }
 
         private void cmdScores_MouseLeave(object sender, EventArgs e)
         {
-
+            this.lblScores.Visible = false;
         }
 
         /// <summary>
