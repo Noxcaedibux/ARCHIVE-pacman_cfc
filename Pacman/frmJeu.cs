@@ -81,40 +81,6 @@ namespace Pacman
             this.MaximizeBox = false;
             this.Name = "Jeu";
 
-            int rand;
-
-            Random randomMap = new Random();
-            rand = randomMap.Next(0, 4);
-
-            switch(rand)
-            {
-                case 0:
-                    _nomMap = "Map01";
-                    break;
-                case 1:
-                    _nomMap = "Map02";
-                    break;
-                case 2:
-                    _nomMap = "MapGlace";
-                    break;
-                case 3:
-                    _nomMap = "MapFeu";
-                    break;
-            }
-
-            switch(_nomMap)
-            {
-                case "MapGlace":
-                    this.BackColor = Color.CornflowerBlue;
-                    break;
-                case "MapFeu":
-                    this.BackColor = Color.DarkRed;
-                    break;
-                default:
-                    this.BackColor = Color.Black;
-                    break;
-            }
-
             try
             {
                 gestionMap();
@@ -146,6 +112,30 @@ namespace Pacman
                     int vitesse = 20;
                     if (_recommencer)
                     {
+                        int rand;
+
+                        Random randomMap = new Random();
+                        rand = randomMap.Next(0, 5);
+
+                        switch (rand)
+                        {
+                            case 0:
+                                _nomMap = "Map01";
+                                break;
+                            case 1:
+                                _nomMap = "Map02";
+                                break;
+                            case 2:
+                                _nomMap = "Map03";
+                                break;
+                            case 3:
+                                _nomMap = "MapGlace";
+                                break;
+                            case 4:
+                                _nomMap = "MapFeu";
+                                break;
+                        }
+
                         switch (_nomMap)
                         {
                             case "MapGlace":
@@ -180,7 +170,7 @@ namespace Pacman
                         while(_nomMap == nomMap)
                         {
                             Random randomMap = new Random();
-                            rand = randomMap.Next(0, 4);
+                            rand = randomMap.Next(0, 5);
 
                             switch (rand)
                             {
@@ -191,12 +181,28 @@ namespace Pacman
                                     _nomMap = "Map02";
                                     break;
                                 case 2:
-                                    _nomMap = "MapGlace";
+                                    _nomMap = "Map03";
                                     break;
                                 case 3:
+                                    _nomMap = "MapGlace";
+                                    break;
+                                case 4:
                                     _nomMap = "MapFeu";
                                     break;
                             }
+                        }
+
+                        switch (_nomMap)
+                        {
+                            case "MapGlace":
+                                this.BackColor = Color.CornflowerBlue;
+                                break;
+                            case "MapFeu":
+                                this.BackColor = Color.DarkRed;
+                                break;
+                            default:
+                                this.BackColor = Color.Black;
+                                break;
                         }
 
                         _classMap = new Map(_nomMap);
