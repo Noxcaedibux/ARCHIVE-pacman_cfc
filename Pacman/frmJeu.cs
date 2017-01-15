@@ -148,7 +148,7 @@ namespace Pacman
                                 this.BackColor = Color.CornflowerBlue;
                                 break;
                             case "MapFeu":
-                                this.BackColor = Color.DarkRed;
+                                this.BackColor = Color.Maroon;
                                 break;
                             default:
                                 this.BackColor = Color.Black;
