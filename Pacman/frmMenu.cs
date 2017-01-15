@@ -101,6 +101,7 @@ namespace Pacman
                     lblScores.Text += listScores[i].ToString() + "\n";
                 }
             }
+
             this.lblScores.Visible = true;
         }
 
