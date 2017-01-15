@@ -1,0 +1,961 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pacman</name>
+    </assembly>
+    <members>
+        <member name="T:Pacman.BaseDeDonnees">
+            <summary>
+            classe qui permettra d'enregistrer nos scores et de les lire
+            </summary>
+        </member>
+        <member name="M:Pacman.BaseDeDonnees.#ctor(System.String)">
+            <summary>
+            constructeur qui va regarder si le dossier 
+            ou doit se trouver notre base de données existe.
+            il va créer un fichier de base de données pour stocker nos scores
+            </summary>
+            <param name="name">nom du fichier de la base de données</param>
+        </member>
+        <member name="M:Pacman.BaseDeDonnees.OpenDataBase">
+            <summary>
+            permet d'ouvrir l'accès à notre base de données
+            </summary>
+        </member>
+        <member name="M:Pacman.BaseDeDonnees.WriteInDbTable(System.String,System.Int32)">
+            <summary>
+            méthode publique qui va écrire dans la base de données 
+            le nom de la personne dans la bonne table et pareil pour le score
+            </summary>
+            <param name="playerName">Nom que le joueur aura écrit</param>
+            <param name="score">le score total du joueur</param>
+        </member>
+        <member name="M:Pacman.BaseDeDonnees.retournerListeMeilleursScores">
+            <summary>
+            méthode publique qui vas enregistrer toute
+            la basse de données dans une liste et nous
+            la retourne après
+            </summary>
+            <returns>retourne notre liste qui contien le nom des joueurs et leur scores </returns>
+        </member>
+        <member name="M:Pacman.BaseDeDonnees.CloseDataBase">
+            <summary>
+            cette methode nous permet de fermer 
+            notre base de données
+            </summary>
+        </member>
+        <member name="M:Pacman.Blinky.#ctor(System.Int32,System.Int32[0:,0:])">
+            <summary>
+            Permet de créer le fantome Blinky avec pour paramètres la vitesse du fantôme ainsi que la map
+            </summary>
+            <param name="vitesse">vitesse de déplacement du fantome</param>
+            <param name="map">contient les données de la map</param>
+        </member>
+        <member name="P:Pacman.Blinky.positionX">
+            <summary>
+            retourne la posisiton x de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.positionY">
+            <summary>
+            retourne la position y de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.positionXMap">
+            <summary>
+            retourne la position x de base (cage) de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.positionYMap">
+            <summary>
+            retourne la position y de base (cage) de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.positionXGraph">
+            <summary>
+            retourne la position x graphique de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.positionYGraph">
+            <summary>
+            retourne la position y graphique de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.vitesse">
+            <summary>
+            retourne la vitesse de blinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Blinky.orientationBlinky">
+            <summary>
+            retourne l'orientation de blinky
+            </summary>
+        </member>
+        <member name="M:Pacman.Blinky.AvancerDirection(System.String)">
+            <summary>
+            méthode permettant de déplacer blinky dans la direction passée en paramètres
+            </summary>
+            <param name="direction">direction vers laquel blinky devra se déplacer</param>
+        </member>
+        <member name="M:Pacman.Blinky.DeplacementBlinky">
+            <summary>
+            méthode permettant de déplacer blinky selon l'orientation qu'il a
+            </summary>
+        </member>
+        <member name="M:Pacman.Blinky.SuivrePacman(System.Int32,System.Int32)">
+            <summary>
+            méthode permettant à blinky de déterminer dans quel direction aller pour suivre pacman
+            </summary>
+            <param name="positionXPacman">position x de pacman</param>
+            <param name="positionYPacman">position y de pacman</param>
+        </member>
+        <member name="M:Pacman.Blinky.RandomDirection">
+            <summary>
+            méthode permettant de tourner dans une direction aléatoire selon quelques critères
+            </summary>
+        </member>
+        <member name="T:Pacman.ClassPacman">
+            <summary>
+            classe pacman qui permettra de construire un objet pacman
+            contenant les informations les plus importantes de pacman
+            </summary>
+        </member>
+        <member name="M:Pacman.ClassPacman.#ctor(System.Int32,System.Int32,System.Int32[0:,0:])">
+            <summary>
+            constructeur de notre objet pacman
+            qui contiendra toutes les informations utiles comme,
+            le nombre de vies qu'il possède,
+            le nombre de pièces mangées,
+            le nombre de fontômes mangés,
+            sa vitesse de déplacement et ces coordonées
+            </summary>
+            <param name="vitesse"></param>
+            <param name="positionX"></param>
+            <param name="positionY"></param>
+            <param name="life"></param>
+            <param name="coins"></param>
+            <param name="map"></param>
+        </member>
+        <member name="P:Pacman.ClassPacman.pac_gome">
+            <summary>
+            accesseur du nombre de pièces mangées
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.ghostEaten">
+            <summary>
+            Retourne le nombre de fantomes mangés
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.superPac_gome">
+            <summary>
+            accesseur du nombre de pièces mangées
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.positionX">
+            <summary>
+            accesseur de la position horizontale de pacman
+            qui sera des entier comme si on lisait des lignes d'un tableau
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.positionY">
+            <summary>
+            accesseur de la position verticale de pacman
+            qui sera des entier comme si on lisait des colonnes d'un tableau
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.positionXGraph">
+            <summary>
+            accesseur de la position horizontale de pacman qui correspondra aux positions du tableau 
+            qui fait 20pixels de large et 2 pixels de plus pour etre bien placé
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.positionYGraph">
+            <summary>
+            accesseur de la position verticale de pacman qui correspondra aux positions du tableau 
+            qui fait 20pixels de haut
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.vitesse">
+            <summary>
+            accesseur de la vitesse de deplacement de pacman
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.orientation">
+            <summary>
+            accesseur qui nous permettra de savoir la direction dans la quelle pacman regarde:
+            - Nord
+            - Sud 
+            - Est 
+            - Ouest
+            </summary>
+        </member>
+        <member name="P:Pacman.ClassPacman.NbPiecesRestantes">
+            <summary>
+            Accesseur qui nous retourne la valeur des pièces que pacman n'a pas encore mangé
+            </summary>
+        </member>
+        <member name="M:Pacman.ClassPacman.replacement">
+            <summary>
+            cette methode remet pacman à son point de départ
+            </summary>
+        </member>
+        <member name="M:Pacman.ClassPacman.avancer">
+            <summary>
+            methode public qui informe si on peut ou pas avancer
+            exemple pacman va dépasser le haut du jeu il est arreté
+            pareil pour le bas.
+            et il pourra se teleporter de droite à gauche ou vice versa 
+            quand il dépace le mur droite ou gauche
+            et s'arretera s'il a un mur en face de lui
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.ClassPacman.DeplacementPacman(System.String)">
+            <summary>
+            méthode permettant de diriger pacman en fonction de l'orientation retournée
+            </summary>
+            <param name="orientationPacman">variable contenant l'orientation de pacman</param>
+        </member>
+        <member name="M:Pacman.ClassPacman.collisionGhost(System.String,System.Int32,System.Int32)">
+            <summary>
+            méthode permettant de détecter sir Pacman rencontre un fantôme
+            </summary>
+            <param name="orientationGhost">variable pour connaître l'orientation du fantome</param>
+            <param name="positionGhostX">variable pour connaître la position du fantome sur l'axe x</param>
+            <param name="positionYGhost">variable pour connaître la position du fantome sur l'axe y</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.ClassPacman.PiecesRestantes">
+            <summary>
+            cette méthode sert à savoir si on est sur une pièce, si c'est le cas on va 
+            éffacer sa valeur(=2) du tableau et on recalcule le nombre de pièces mangées
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.ClassPacman.GhostEatenAdd">
+            <summary>
+            augmente le nombre de fantomes mangés par Pacman
+            </summary>
+        </member>
+        <member name="M:Pacman.ClassPacman.ScoreTotal">
+            <summary>
+            méthode qui permet de calculer et de retourner le score final
+            </summary>
+            <param name="ghostEaten">nombre de fantomes que pacman a mangé</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.ClassPacman.ResetPiecesMap(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Méthode permettant de recharger la map et les pièces pour continuer la partie
+            </summary>
+            <param name="nouvelleMap">Nouvelle map de jeu</param>
+            <param name="nbPieces">Nombre de pièces dans la nouvelle map</param>
+        </member>
+        <member name="M:Pacman.Clyde.#ctor(System.Int32,System.Int32[0:,0:])">
+            <summary>
+            permet de créer le fantome clyde en lui passant en paramètre une vitesse et la map
+            </summary>
+            <param name="vitesse"></param>
+            <param name="map"></param>
+        </member>
+        <member name="P:Pacman.Clyde.positionX">
+            <summary>
+            retourne la position x de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.positionY">
+            <summary>
+            retourne la position y de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.positionXMap">
+            <summary>
+            retourne la position x de base (cage) de clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.positionYMap">
+            <summary>
+            retourne la position y de base (cage) de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.positionXGraph">
+            <summary>
+            retourne la position x graphique de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.positionYGraph">
+            <summary>
+            retourne la position y graphique de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.vitesse">
+            <summary>
+            retourne la vitesse de Clyde
+            </summary>
+        </member>
+        <member name="P:Pacman.Clyde.orientationClyde">
+            <summary>
+            retourne l'orientation de Clyde
+            </summary>
+        </member>
+        <member name="M:Pacman.Clyde.AvancerDirection(System.String)">
+            <summary>
+            méthode permettant de déplacer Clyde dans la direction demandé en paramètre
+            </summary>
+            <param name="direction">direction dans laquel Clyde doit se déplacer</param>
+        </member>
+        <member name="M:Pacman.Clyde.DeplacementClyde">
+            <summary>
+            Permet de déplacer Clyde selon son orientation
+            </summary>
+        </member>
+        <member name="T:Pacman.frmJeu">
+            <summary>
+            classe du form jeu "frmJeu"
+            grâce à elle on pourra afficher le jeu 
+            </summary>
+        </member>
+        <member name="M:Pacman.frmJeu.#ctor">
+            <summary>
+            via le constructeur, nous allons créer l'objet pacman, les 4 fantômes, le labyrinthe
+            et regler les different paramètres de la form de jeu.
+            </summary>
+        </member>
+        <member name="F:Pacman.frmJeu.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Pacman.frmJeu.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Pacman.frmJeu.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Pacman.FrmMenu">
+            <summary>
+            clase du form menu
+            qui contiendra l'essentiel avant de lancer une partie
+            alias le score, les règles et la possibilité de jouer une nouvelle partie
+            </summary>
+        </member>
+        <member name="M:Pacman.FrmMenu.#ctor">
+            <summary>
+            via le constructeur du form menu, nous allons la centrer au centre de l'écran,
+            définir sa taille maximale et minimale,
+            cacher les labels et pictures box et la nommer.
+            </summary>
+        </member>
+        <member name="M:Pacman.FrmMenu.cmdRegles_MouseEnter(System.Object,System.EventArgs)">
+            <summary>
+            quand la souris passera sur un bouton un label(règles ou scores) ou une picturebox(nouvelle partie) 
+            s'affichera et inversement quand la souris sortira du bouton 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pacman.FrmMenu.cmdNouvellePartie_Click(System.Object,System.EventArgs)">
+            <summary>
+            quand on cliquera sur nouvelle partie on lancera le form du jeu "frmJeu"
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Pacman.FrmMenu.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Pacman.FrmMenu.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Pacman.FrmMenu.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Pacman.Inky.#ctor(System.Int32,System.Int32[0:,0:])">
+            <summary>
+            Permet de créer le fantome Inky avec pour paramètre une vitesse et la map
+            </summary>
+            <param name="vitesse">vitesse de déplacement de Inky</param>
+            <param name="map">map du jeu</param>
+        </member>
+        <member name="P:Pacman.Inky.positionX">
+            <summary>
+            retourne la position x de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.positionY">
+            <summary>
+            Retourne la position y de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.positionXMap">
+            <summary>
+            retourne la position x de base (cage) de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.positionYMap">
+            <summary>
+            retourne la position y de base (cage) de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.positionXGraph">
+            <summary>
+            retourne la position x graphique de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.positionYGraph">
+            <summary>
+            retourne la position y graphique de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.vitesse">
+            <summary>
+            retourne la vitesse de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.orientationInky">
+            <summary>
+            retourne l'orientation de Inky
+            </summary>
+        </member>
+        <member name="P:Pacman.Inky.mur">
+            <summary>
+            retourne la variable mur qui sert a savoir si Inky est face à un mur
+            </summary>
+        </member>
+        <member name="M:Pacman.Inky.AvancerDirection(System.String)">
+            <summary>
+            méthode permettant de déplacer Inky dans la direction demandé en paramètre
+            </summary>
+            <param name="direction">direction dans laquel Inky doit se déplacer</param>
+        </member>
+        <member name="M:Pacman.Inky.DeplacementInky">
+            <summary>
+            méthode permettant de déplacer Inky selon son orientation
+            </summary>
+        </member>
+        <member name="M:Pacman.Inky.ChangerDirectionInky(System.String)">
+            <summary>
+            méthode permettant de changer l'orientation de Inky selon la direciton demandé en paramètre
+            </summary>
+            <param name="orientationInky">direction dans laquel Inky doit regarder</param>
+        </member>
+        <member name="M:Pacman.Inky.SuivrePacman(System.Int32,System.Int32)">
+            <summary>
+            méthode permettant à Inky de détecter ou se trouve Pacman et réagir en conséquence
+            </summary>
+            <param name="positionXPacman">position x de pacman</param>
+            <param name="positionYPacman">position y de pacman</param>
+        </member>
+        <member name="M:Pacman.Inky.RandomDirection">
+            <summary>
+            méthode permettant à Inky de tourner dans une direction aléatoire selon certains critères
+            </summary>
+        </member>
+        <member name="F:Pacman.FrmInputMessageBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Pacman.FrmInputMessageBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Pacman.FrmInputMessageBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Pacman.Map">
+            <summary>
+            classe publique qui permettra de lire le fichier de la map et
+            de la mettre sous forme de tableau pour pouvoir l'utiliser.
+            </summary>
+        </member>
+        <member name="M:Pacman.Map.#ctor(System.String)">
+            <summary>
+            Constructeur de la classe map 
+            permettra d'ouvrir la bonne map au bon emplacement
+            </summary>
+            <param name="nomMap">on lui envoie le nom que notre fichier doit avoir sans l'extension</param>
+        </member>
+        <member name="P:Pacman.Map.map">
+            <summary>
+            accesseur du tableau contenant la ap du jeu
+            </summary>
+        </member>
+        <member name="M:Pacman.Map.NbPiece">
+            <summary>
+            methode publique qui retourne le nombre de pieces dont on va avoir besoin 
+            pour construire l'interace graphique et le nombre total de pieces dont
+            on a besoin de manger pour finir le jeu
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.Map.NbMurs">
+            <summary>
+            methode publique qui retourne le nombre de murs dont on va avoir besoin 
+            pour construire l'interace graphique
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pacman.Map.ReadOrCreateFile">
+            <summary>
+            methode privé qui lis le fichier et l'enregistre dans un tableau,
+            si lê fichier n'existe pas en le crée.
+            </summary>
+        </member>
+        <member name="M:Pacman.Pinky.#ctor(System.Int32,System.Int32[0:,0:])">
+            <summary>
+            Permet de créer le fantome Pinky en lui passant en paramètre une vitesse et la map
+            </summary>
+            <param name="vitesse">vitesse de déplacement de Pinky</param>
+            <param name="map">map du jeu</param>
+        </member>
+        <member name="P:Pacman.Pinky.positionX">
+            <summary>
+            retourne la position x de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.positionY">
+            <summary>
+            retourne la position y de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.positionXMap">
+            <summary>
+            retourne la position x de base (cage) de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.positionYMap">
+            <summary>
+            retourne la position y de base (cage) de pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.positionXGraph">
+            <summary>
+            retourne la position x graphique de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.positionYGraph">
+            <summary>
+            retourne la position y graphique de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.vitesse">
+            <summary>
+            retourne la vitesse de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.orientationPinky">
+            <summary>
+            retourne l'orientation de Pinky
+            </summary>
+        </member>
+        <member name="P:Pacman.Pinky.mur">
+            <summary>
+            retourne la variable mur qui permet de savoir si Pinky est face à un mur
+            </summary>
+        </member>
+        <member name="M:Pacman.Pinky.AvancerDirection(System.String)">
+            <summary>
+            méthode permettant de déplacer Pinky selon la direction demandé en paramètre
+            </summary>
+            <param name="direction">direction dans laquel Pinky doit se déplacer</param>
+        </member>
+        <member name="M:Pacman.Pinky.DeplacementPinky">
+            <summary>
+            méthode permettant de dépalcer Pinky selon son orientation
+            </summary>
+        </member>
+        <member name="M:Pacman.Pinky.ChangerDirectionPinky(System.String)">
+            <summary>
+            méthode permettant de changer l'orientation de Pinky selon la directon demandé en paramètre
+            </summary>
+            <param name="orientationPinky">direction dans laquel Inky doit se tourner</param>
+        </member>
+        <member name="M:Pacman.Pinky.SuivrePacman(System.Int32,System.Int32)">
+            <summary>
+            méthode permettant à Inky de détecter ou se trouve Pacman afin de le prendre en chasse
+            </summary>
+            <param name="positionXPacman">position x de Pacman</param>
+            <param name="positionYPacman">position y de Pacman</param>
+        </member>
+        <member name="M:Pacman.Pinky.RandomDirection">
+            <summary>
+            méthode permettant à Inky de tourner dans une direction aléatoire selon certains critères
+            </summary>
+        </member>
+        <member name="M:Pacman.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Pacman.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources._0vies">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources._1vies">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources._2vies">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources._3vies">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.bleu_bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.bleu_haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.bleu_left">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.bleu_right">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.droite">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.fuite_bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.fuite_blinky">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.fuite_doite">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.fuite_gauche">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.fuite_haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.gauche">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Icones_Interface">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Icones_Interface2">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Interface_Bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Map01">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222221222222222222222212222212231
+            12221211121211112111121111212111212221
+            12222211121211222211222211212111222221
+            11112222222222212222221222222222221111
+            01222112112112112111121121121121122210
+            01212222222222212111121222222222221210
+            01212111111112000111100021111111121210
+            01212112221112100000000121112221121210
+            11212222122222101199110122222122221211
+            00211112112112101000010121121121111200
+            11212222112112101567810121121122221211
+            01212112222222101111110122222221 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Map02">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222222222222211222222222222212231
+            12221212111112121222212121111121212221
+            12222212222222122211222122222221222221
+            11112111111111121111112111111111121111
+            11222221122222222222222222222112222211
+            01212122221212111111111121212222121210
+            01212121122212000000000021222112121210
+            01222222221112100000000121112222222210
+            11112121122222101199110122222112121111
+            00222221121111101000010111112112222200
+            11112121122222101567810122222112121111
+            01222222221112001111110021112222 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Map03">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222122211122222222111222122212231
+            12221212221222221111112222212221212221
+            12222211111111121111112111111111222221
+            11111222222222222222222222222222211111
+            12221211111111121111112111111111212221
+            12122221222112221222212221122212222121
+            12112122212222101211210122221222121121
+            12222221111212100000000121211112222221
+            11121122222212001199110021222222112111
+            00221111211112101000010121111211112200
+            11122222211222101567810122211222222111
+            12221121112212101111110121221112 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Map04">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222112222112222221122221122212231
+            12221212222112222111122221122221212221
+            12222212112222112222221122221121222221
+            11112222222112221211212221122222221111
+            00222111121111121211212111112111122200
+            11212222122222122222222122222122221211
+            12212112121112201011010221112121121221
+            12122222222222100000000122222222222121
+            12121212111212101199110121211121212121
+            12122212222222101000010122222221222121
+            12111212112112101567810121121121211121
+            12122212222112101111110121122221 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Map05">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222222122212222221222122222212231
+            12221211212221222111122212221211212221
+            12222212212111111111111111121221222221
+            11111212112222222222222222221121211111
+            12221212112111211111111211121121212221
+            12122222222222222222222222222222222121
+            12121121112112101011010121121112112121
+            12222222222222000000000022222222222221
+            11121121121112101199110121112112112111
+            00222221222222101000010122222212222200
+            11111222211121101567810112111222211111
+            12221211211122101111110122111211 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MapFeu">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222222222211222211222222222212231
+            12221211111111222211222211111111212221
+            12222222222222211211211222222222222221
+            11112111121111212222221211112111121111
+            01222221222122222111122222122212222210
+            01211122212221212222221212221222111210
+            01222221212111210111101211121212222210
+            01212112222222000000000022222221121210
+            11212122121212101199110121212122121211
+            00212121121222101000010122212112121200
+            11212221121211101567810111212112221211
+            01212122122222101111110122222122 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MapGlace">
+             <summary>
+               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+            13221222222222222222222222222222212231
+            12221211211112121111112121111211212221
+            12222222222212122211222121222222222221
+            11112121121222211222211222212112121111
+            00222222221211211111111211212222222200
+            11211212122222222222222222222121211211
+            01222212221112111011011121112221222210
+            11212112122212000000000021222121121211
+            00212112121222101199110122212121121200
+            11212222221121101222210112112222221211
+            01222121121121101567810112112112122210
+            11212122222222001111110022222222 [le reste de la chaîne a été tronqué]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.mur">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.mur2">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MUR4">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MUR5">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.murBase">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MurFeu">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.MurGlace">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.orange_bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.orange_haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.orange_left">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.orange_right">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.piece">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.pink_bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.pink_droite">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.pink_haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.pink_left">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.rouge">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.superPiece">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.yeux_bas">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.yeux_blinky">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.yeux_droite">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.yeux_gauche">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.yeux_haut">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestMap</name>
+    </assembly>
+    <members>
+        <member name="M:Pacman.TestMap.TestInit">
+            <summary>
+            Initialisement de nos variables
+            </summary>
+        </member>
+        <member name="M:Pacman.TestMap.TestCreerMapSuccess">
+            <summary>
+            on va tester que notre map retourne une
+            valeur qui n'est pas nulle
+            </summary>
+        </member>
+        <member name="M:Pacman.TestMap.TestNbPiecesSuccess">
+            <summary>
+            on va tester que notre map nous retourne bien
+            une valeur de pièces
+            </summary>
+        </member>
+        <member name="M:Pacman.TestMap.TestNbMursSuccess">
+            <summary>
+            on regarde qu'on ait bien des murs
+            </summary>
+        </member>
+        <member name="M:Pacman.TestMap.TestClean">
+            <summary>
+            on remet à zero nos variables pour le prochain test
+            </summary>
+        </member>
+    </members>
+</doc>
