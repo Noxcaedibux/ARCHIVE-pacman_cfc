@@ -111,6 +111,12 @@ namespace Pacman
                     case "Map03":
                         File.WriteAllText(_emplacementFichier, Properties.Resources.Map03);
                         break;
+                    case "Map04":
+                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map04);
+                        break;
+                    case "Map05":
+                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map05);
+                        break;
                     case "MapGlace":
                         File.WriteAllText(_emplacementFichier, Properties.Resources.MapGlace);
                         break;

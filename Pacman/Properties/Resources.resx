@@ -262,4 +262,10 @@
   <data name="Map03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map03.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Map04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map04.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Map05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map05.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

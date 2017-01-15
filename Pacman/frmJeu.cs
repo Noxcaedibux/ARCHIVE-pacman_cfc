@@ -115,7 +115,7 @@ namespace Pacman
                         int rand;
 
                         Random randomMap = new Random();
-                        rand = randomMap.Next(0, 5);
+                        rand = randomMap.Next(0, 7);
 
                         switch (rand)
                         {
@@ -129,9 +129,15 @@ namespace Pacman
                                 _nomMap = "Map03";
                                 break;
                             case 3:
-                                _nomMap = "MapGlace";
+                                _nomMap = "Map04";
                                 break;
                             case 4:
+                                _nomMap = "Map05";
+                                break;
+                            case 5:
+                                _nomMap = "MapGlace";
+                                break;
+                            case 6:
                                 _nomMap = "MapFeu";
                                 break;
                         }
@@ -170,7 +176,7 @@ namespace Pacman
                         while(_nomMap == nomMap)
                         {
                             Random randomMap = new Random();
-                            rand = randomMap.Next(0, 5);
+                            rand = randomMap.Next(0, 7);
 
                             switch (rand)
                             {
@@ -184,9 +190,15 @@ namespace Pacman
                                     _nomMap = "Map03";
                                     break;
                                 case 3:
-                                    _nomMap = "MapGlace";
+                                    _nomMap = "Map04";
                                     break;
                                 case 4:
+                                    _nomMap = "Map05";
+                                    break;
+                                case 5:
+                                    _nomMap = "MapGlace";
+                                    break;
+                                case 6:
                                     _nomMap = "MapFeu";
                                     break;
                             }
