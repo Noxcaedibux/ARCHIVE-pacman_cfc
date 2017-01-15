@@ -117,6 +117,7 @@
             this.Controls.Add(this.cmdScores);
             this.Controls.Add(this.cmdNouvellePartie);
             this.Controls.Add(this.cmdRegles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMenu";
             this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.pbPacman)).EndInit();

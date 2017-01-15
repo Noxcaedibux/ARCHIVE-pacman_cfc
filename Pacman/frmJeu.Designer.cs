@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJeu));
             this.timerDeplacement = new System.Windows.Forms.Timer(this.components);
             this.timerClydeSortirCage = new System.Windows.Forms.Timer(this.components);
             this.timerClyde = new System.Windows.Forms.Timer(this.components);
@@ -120,8 +121,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 567);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmJeu";
-            this.Text = "frmJeu";
+            this.Text = "Jeu";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmJeu_KeyDown);
             this.ResumeLayout(false);
 
