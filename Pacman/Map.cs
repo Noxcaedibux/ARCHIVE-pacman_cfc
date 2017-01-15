@@ -97,34 +97,61 @@ namespace Pacman
         {
             StreamReader strReader = null;
             if (!Directory.Exists(_emplacementDossier)) Directory.CreateDirectory(_emplacementDossier);
-            if (!File.Exists(_emplacementFichier))
+            if (File.Exists(_emplacementFichier))
             {
-                //on va créer une copie de notre map01.txt sur l'ordinateur 
+                //On supprime la map si elle existe pour éviter que le joueur triche en modifiant le txt
                 switch(_nomMap)
                 {
                     case "Map01":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map01);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "Map02":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map02);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "Map03":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map03);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "Map04":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map04);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "Map05":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.Map05);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "MapGlace":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.MapGlace);
+                        File.Delete(_emplacementFichier);
                         break;
                     case "MapFeu":
-                        File.WriteAllText(_emplacementFichier, Properties.Resources.MapFeu);
+                        File.Delete(_emplacementFichier);
                         break;
                 }
             }
+
+            //on va créer une map.txt sur l'ordinateur 
+            switch (_nomMap)
+            {
+                case "Map01":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.Map01);
+                    break;
+                case "Map02":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.Map02);
+                    break;
+                case "Map03":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.Map03);
+                    break;
+                case "Map04":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.Map04);
+                    break;
+                case "Map05":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.Map05);
+                    break;
+                case "MapGlace":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.MapGlace);
+                    break;
+                case "MapFeu":
+                    File.WriteAllText(_emplacementFichier, Properties.Resources.MapFeu);
+                    break;
+            }
+
             strReader = new StreamReader(_emplacementFichier);
             int x;
             int y;
