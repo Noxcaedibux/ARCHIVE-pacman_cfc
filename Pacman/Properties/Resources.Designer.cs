@@ -103,6 +103,16 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Barre {
+            get {
+                object obj = ResourceManager.GetObject("Barre", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bas {
             get {
                 object obj = ResourceManager.GetObject("bas", resourceCulture);
@@ -397,7 +407,7 @@ namespace Pacman.Properties {
         ///01222212221112111011011121112221222210
         ///11212112122212000000000021222121121211
         ///00212112121222101199110122212121121200
-        ///11212222221121101222210112112222221211
+        ///11212222221121101000010112112222221211
         ///01222121121121101567810112112112122210
         ///11212122222222001111110022222222 [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>

@@ -79,7 +79,7 @@ namespace Pacman
             _nbMurs = 0;
             foreach (int mur in _map)
             {
-                if (mur == 1)
+                if (mur == 1 || mur == 9)
                 {
                     _nbMurs++;
                 }

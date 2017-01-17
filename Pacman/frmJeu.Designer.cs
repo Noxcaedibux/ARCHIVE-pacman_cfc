@@ -93,7 +93,7 @@
             // 
             // timeSuperPacman
             // 
-            this.timeSuperPacman.Interval = 10000;
+            this.timeSuperPacman.Interval = 10;
             this.timeSuperPacman.Tick += new System.EventHandler(this.timeSuperPacman_Tick);
             // 
             // timerClydeRetourneCage
