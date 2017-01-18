@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe de clyde, le fantome qui se déplace aléatoirement
+    /// </summary>
     public class Clyde
     {
         #region private attributes

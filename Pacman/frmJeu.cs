@@ -19,6 +19,7 @@ namespace Pacman
     public partial class frmJeu : Form
     {
         #region private attributes
+        private int _totalScore;
         private ClassPacman _pacman;
         private Clyde _clyde;
         private Blinky _blinky;
@@ -36,7 +37,6 @@ namespace Pacman
         private Label _lblNbFantomes;
         private PictureBox[] _piece;
         private Point _positionPacman;
-        protected int _totalScore;
         private int _actualisation = 0;
         private int _actualisation2 = 0;
         private int _deplacementPacman = 0;
@@ -87,7 +87,7 @@ namespace Pacman
             {
                 gestionMap();
             }
-            catch (Exception s)
+            catch (Exception)
             {
                 MessageBox.Show("Veuillez créer une Map01.txt dans le dossier Map\n faites une map de 20→ sur 39↓:\n\nChiffres à Utiliser:\n\n 1=mur,\n 2=pac-gomme,\n 3=super pac-gomme\n 4=pacman,\n 5-8=fantômes,\n 9=mur invisible pour la sortie des fantômes", "Fichier inexistant", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             }

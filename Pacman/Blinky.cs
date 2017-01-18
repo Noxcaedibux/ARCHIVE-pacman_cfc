@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe du fantôme rouge, celui qui suit pacman sur tout le labyrinthe
+    /// </summary>
     public class Blinky
     {
         #region private attributes

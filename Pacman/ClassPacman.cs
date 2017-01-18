@@ -36,12 +36,9 @@ namespace Pacman
         /// le nombre de fontômes mangés,
         /// sa vitesse de déplacement et ces coordonées
         /// </summary>
-        /// <param name="vitesse"></param>
-        /// <param name="positionX"></param>
-        /// <param name="positionY"></param>
-        /// <param name="life"></param>
-        /// <param name="coins"></param>
-        /// <param name="map"></param>
+        /// <param name="vitesse">vitesse de pacman</param>
+        /// <param name="life">vie de notre pacman</param>
+        /// <param name="map">la map du jeu</param>
         public ClassPacman(int vitesse, int life, int[,] map)
         {
             _vitesse = vitesse;
@@ -334,8 +331,7 @@ namespace Pacman
         /// <summary>
         /// méthode qui permet de calculer et de retourner le score final
         /// </summary>
-        /// <param name="ghostEaten">nombre de fantomes que pacman a mangé</param>
-        /// <returns></returns>
+        /// <returns>nombre de fantomes que pacman a mangé</returns>
         public int ScoreTotal()
         {
             return this._ghostEaten * 10 + this._pac_gome + this._superPac_gome;

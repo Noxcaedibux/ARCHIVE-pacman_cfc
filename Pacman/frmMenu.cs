@@ -80,7 +80,6 @@ namespace Pacman
         {
             List<string> listScores = new List<string>();
             BaseDeDonnees baseDeDonnees = new BaseDeDonnees("Scores");
-            int i;
 
             lblScores.Text = "";
 
@@ -96,7 +95,7 @@ namespace Pacman
 
             else
             {
-                for(i = 0; i < 10; i++)
+                for(int i = 0; i < 10; i++)
                 {
                     lblScores.Text += listScores[i].ToString() + "\n";
                 }
@@ -121,5 +120,6 @@ namespace Pacman
             _frmJeu.Show();
         }
         #endregion private methods
+        
     }
 }

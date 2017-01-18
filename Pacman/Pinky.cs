@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe de pinky le fantôme rose qui se déplace tout droit
+    /// dès qu'il voit pacman et attends face aux murs pour tendre
+    /// une embuscade à pacman
+    /// </summary>
     public class Pinky
     {
         #region private attributes

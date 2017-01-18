@@ -118,44 +118,110 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Map03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map03.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="MurFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MurFeu.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Barre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Barre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pink_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pink_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MUR5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUR5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pink_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pink_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_3vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pink_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pink_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rouge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rouge.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gauche.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MUR4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUR4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bleu_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bleu_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_doite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_doite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapGlace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="orange_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yeux_droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_droite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="orange_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_0vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\0vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Map01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map01.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="yeux_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_haut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="piece" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\piece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icones_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icones_Interface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\droite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gauche.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icones_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icones_Interface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Interface_Bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Interface_Bas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mur" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yeux_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yeux_gauche.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="piece" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\piece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pink_droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pink_droite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="superPiece" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\superPiece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fuite_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_gauche.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_0vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\0vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1vie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_3vies" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3vies.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bleu_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bleu_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mur2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mur2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,112 +229,46 @@
   <data name="murBase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\murBase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icones_Interface2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jeuInterface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map01.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="bleu_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bleu_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bleu_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bleu_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bleu_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bleu_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bleu_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bleu_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="orange_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\orange_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="orange_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\orange_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="orange_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\orange_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="orange_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\orange_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pink_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pink_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pink_droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pink_droite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pink_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pink_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pink_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pink_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rouge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rouge.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fuite_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fuite_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fuite_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fuite_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fuite_doite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fuite_doite.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fuite_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fuite_gauche.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fuite_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fuite_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="yeux_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yeux_bas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yeux_blinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yeux_blinky.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yeux_droite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yeux_droite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yeux_gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yeux_gauche.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="yeux_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yeux_haut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map02.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="MUR4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MUR4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MUR5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MUR5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MurGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MurGlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MapFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MapFeu.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="MurFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MurFeu.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Map03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map03.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="Map04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map04.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="orange_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Map05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map05.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="MapGlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Map\MapGlace.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="MapFeu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapFeu.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Barre" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Barre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="orange_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bleu_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bleu_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_haut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_haut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Map02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map02.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Map04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map04.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Icones_Interface2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jeuInterface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fuite_bas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fuite_bas.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bleu_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bleu_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="superPiece" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\superPiece.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

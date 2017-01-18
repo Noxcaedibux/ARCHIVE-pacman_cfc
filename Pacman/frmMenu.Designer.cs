@@ -33,8 +33,8 @@
             this.cmdNouvellePartie = new System.Windows.Forms.Button();
             this.cmdScores = new System.Windows.Forms.Button();
             this.lblRegles = new System.Windows.Forms.Label();
-            this.pbPacman = new System.Windows.Forms.PictureBox();
             this.lblScores = new System.Windows.Forms.Label();
+            this.pbPacman = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPacman)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,16 +87,6 @@
             this.lblRegles.TabIndex = 3;
             this.lblRegles.Text = resources.GetString("lblRegles.Text");
             // 
-            // pbPacman
-            // 
-            this.pbPacman.Image = global::Pacman.Properties.Resources.droite;
-            this.pbPacman.Location = new System.Drawing.Point(176, 17);
-            this.pbPacman.Name = "pbPacman";
-            this.pbPacman.Size = new System.Drawing.Size(401, 375);
-            this.pbPacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPacman.TabIndex = 4;
-            this.pbPacman.TabStop = false;
-            // 
             // lblScores
             // 
             this.lblScores.AutoSize = true;
@@ -106,13 +96,23 @@
             this.lblScores.Size = new System.Drawing.Size(0, 25);
             this.lblScores.TabIndex = 5;
             // 
+            // pbPacman
+            // 
+            this.pbPacman.Image = Pacman.Properties.Resources.droite;
+            this.pbPacman.Location = new System.Drawing.Point(180, 17);
+            this.pbPacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPacman.Name = "pbPacman";
+            this.pbPacman.Size = new System.Drawing.Size(401, 375);
+            this.pbPacman.TabIndex = 6;
+            this.pbPacman.TabStop = false;
+            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 426);
-            this.Controls.Add(this.lblScores);
             this.Controls.Add(this.pbPacman);
+            this.Controls.Add(this.lblScores);
             this.Controls.Add(this.lblRegles);
             this.Controls.Add(this.cmdScores);
             this.Controls.Add(this.cmdNouvellePartie);
@@ -131,8 +131,8 @@
         private System.Windows.Forms.Button cmdNouvellePartie;
         private System.Windows.Forms.Button cmdScores;
         private System.Windows.Forms.Label lblRegles;
-        private System.Windows.Forms.PictureBox pbPacman;
         private System.Windows.Forms.Label lblScores;
+        private System.Windows.Forms.PictureBox pbPacman;
     }
 }
 

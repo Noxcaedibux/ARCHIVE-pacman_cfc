@@ -159,9 +159,6 @@
     <None Include="Resources\bas.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\droite.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\haut.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -177,16 +174,7 @@
     <None Include="Resources\Icones_Interface.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\vies.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Interface_Bas.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\a.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\jeuInterface_03.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\0vie.png" />
@@ -201,13 +189,7 @@
     <None Include="Resources\3vies.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mur1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\mur2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mur3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\murBase.png" />
@@ -327,6 +309,7 @@
     <None Include="Resources\Map05.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\droite.gif" />
     <None Include="Resources\Barre.png" />
     <None Include="bin\Debug\Map\MapGlace.txt" />
     <Content Include="pacman_icon_512x512-250x250.ico" />

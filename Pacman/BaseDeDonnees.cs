@@ -40,12 +40,9 @@ namespace Pacman
             if (!File.Exists(_emplacementFichier))
             {
                 SQLiteConnection.CreateFile(_emplacementFichier);
-                _dbConnection.Open();
-                _sql = "CREATE TABLE HighScores (PlayerName TEXT, score INTEGER)";
-                _command = new SQLiteCommand(_sql, _dbConnection);
-                _command.ExecuteNonQuery();
-                _command.Dispose();
-                _dbConnection.Close();
+                OpenDataBase();
+                CommandSQLite("CREATE TABLE HighScores (PlayerName TEXT, score INTEGER)");
+                CloseDataBase();
             }
         }
         #endregion constructors 
@@ -55,14 +52,6 @@ namespace Pacman
 
         #region public methods
         /// <summary>
-        /// permet d'ouvrir l'accès à notre base de données
-        /// </summary>
-        public void OpenDataBase()
-        {
-            _dbConnection.Open();
-        }
-
-        /// <summary>
         /// méthode publique qui va écrire dans la base de données 
         /// le nom de la personne dans la bonne table et pareil pour le score
         /// </summary>
@@ -70,10 +59,9 @@ namespace Pacman
         /// <param name="score">le score total du joueur</param>
         public void WriteInDbTable(string playerName, int score)
         {
-            _sql =" INSERT INTO HighScores (PlayerName, score) values(\""+playerName+"\", "+ score +")";
-            _command = new SQLiteCommand(_sql, _dbConnection);
-            _command.ExecuteNonQuery();
-            _command.Dispose();
+            OpenDataBase();
+            CommandSQLite(" INSERT INTO HighScores (PlayerName, score) values(\"" + playerName + "\", " + score + ")");
+            CloseDataBase();
         }
         /// <summary>
         /// méthode publique qui vas enregistrer toute
@@ -86,25 +74,34 @@ namespace Pacman
             if (_highScores == null) _highScores = new List<string>();
             _sql = "select * from HighScores order by score desc";
             _command = new SQLiteCommand(_sql, _dbConnection);
-            _dbConnection.Open();
+            OpenDataBase();
             _reader = _command.ExecuteReader();
+            _command.Dispose();
             while (_reader.Read())
             {
                 _highScores.Add(_reader["PlayerName"] + ":      " + "\t" + _reader["score"]);
             }
+            CloseDataBase();
             return _highScores;
-        }
-        /// <summary>
-        /// cette methode nous permet de fermer 
-        /// notre base de données
-        /// </summary>
-        public void CloseDataBase()
-        {
-            _dbConnection.Close();
         }
         #endregion public methods
 
         #region private methods
+
+        private void CloseDataBase()
+        {
+            _dbConnection.Close();
+        }
+        private void OpenDataBase()
+        {
+            _dbConnection.Open();
+        }
+        private void CommandSQLite(string commandSqlite)
+        {
+            _command = new SQLiteCommand(commandSqlite, _dbConnection);
+            _command.ExecuteNonQuery();
+            _command.Dispose();
+        }
         #endregion private methods
     }
 }

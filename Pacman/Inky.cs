@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
+    /// <summary>
+    /// classe du fantome bleu qui se déplace en ligne droite
+    /// dès qu'il voit pacman, donc il peut changer de direction 
+    /// s'il voit pacman dans une autre direction
+    /// </summary>
     public class Inky
     {
         #region private attributes

@@ -17,11 +17,6 @@
             </summary>
             <param name="name">nom du fichier de la base de données</param>
         </member>
-        <member name="M:Pacman.BaseDeDonnees.OpenDataBase">
-            <summary>
-            permet d'ouvrir l'accès à notre base de données
-            </summary>
-        </member>
         <member name="M:Pacman.BaseDeDonnees.WriteInDbTable(System.String,System.Int32)">
             <summary>
             méthode publique qui va écrire dans la base de données 
@@ -38,10 +33,9 @@
             </summary>
             <returns>retourne notre liste qui contien le nom des joueurs et leur scores </returns>
         </member>
-        <member name="M:Pacman.BaseDeDonnees.CloseDataBase">
+        <member name="T:Pacman.Blinky">
             <summary>
-            cette methode nous permet de fermer 
-            notre base de données
+            classe du fantôme rouge, celui qui suit pacman sur tout le labyrinthe
             </summary>
         </member>
         <member name="M:Pacman.Blinky.#ctor(System.Int32,System.Int32[0:,0:])">
@@ -129,12 +123,9 @@
             le nombre de fontômes mangés,
             sa vitesse de déplacement et ces coordonées
             </summary>
-            <param name="vitesse"></param>
-            <param name="positionX"></param>
-            <param name="positionY"></param>
-            <param name="life"></param>
-            <param name="coins"></param>
-            <param name="map"></param>
+            <param name="vitesse">vitesse de pacman</param>
+            <param name="life">vie de notre pacman</param>
+            <param name="map">la map du jeu</param>
         </member>
         <member name="P:Pacman.ClassPacman.pac_gome">
             <summary>
@@ -241,8 +232,7 @@
             <summary>
             méthode qui permet de calculer et de retourner le score final
             </summary>
-            <param name="ghostEaten">nombre de fantomes que pacman a mangé</param>
-            <returns></returns>
+            <returns>nombre de fantomes que pacman a mangé</returns>
         </member>
         <member name="M:Pacman.ClassPacman.ResetPiecesMap(System.Int32[0:,0:],System.Int32)">
             <summary>
@@ -250,6 +240,11 @@
             </summary>
             <param name="nouvelleMap">Nouvelle map de jeu</param>
             <param name="nbPieces">Nombre de pièces dans la nouvelle map</param>
+        </member>
+        <member name="T:Pacman.Clyde">
+            <summary>
+            classe de clyde, le fantome qui se déplace aléatoirement
+            </summary>
         </member>
         <member name="M:Pacman.Clyde.#ctor(System.Int32,System.Int32[0:,0:])">
             <summary>
@@ -384,6 +379,13 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Pacman.Inky">
+            <summary>
+            classe du fantome bleu qui se déplace en ligne droite
+            dès qu'il voit pacman, donc il peut changer de direction 
+            s'il voit pacman dans une autre direction
+            </summary>
+        </member>
         <member name="M:Pacman.Inky.#ctor(System.Int32,System.Int32[0:,0:])">
             <summary>
             Permet de créer le fantome Inky avec pour paramètre une vitesse et la map
@@ -465,6 +467,18 @@
             méthode permettant à Inky de tourner dans une direction aléatoire selon certains critères
             </summary>
         </member>
+        <member name="T:Pacman.FrmInputMessageBox">
+            <summary>
+            form qui servira à demander à l'utilisateur s'il veut sauvegarder son score ou annuler
+            </summary>
+        </member>
+        <member name="M:Pacman.FrmInputMessageBox.#ctor(System.Int32)">
+            <summary>
+            constructeur qui va placer les éléments à son
+            ouverture pour que l'utilisateur puisse intérragir avec ceux-ci
+            </summary>
+            <param name="totalScore">ceci est le score total que l'utilisateur aura fait avant de mourir</param>
+        </member>
         <member name="F:Pacman.FrmInputMessageBox.components">
             <summary>
             Required designer variable.
@@ -519,6 +533,13 @@
             <summary>
             methode privé qui lis le fichier et l'enregistre dans un tableau,
             si lê fichier n'existe pas en le crée.
+            </summary>
+        </member>
+        <member name="T:Pacman.Pinky">
+            <summary>
+            classe de pinky le fantôme rose qui se déplace tout droit
+            dès qu'il voit pacman et attends face aux murs pour tendre
+            une embuscade à pacman
             </summary>
         </member>
         <member name="M:Pacman.Pinky.#ctor(System.Int32,System.Int32[0:,0:])">
@@ -609,123 +630,128 @@
         </member>
         <member name="T:Pacman.Properties.Resources">
             <summary>
-              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+              A strongly-typed resource class, for looking up localized strings, etc.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.ResourceManager">
             <summary>
-              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+              Returns the cached ResourceManager instance used by this class.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Culture">
             <summary>
-              Remplace la propriété CurrentUICulture du thread actuel pour toutes
-              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources._0vies">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources._1vies">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources._2vies">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources._3vies">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Pacman.Properties.Resources.Barre">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.bleu_bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.bleu_haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.bleu_left">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.bleu_right">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.droite">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.fuite_bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.fuite_blinky">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.fuite_doite">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.fuite_gauche">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.fuite_haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.gauche">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Icones_Interface">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Icones_Interface2">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Interface_Bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Map01">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222221222222222222222212222212231
             12221211121211112111121111212111212221
             12222211121211222211222211212111222221
@@ -737,12 +763,12 @@
             11212222122222101199110122222122221211
             00211112112112101000010121121121111200
             11212222112112101567810121121122221211
-            01212112222222101111110122222221 [le reste de la chaîne a été tronqué]&quot;;.
+            01212112222222101111110122222221 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Map02">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222222222222211222222222222212231
             12221212111112121222212121111121212221
             12222212222222122211222122222221222221
@@ -754,12 +780,12 @@
             11112121122222101199110122222112121111
             00222221121111101000010111112112222200
             11112121122222101567810122222112121111
-            01222222221112001111110021112222 [le reste de la chaîne a été tronqué]&quot;;.
+            01222222221112001111110021112222 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Map03">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222122211122222222111222122212231
             12221212221222221111112222212221212221
             12222211111111121111112111111111222221
@@ -771,12 +797,12 @@
             11121122222212001199110021222222112111
             00221111211112101000010121111211112200
             11122222211222101567810122211222222111
-            12221121112212101111110121221112 [le reste de la chaîne a été tronqué]&quot;;.
+            12221121112212101111110121221112 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Map04">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222112222112222221122221122212231
             12221212222112222111122221122221212221
             12222212112222112222221122221121222221
@@ -788,12 +814,12 @@
             12121212111212101199110121211121212121
             12122212222222101000010122222221222121
             12111212112112101567810121121121211121
-            12122212222112101111110121122221 [le reste de la chaîne a été tronqué]&quot;;.
+            12122212222112101111110121122221 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.Map05">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222222122212222221222122222212231
             12221211212221222111122212221211212221
             12222212212111111111111111121221222221
@@ -805,12 +831,12 @@
             11121121121112101199110121112112112111
             00222221222222101000010122222212222200
             11111222211121101567810112111222211111
-            12221211211122101111110122111211 [le reste de la chaîne a été tronqué]&quot;;.
+            12221211211122101111110122111211 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MapFeu">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222222222211222211222222222212231
             12221211111111222211222211111111212221
             12222222222222211211211222222222222221
@@ -822,12 +848,12 @@
             11212122121212101199110121212122121211
             00212121121222101000010122212112121200
             11212221121211101567810111212112221211
-            01212122122222101111110122222122 [le reste de la chaîne a été tronqué]&quot;;.
+            01212122122222101111110122222122 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MapGlace">
              <summary>
-               Recherche une chaîne localisée semblable à 11111111111111111111111111111111111111
+               Looks up a localized string similar to 11111111111111111111111111111111111111
             13221222222222222222222222222222212231
             12221211211112121111112121111211212221
             12222222222212122211222121222222222221
@@ -839,122 +865,122 @@
             00212112121222101199110122212121121200
             11212222221121101222210112112222221211
             01222121121121101567810112112112122210
-            11212122222222001111110022222222 [le reste de la chaîne a été tronqué]&quot;;.
+            11212122222222001111110022222222 [rest of string was truncated]&quot;;.
              </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.mur">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.mur2">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MUR4">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MUR5">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.murBase">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MurFeu">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.MurGlace">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.orange_bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.orange_haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.orange_left">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.orange_right">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.piece">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.pink_bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.pink_droite">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.pink_haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.pink_left">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.rouge">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.superPiece">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.yeux_bas">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.yeux_blinky">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.yeux_droite">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.yeux_gauche">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Pacman.Properties.Resources.yeux_haut">
             <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
     </members>

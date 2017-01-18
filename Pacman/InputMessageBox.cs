@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /// <summary>
+    /// form qui servira à demander à l'utilisateur s'il veut sauvegarder son score ou annuler
+    /// </summary>
     public partial class FrmInputMessageBox : Form
     {
         private Label _lblMessage;
@@ -18,7 +21,11 @@ namespace Pacman
         private Button _cmdCancel;
         private BaseDeDonnees _baseDeDonnes;
         private int _totalScore;
-
+        /// <summary>
+        /// constructeur qui va placer les éléments à son
+        /// ouverture pour que l'utilisateur puisse intérragir avec ceux-ci
+        /// </summary>
+        /// <param name="totalScore">ceci est le score total que l'utilisateur aura fait avant de mourir</param>
         public FrmInputMessageBox(int totalScore)
         {
             InitializeComponent();
@@ -37,8 +44,7 @@ namespace Pacman
             this._lblMessage.Location = new Point(24, 13);
             this._lblMessage.AutoSize = true;
 
-            this._lblMessage.Text = "                           Score: " + totalScore.ToString() + 
-                                  "\nVeuillez entrer un nom pour enregistrer votre score.";
+            this._lblMessage.Text = "                           Score: " + totalScore.ToString() + "\nVeuillez entrer un nom pour enregistrer votre score.";
             this._txtNom.Size = new Size(156, 20);
             this._txtNom.Location = new Point(69, 40);
             this._txtNom.Text = "\"1-15 caractères max\"";
@@ -68,15 +74,12 @@ namespace Pacman
             else
             {
                 _baseDeDonnes = new BaseDeDonnees("Scores");
-                _baseDeDonnes.OpenDataBase();
                 _baseDeDonnes.WriteInDbTable(_txtNom.Text, _totalScore);
-                _baseDeDonnes.CloseDataBase();
                 this.Close();
             }
         }
         private void _cmdCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cancel");
             this.Close();
         }
     }
