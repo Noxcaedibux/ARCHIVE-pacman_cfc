@@ -162,7 +162,7 @@ namespace Pacman
                         _classMap = new Map(_nomMap);
                         _recommencer = false;
 
-                        _pacman = new ClassPacman(vitesse, _life, _classMap.map);
+                        _pacman = new ClassPacman(vitesse, _classMap.map);
                         _pacmanImage = new PictureBox();
                         _pacmanImage.Image = Pacman.Properties.Resources.haut;
                         _pacmanImage.SizeMode = PictureBoxSizeMode.StretchImage;

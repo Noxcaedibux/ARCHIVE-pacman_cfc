@@ -19,7 +19,6 @@ namespace Pacman
         private int _positionY;
         private int _pac_gome=0;
         private int _superPac_gome=0;
-        private int _life;
         private int _piecesRestantes;
         private string _orientationPacman = "Nord";
         private int _avancer;
@@ -37,12 +36,10 @@ namespace Pacman
         /// sa vitesse de déplacement et ces coordonées
         /// </summary>
         /// <param name="vitesse">vitesse de pacman</param>
-        /// <param name="life">vie de notre pacman</param>
         /// <param name="map">la map du jeu</param>
-        public ClassPacman(int vitesse, int life, int[,] map)
+        public ClassPacman(int vitesse, int[,] map)
         {
             _vitesse = vitesse;
-            _life = life;
             _map = map;
             Emplacement();
             _piecesRestantes = 0;

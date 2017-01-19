@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacman", "Pacman\Pacman.csproj", "{521C0A92-82EE-4BC5-9638-ABD959E661FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMap", "TestMap\TestMap.csproj", "{57274A86-1161-4A8D-8C87-76A2E7C8E5B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPacman", "TestMap\TestPacman.csproj", "{57274A86-1161-4A8D-8C87-76A2E7C8E5B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
